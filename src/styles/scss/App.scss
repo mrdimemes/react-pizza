@@ -1,6 +1,13 @@
+$buttons-color: #fe5f1e;
+
 body {
     background-color: #FFDF8C;
     margin: 0;
+}
+
+img {
+    width: 100%;
+    height: 100%;
 }
 
 .App {
@@ -8,4 +15,73 @@ body {
     margin: 45px;
     background-color: white;
     border-radius: 10px;
+    font-family: sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 38px;
+    margin-left: 77px;
+    padding-top: 52px;
+    padding-bottom: 52px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    .logo-container__image {
+        width: 38px;
+        height: 38px;
+        margin-right: 17px;
+    }
+    .logo-label {
+        color: #181818;
+        font-size: 24px;
+        line-height: 29px;
+        font-weight: 800;
+        margin: 0;
+    }
+    .logo-description {
+        color: #7B7B7B;
+        font-size: 16px;
+        line-height: 19px;
+        font-weight: 400;
+        margin: 0;
+    }
+}
+
+.cart-button {
+    width: 150px;
+    height: 50px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $buttons-color;
+    color: white;
+    .cart-button__cost {
+        font-size: 16px;
+        line-height: 19px;
+        font-weight: 700;
+    }
+    .cart-button__image {
+        width: 16px;
+        height: 16px;
+    }
+    .cart-button__separator {
+        height: 25px;
+        width: 1px;
+        background-color: white;
+        opacity: 0.25;
+        margin-left: 13px;
+        margin-right: 13px;
+    }
+    .cart-button__inputs {
+        font-size: 16px;
+        line-height: 19px;
+        font-weight: 700;
+        margin-left: 8px;
+    }
 }
