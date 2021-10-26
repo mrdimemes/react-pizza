@@ -1,7 +1,16 @@
-$buttons-color: #fe5f1e;
+// color constants
+
+$main-color: #FE5F1E;
+$bg-color: #FFDF8C;
+$dark-color: #282828;
+$light-color: #7D7D7D;
+
+
+
+// global styles
 
 body {
-    background-color: #FFDF8C;
+    background-color: $bg-color;
     margin: 0;
 }
 
@@ -12,11 +21,75 @@ img {
 
 .App {
     max-width: 1340px;
-    margin: 45px;
+    margin: 43px 45px;
     background-color: white;
     border-radius: 10px;
     font-family: sans-serif;
 }
+
+
+
+// templates
+
+%no-margin-padding {
+    margin: 0;
+    padding: 0;
+}
+
+%flex-centered-element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+%bordored-box {
+    box-sizing: border-box;
+}
+
+%filled-main-color {
+    background-color: $main-color;
+    color: white;
+}
+
+%bordered-main-color {
+    background-color: white;
+    border: 1px solid $main-color;
+    color: $main-color;
+}
+
+%filled-dark {
+    background-color: $dark-color;
+    color: white;
+}
+
+%button-text-preset {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19px;
+}
+
+
+
+// mixins
+
+@mixin round-button($width, $height) {
+    width: $width;
+    height: $height;
+    border-radius: 30px;
+    cursor: pointer;
+    @extend %button-text-preset;
+    @extend %flex-centered-element;
+    @extend %bordored-box;
+}
+
+@mixin square($size) {
+    width: $size;
+    height: $size;
+}
+
+
+
+// components styles
 
 header {
     display: flex;
@@ -24,64 +97,47 @@ header {
     align-items: center;
     margin-right: 38px;
     margin-left: 77px;
-    padding-top: 52px;
-    padding-bottom: 52px;
-}
+    padding: 52px 0;
 
-.logo-container {
-    display: flex;
-    align-items: center;
-    .logo-container__image {
-        width: 38px;
-        height: 38px;
-        margin-right: 17px;
+    .logo-container {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        .logo-container__image {
+            @include square(38px);
+            margin-right: 17px;
+        }
+        .logo-label {
+            color: $dark-color;
+            font-size: 24px;
+            line-height: 29px;
+            font-weight: 800;
+            @extend %no-margin-padding;
+        }
+        .logo-description {
+            color: $light-color;
+            font-size: 16px;
+            line-height: 19px;
+            font-weight: 400;
+            @extend %no-margin-padding;
+        }
     }
-    .logo-label {
-        color: #181818;
-        font-size: 24px;
-        line-height: 29px;
-        font-weight: 800;
-        margin: 0;
-    }
-    .logo-description {
-        color: #7B7B7B;
-        font-size: 16px;
-        line-height: 19px;
-        font-weight: 400;
-        margin: 0;
-    }
-}
 
-.cart-button {
-    width: 150px;
-    height: 50px;
-    border-radius: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: $buttons-color;
-    color: white;
-    .cart-button__cost {
-        font-size: 16px;
-        line-height: 19px;
-        font-weight: 700;
-    }
-    .cart-button__image {
-        width: 16px;
-        height: 16px;
-    }
-    .cart-button__separator {
-        height: 25px;
-        width: 1px;
-        background-color: white;
-        opacity: 0.25;
-        margin-left: 13px;
-        margin-right: 13px;
-    }
-    .cart-button__inputs {
-        font-size: 16px;
-        line-height: 19px;
-        font-weight: 700;
-        margin-left: 8px;
+    .cart-button {
+        @include round-button(150px, 50px);
+        @extend %filled-main-color;
+        .cart-button__image {
+            @include square(16px);
+        }
+        .cart-button__separator {
+            height: 25px;
+            width: 1px;
+            background-color: white;
+            opacity: 0.25;
+            margin: 0 13px;
+        }
+        .cart-button__inputs {
+            margin-left: 8px;
+        }
     }
 }
