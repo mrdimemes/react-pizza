@@ -25,6 +25,15 @@ img {
     height: 100%;
 }
 
+ul {
+    list-style: none;
+    @extend %no-margin-padding;
+}
+
+li {
+    list-style: none;
+}
+
 .App {
     max-width: 1340px;
     
@@ -36,6 +45,10 @@ img {
     background-color: white;
     border-radius: 10px;
     font-family: sans-serif;
+}
+
+.interactive-bar {
+    @extend %flex-space-between-element;
 }
 
 
@@ -50,6 +63,12 @@ img {
 %flex-centered-element {
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+%flex-space-between-element {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -84,7 +103,12 @@ img {
 // mixins
 
 @mixin round-button($width, $height) {
-    width: $width;
+    @if ($width) {
+        width: $width;
+    } @else {
+        width: auto;
+        padding: 0 30px;
+    }
     height: $height;
     border-radius: 30px;
     cursor: pointer;
@@ -103,9 +127,7 @@ img {
 // components styles
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @extend %flex-space-between-element;
     margin-right: 38px;
     margin-left: 77px;
     padding: 52px 0;
@@ -150,5 +172,16 @@ header {
         .cart-button__inputs {
             margin-left: 8px;
         }
+    }
+}
+
+.categories-menu {
+    display: flex;
+    .category {
+        @include round-button(false, 46px);
+        &.active {
+            @extend %filled-dark;
+        }
+        margin-left: 9px;
     }
 }
