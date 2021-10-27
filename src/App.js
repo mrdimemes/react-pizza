@@ -23,7 +23,29 @@ function App() {
         </div>
       </header>
       <div className="wrapper">
-        
+        <div className="interactive-bar">
+          <ul className="categories-menu">
+            <li className="category active">All</li>
+            <li className="category">Meat</li>
+            <li className="category">Vegetarian</li>
+            <li className="category">Grill</li>
+            <li className="category">Spicy</li>
+            <li className="category">Closed</li>
+          </ul>
+          <div className="sort-menu">
+            <div className="sort-menu__marker">
+              <img src="" alt="marker"></img>
+              <p className="sort-menu__text">
+                Sort by: <span className="sort-menu__key">popularity</span>
+              </p>
+              <ul className="sort-menu__popup">
+                <li className="sort-menu__popup-item active">popularity</li>
+                <li className="sort-menu__popup-item">price</li>
+                <li className="sort-menu__popup-item">alphabet</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
