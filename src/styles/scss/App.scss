@@ -42,8 +42,7 @@ li {
     margin-left: 45px;
     margin-right: 45px;
 
-    background-color: white;
-    border-radius: 10px;
+    @extend %smooth-block;
     font-family: sans-serif;
 }
 
@@ -92,10 +91,21 @@ li {
     color: white;
 }
 
+%smooth-block {
+    background-color: white;
+    border-radius: 10px;
+}
+
 %button-text-preset {
     font-size: 16px;
-    font-weight: 700;
     line-height: 19px;
+    font-weight: 700;
+}
+
+%option-text-preset {
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 700;
 }
 
 
@@ -183,5 +193,63 @@ header {
             @extend %filled-dark;
         }
         margin-left: 9px;
+    }
+}
+
+.sort-menu {
+    @extend %flex-centered-element;
+    position: relative;
+    .sort-menu__marker {
+        @include square(10px);
+        margin-right: 7px;
+        transform: rotate(180deg);
+        img {
+            @extend %flex-centered-element;
+        }
+        &.active {
+            transform: rotate(0);
+        }
+    }
+    .sort-menu__text {
+        @extend %option-text-preset;
+        cursor: default;
+        .sort-menu__key {
+            color: $main-color;
+            font-weight: 400;
+            border-bottom: 1px dashed $main-color;
+            margin-left: 8px;
+            cursor: pointer;
+        }
+    }
+    .sort-menu__popup {
+        display: none;
+        &.active {
+            display: block;
+        }
+        position: absolute;
+        bottom: -130px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+        @extend %smooth-block;
+        padding: 13px 0;
+        
+        .sort-menu__popup-item {
+            
+            @extend %option-text-preset;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            width: 132px;
+            height: 38px;
+            padding: 0 14px;
+            cursor: pointer;
+            &.active {
+                color: $main-color;
+                font-weight: 700;
+                background-color: rgba(254, 95, 30, 0.05);
+            }
+            &:hover {
+                background-color: rgba(254, 95, 30, 0.05);
+            } 
+        }
     }
 }
