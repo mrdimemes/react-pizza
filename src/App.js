@@ -22,6 +22,9 @@ function App() {
           <div className="cart-button__inputs">3</div>
         </div>
       </header>
+      <div className="wrapper">
+        
+      </div>
     </div>
   );
 }
