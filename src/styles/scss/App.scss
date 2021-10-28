@@ -280,57 +280,27 @@ header {
     grid-template-columns: repeat(4, 280px);
     justify-content: space-between;
     grid-row-gap: 65px;
-
     &__item {
         @extend %flex-centered-element;
         flex-direction: column;
+        
         &__image {
             @include square(260px);
             margin-bottom: 11px;
             background-color: $dark-color;
         }
+        
         &__label {
             @extend %no-margin-padding;
             font-size: 20px;
             line-height: 24px;
             font-weight: 800;
         }
-        &__options {
-            @extend %smooth-block;
-            @extend %bordored-box;
-            background-color: $lighter-color;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            row-gap: 7px;
-            margin-top: 22px;
-            margin-bottom: 17px;
-            padding: 7px 5px;
-            .option-dough, .option-size {
-                display: flex;
-                column-gap: 6px;
-                height: 32px;
-                .options-item {
-                    width: 50px;
-                    flex-grow: 1;
-                    @extend %flex-centered-element;
-                    @extend %option-text-preset;
-                    border-radius: 5px;
-                    color: $dark-color;
-                    cursor: pointer;
-                    &.active {
-                        background-color: white;
-                    }
-                    &.unavailable {
-                        color: $light-color;
-                        pointer-events: none;
-                    }
-                }
-            }
-        }
+        
         &__price {
             @extend %big-text-preset;
         }
+        
         &__order-button {
             @include round-button(false, 40px);
             @extend %bordered-main-color;
@@ -339,20 +309,57 @@ header {
                 @include square(22px);
                 @extend %filled-main-color;
                 @extend %flex-centered-element;
-                border-radius: 50%;
-                font-size: 13px;
-                margin-left: 7px;
-                transition: 0.2s;
                 display: none;
                 &.active {
                     display: flex;
                 }
+                border-radius: 50%;
+                font-size: 13px;
+                margin-left: 7px;
             }
             &:hover {
                 @extend %filled-main-color;
-                .order-button-counter {
-                    @extend %bordered-main-color;
-                    border: none;
+            }
+        }
+        
+        &__options {
+            @extend %smooth-block;
+            @extend %bordored-box;
+            background-color: $lighter-color;
+            width: 100%;
+            
+            display: flex;
+            flex-direction: column;
+            row-gap: 7px;
+            
+            margin-top: 22px;
+            margin-bottom: 17px;
+            padding: 7px 5px;
+            
+            .option-dough, .option-size {
+                display: flex;
+                column-gap: 6px;
+                height: 32px;
+                
+                .options-item {
+                    width: 50px;
+                    flex-grow: 1;
+
+                    @extend %flex-centered-element;
+                    @extend %option-text-preset;
+                    
+                    border-radius: 5px;
+                    color: $dark-color;
+                    cursor: pointer;
+                    
+                    &.active {
+                        background-color: white;
+                    }
+                    
+                    &.unavailable {
+                        color: $light-color;
+                        pointer-events: none;
+                    }
                 }
             }
         }
