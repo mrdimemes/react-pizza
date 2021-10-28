@@ -53,15 +53,15 @@ function App() {
 
         <section className="galary-section">
           <h1 className="section-label">All pizzas</h1>
-          <div className="pizzas-galary">
+          <div className="pizza-galary">
 
-            <div className="pizzas-galary__item">
-              <div className="pizzas-galary__item__image">
+            <div className="pizza-galary__item">
+              <div className="pizza-galary__item__image">
                 <img src="" alt="pizza"></img>
               </div>
-              <h2 className="pizzas-galary__item__label">Awesome pizza</h2>
-              <div className="pizzas-galary__item__options">
-                <ul className="options-dough">
+              <h2 className="pizza-galary__item__label">Awesome pizza</h2>
+              <div className="pizza-galary__item__options">
+                <ul className="option-dough">
                   <li className="options-item active">thin</li>
                   <li className="options-item">traditional</li>
                 </ul>
@@ -72,21 +72,46 @@ function App() {
                 </div>
               </div>
               <div className="interactive-bar">
-                <div className="pizzas-galary__item__price">395 ₽</div>
-                <div className="pizzas-galary__item__order-button">
+                <div className="pizza-galary__item__price">395 ₽</div>
+                <div className="pizza-galary__item__order-button">
+                  <p className="order-button-text">+ Add</p>
+                  <div className="order-button-counter active">2</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="pizza-galary__item">
+              <div className="pizza-galary__item__image">
+                <img src="" alt="pizza"></img>
+              </div>
+              <h2 className="pizza-galary__item__label">Awesome pizza</h2>
+              <div className="pizza-galary__item__options">
+                <ul className="option-dough">
+                  <li className="options-item active">thin</li>
+                  <li className="options-item">traditional</li>
+                </ul>
+                <div className="option-size">
+                  <li className="options-item active">26 cm.</li>
+                  <li className="options-item unavailable">30 cm.</li>
+                  <li className="options-item">40 cm.</li>
+                </div>
+              </div>
+              <div className="interactive-bar">
+                <div className="pizza-galary__item__price">395 ₽</div>
+                <div className="pizza-galary__item__order-button">
                   <p className="order-button-text">+ Add</p>
                   <div className="order-button-counter">2</div>
                 </div>
               </div>
             </div>
 
-            <div className="pizzas-galary__item">
-              <div className="pizzas-galary__item__image">
+            <div className="pizza-galary__item">
+              <div className="pizza-galary__item__image">
                 <img src="" alt="pizza"></img>
               </div>
-              <h2 className="pizzas-galary__item__label">Awesome pizza</h2>
-              <div className="pizzas-galary__item__options">
-                <ul className="options-dough">
+              <h2 className="pizza-galary__item__label">Awesome pizza</h2>
+              <div className="pizza-galary__item__options">
+                <ul className="option-dough">
                   <li className="options-item active">thin</li>
                   <li className="options-item">traditional</li>
                 </ul>
@@ -97,21 +122,21 @@ function App() {
                 </div>
               </div>
               <div className="interactive-bar">
-                <div className="pizzas-galary__item__price">395 ₽</div>
-                <div className="pizzas-galary__item__order-button">
+                <div className="pizza-galary__item__price">395 ₽</div>
+                <div className="pizza-galary__item__order-button">
                   <p className="order-button-text">+ Add</p>
                   <div className="order-button-counter">2</div>
                 </div>
               </div>
             </div>
 
-            <div className="pizzas-galary__item">
-              <div className="pizzas-galary__item__image">
+            <div className="pizza-galary__item">
+              <div className="pizza-galary__item__image">
                 <img src="" alt="pizza"></img>
               </div>
-              <h2 className="pizzas-galary__item__label">Awesome pizza</h2>
-              <div className="pizzas-galary__item__options">
-                <ul className="options-dough">
+              <h2 className="pizza-galary__item__label">Awesome pizza</h2>
+              <div className="pizza-galary__item__options">
+                <ul className="option-dough">
                   <li className="options-item active">thin</li>
                   <li className="options-item">traditional</li>
                 </ul>
@@ -122,21 +147,21 @@ function App() {
                 </div>
               </div>
               <div className="interactive-bar">
-                <div className="pizzas-galary__item__price">395 ₽</div>
-                <div className="pizzas-galary__item__order-button">
+                <div className="pizza-galary__item__price">395 ₽</div>
+                <div className="pizza-galary__item__order-button">
                   <p className="order-button-text">+ Add</p>
                   <div className="order-button-counter">2</div>
                 </div>
               </div>
             </div>
 
-            <div className="pizzas-galary__item">
-              <div className="pizzas-galary__item__image">
+            <div className="pizza-galary__item">
+              <div className="pizza-galary__item__image">
                 <img src="" alt="pizza"></img>
               </div>
-              <h2 className="pizzas-galary__item__label">Awesome pizza</h2>
-              <div className="pizzas-galary__item__options">
-                <ul className="options-dough">
+              <h2 className="pizza-galary__item__label">Awesome pizza</h2>
+              <div className="pizza-galary__item__options">
+                <ul className="option-dough">
                   <li className="options-item active">thin</li>
                   <li className="options-item">traditional</li>
                 </ul>
@@ -147,21 +172,21 @@ function App() {
                 </div>
               </div>
               <div className="interactive-bar">
-                <div className="pizzas-galary__item__price">395 ₽</div>
-                <div className="pizzas-galary__item__order-button">
+                <div className="pizza-galary__item__price">395 ₽</div>
+                <div className="pizza-galary__item__order-button">
                   <p className="order-button-text">+ Add</p>
                   <div className="order-button-counter">2</div>
                 </div>
               </div>
             </div>
 
-            <div className="pizzas-galary__item">
-              <div className="pizzas-galary__item__image">
+            <div className="pizza-galary__item">
+              <div className="pizza-galary__item__image">
                 <img src="" alt="pizza"></img>
               </div>
-              <h2 className="pizzas-galary__item__label">Awesome pizza</h2>
-              <div className="pizzas-galary__item__options">
-                <ul className="options-dough">
+              <h2 className="pizza-galary__item__label">Awesome pizza</h2>
+              <div className="pizza-galary__item__options">
+                <ul className="option-dough">
                   <li className="options-item active">thin</li>
                   <li className="options-item">traditional</li>
                 </ul>
@@ -172,21 +197,21 @@ function App() {
                 </div>
               </div>
               <div className="interactive-bar">
-                <div className="pizzas-galary__item__price">395 ₽</div>
-                <div className="pizzas-galary__item__order-button">
+                <div className="pizza-galary__item__price">395 ₽</div>
+                <div className="pizza-galary__item__order-button">
                   <p className="order-button-text">+ Add</p>
                   <div className="order-button-counter">2</div>
                 </div>
               </div>
             </div>
 
-            <div className="pizzas-galary__item">
-              <div className="pizzas-galary__item__image">
+            <div className="pizza-galary__item">
+              <div className="pizza-galary__item__image">
                 <img src="" alt="pizza"></img>
               </div>
-              <h2 className="pizzas-galary__item__label">Awesome pizza</h2>
-              <div className="pizzas-galary__item__options">
-                <ul className="options-dough">
+              <h2 className="pizza-galary__item__label">Awesome pizza</h2>
+              <div className="pizza-galary__item__options">
+                <ul className="option-dough">
                   <li className="options-item active">thin</li>
                   <li className="options-item">traditional</li>
                 </ul>
@@ -197,21 +222,21 @@ function App() {
                 </div>
               </div>
               <div className="interactive-bar">
-                <div className="pizzas-galary__item__price">395 ₽</div>
-                <div className="pizzas-galary__item__order-button">
+                <div className="pizza-galary__item__price">395 ₽</div>
+                <div className="pizza-galary__item__order-button">
                   <p className="order-button-text">+ Add</p>
                   <div className="order-button-counter">2</div>
                 </div>
               </div>
             </div>
 
-            <div className="pizzas-galary__item">
-              <div className="pizzas-galary__item__image">
+            <div className="pizza-galary__item">
+              <div className="pizza-galary__item__image">
                 <img src="" alt="pizza"></img>
               </div>
-              <h2 className="pizzas-galary__item__label">Awesome pizza</h2>
-              <div className="pizzas-galary__item__options">
-                <ul className="options-dough">
+              <h2 className="pizza-galary__item__label">Awesome pizza</h2>
+              <div className="pizza-galary__item__options">
+                <ul className="option-dough">
                   <li className="options-item active">thin</li>
                   <li className="options-item">traditional</li>
                 </ul>
@@ -222,21 +247,21 @@ function App() {
                 </div>
               </div>
               <div className="interactive-bar">
-                <div className="pizzas-galary__item__price">395 ₽</div>
-                <div className="pizzas-galary__item__order-button">
+                <div className="pizza-galary__item__price">395 ₽</div>
+                <div className="pizza-galary__item__order-button">
                   <p className="order-button-text">+ Add</p>
                   <div className="order-button-counter">2</div>
                 </div>
               </div>
             </div>
 
-            <div className="pizzas-galary__item">
-              <div className="pizzas-galary__item__image">
+            <div className="pizza-galary__item">
+              <div className="pizza-galary__item__image">
                 <img src="" alt="pizza"></img>
               </div>
-              <h2 className="pizzas-galary__item__label">Awesome pizza</h2>
-              <div className="pizzas-galary__item__options">
-                <ul className="options-dough">
+              <h2 className="pizza-galary__item__label">Awesome pizza</h2>
+              <div className="pizza-galary__item__options">
+                <ul className="option-dough">
                   <li className="options-item active">thin</li>
                   <li className="options-item">traditional</li>
                 </ul>
@@ -247,21 +272,21 @@ function App() {
                 </div>
               </div>
               <div className="interactive-bar">
-                <div className="pizzas-galary__item__price">395 ₽</div>
-                <div className="pizzas-galary__item__order-button">
+                <div className="pizza-galary__item__price">395 ₽</div>
+                <div className="pizza-galary__item__order-button">
                   <p className="order-button-text">+ Add</p>
                   <div className="order-button-counter">2</div>
                 </div>
               </div>
             </div>
 
-            <div className="pizzas-galary__item">
-              <div className="pizzas-galary__item__image">
+            <div className="pizza-galary__item">
+              <div className="pizza-galary__item__image">
                 <img src="" alt="pizza"></img>
               </div>
-              <h2 className="pizzas-galary__item__label">Awesome pizza</h2>
-              <div className="pizzas-galary__item__options">
-                <ul className="options-dough">
+              <h2 className="pizza-galary__item__label">Awesome pizza</h2>
+              <div className="pizza-galary__item__options">
+                <ul className="option-dough">
                   <li className="options-item active">thin</li>
                   <li className="options-item">traditional</li>
                 </ul>
@@ -272,21 +297,21 @@ function App() {
                 </div>
               </div>
               <div className="interactive-bar">
-                <div className="pizzas-galary__item__price">395 ₽</div>
-                <div className="pizzas-galary__item__order-button">
+                <div className="pizza-galary__item__price">395 ₽</div>
+                <div className="pizza-galary__item__order-button">
                   <p className="order-button-text">+ Add</p>
                   <div className="order-button-counter">2</div>
                 </div>
               </div>
             </div>
 
-            <div className="pizzas-galary__item">
-              <div className="pizzas-galary__item__image">
+            <div className="pizza-galary__item">
+              <div className="pizza-galary__item__image">
                 <img src="" alt="pizza"></img>
               </div>
-              <h2 className="pizzas-galary__item__label">Awesome pizza</h2>
-              <div className="pizzas-galary__item__options">
-                <ul className="options-dough">
+              <h2 className="pizza-galary__item__label">Awesome pizza</h2>
+              <div className="pizza-galary__item__options">
+                <ul className="option-dough">
                   <li className="options-item active">thin</li>
                   <li className="options-item">traditional</li>
                 </ul>
@@ -297,33 +322,8 @@ function App() {
                 </div>
               </div>
               <div className="interactive-bar">
-                <div className="pizzas-galary__item__price">395 ₽</div>
-                <div className="pizzas-galary__item__order-button">
-                  <p className="order-button-text">+ Add</p>
-                  <div className="order-button-counter">2</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="pizzas-galary__item">
-              <div className="pizzas-galary__item__image">
-                <img src="" alt="pizza"></img>
-              </div>
-              <h2 className="pizzas-galary__item__label">Awesome pizza</h2>
-              <div className="pizzas-galary__item__options">
-                <ul className="options-dough">
-                  <li className="options-item active">thin</li>
-                  <li className="options-item">traditional</li>
-                </ul>
-                <div className="option-size">
-                  <li className="options-item active">26 cm.</li>
-                  <li className="options-item unavailable">30 cm.</li>
-                  <li className="options-item">40 cm.</li>
-                </div>
-              </div>
-              <div className="interactive-bar">
-                <div className="pizzas-galary__item__price">395 ₽</div>
-                <div className="pizzas-galary__item__order-button">
+                <div className="pizza-galary__item__price">395 ₽</div>
+                <div className="pizza-galary__item__order-button">
                   <p className="order-button-text">+ Add</p>
                   <div className="order-button-counter">2</div>
                 </div>
