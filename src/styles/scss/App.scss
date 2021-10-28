@@ -5,6 +5,10 @@ $bg-color: #FFDF8C;
 $dark-color: #282828;
 $light-color: #7D7D7D;
 
+// derived colors
+
+$main-color-5-percent: scale-color($main-color, $alpha: -95%);
+
 
 
 // global styles
@@ -112,19 +116,22 @@ li {
 
 // mixins
 
+@mixin block($width, $height) {
+    width: $width;
+    height: $height;
+}
+
 @mixin round-button($width, $height) {
-    @if ($width) {
-        width: $width;
-    } @else {
+    @include block($width, $height);
+    @if (not $width) {
         width: auto;
         padding: 0 30px;
-    }
-    height: $height;
-    border-radius: 30px;
-    cursor: pointer;
+    };
     @extend %button-text-preset;
     @extend %flex-centered-element;
     @extend %bordored-box;
+    border-radius: 30px;
+    cursor: pointer;
 }
 
 @mixin square($size) {
@@ -199,57 +206,55 @@ header {
 .sort-menu {
     @extend %flex-centered-element;
     position: relative;
+
     .sort-menu__marker {
         @include square(10px);
         margin-right: 7px;
-        transform: rotate(180deg);
         img {
             @extend %flex-centered-element;
-        }
-        &.active {
-            transform: rotate(0);
+            transform: rotate(180deg);
+            &.active {
+                transform: rotate(0);
+            }
         }
     }
+
     .sort-menu__text {
         @extend %option-text-preset;
         cursor: default;
         .sort-menu__key {
+            cursor: pointer;
             color: $main-color;
             font-weight: 400;
             border-bottom: 1px dashed $main-color;
             margin-left: 8px;
-            cursor: pointer;
         }
     }
+
     .sort-menu__popup {
-        display: none;
-        &.active {
-            display: block;
-        }
+        @extend %smooth-block;
         position: absolute;
         bottom: -130px;
         box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
-        @extend %smooth-block;
         padding: 13px 0;
-        
         .sort-menu__popup-item {
-            
+            @include block(132px, 38px);
             @extend %option-text-preset;
+            @extend %flex-space-between-element;
             font-weight: 400;
-            display: flex;
-            align-items: center;
-            width: 132px;
-            height: 38px;
             padding: 0 14px;
             cursor: pointer;
+            &.active,  &:hover {
+                background-color: $main-color-5-percent;
+            }
             &.active {
                 color: $main-color;
                 font-weight: 700;
-                background-color: rgba(254, 95, 30, 0.05);
             }
-            &:hover {
-                background-color: rgba(254, 95, 30, 0.05);
-            } 
+        }
+        display: none;
+        &.active {
+            display: block;
         }
     }
 }
