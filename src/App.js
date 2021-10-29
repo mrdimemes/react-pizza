@@ -26,14 +26,22 @@ function App() {
       <div className="wrapper">
         <div className="interactive-bar">
 
-          <ul className="categories-menu">
-            <li className="category active">All</li>
-            <li className="category">Meat</li>
-            <li className="category">Vegetarian</li>
-            <li className="category">Grill</li>
-            <li className="category">Spicy</li>
-            <li className="category">Closed</li>
-          </ul>
+          <div className="categories-menu">
+            <div className="categories-menu__marker">
+              <img src="./images/arrow-top.svg" alt="marker"></img>
+            </div>
+            <p className="categories-menu__text">
+              Category:<span className="categories-menu__key">all</span>
+            </p>
+            <ul className="categories-menu__categories">
+              <li className="category active">all</li>
+              <li className="category">meat</li>
+              <li className="category">vegetarian</li>
+              <li className="category">grill</li>
+              <li className="category">spicy</li>
+              <li className="category">closed</li>
+            </ul>
+          </div>
 
           <div className="sort-menu">
             <div className="sort-menu__marker">

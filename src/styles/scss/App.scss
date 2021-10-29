@@ -28,8 +28,17 @@ body {
 }
 
 .wrapper {
-    display: none;
     padding: 0 48px 96px 67px;
+}
+@media screen and (max-width: 1024px) {
+    .wrapper {
+        padding: 0 30px 70px 60px;
+    }
+}
+@media screen and (max-width: 660px) {
+    .wrapper {
+        padding: 0 20px 40px 20px;
+    }
 }
 
 img {
@@ -302,12 +311,130 @@ header {
 
 .categories-menu {
     display: flex;
-    .category {
-        @include round-button(false, 46px);
-        &.active {
-            @extend %filled-dark;
+    &__marker {
+        display: none;
+    }
+    &__text {
+        display: none;
+        margin: 0;
+    }
+    &__categories {
+        display: flex;
+        .category {
+            @include round-button(false, 46px);
+            text-transform: capitalize;
+            &.active {
+                @extend %filled-dark;
+            }
+            margin-right: 9px;
         }
-        margin-right: 9px;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .categories-menu {
+        &__categories {
+            .category {
+                @include round-button(false, 40px);
+                margin-right: 5px;
+                padding: 0 20px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 870px) {
+    .categories-menu {
+        &__categories {
+            width: 300px;
+            flex-wrap: wrap;
+            row-gap: 5px;
+        }
+    }
+}
+// this is sooooo bad, will be fixed
+@media screen and (max-width: 768px) {
+    .categories-menu {
+        // @extend %flex-centered-element;
+        // justify-content: center;
+        align-items: center;
+        position: relative;
+
+        &__marker {
+            display: block;
+            @include square(10px);
+            margin-right: 7px;
+            img {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transform: rotate(180deg);
+                &.active {
+                    transform: rotate(0);
+                }
+            }
+        }
+        &__text {
+            display: block;
+            // @extend %option-text-preset;
+            font-size: 14px;
+            line-height: 17px;
+            font-weight: 700;
+            cursor: default;
+            .categories-menu__key {
+                cursor: pointer;
+                color: $main-color;
+                font-weight: 400;
+                border-bottom: 1px dashed $main-color;
+                margin-left: 8px;
+            }
+        }
+        &__categories {
+            display: block;
+            // @extend %smooth-block;
+            background-color: white;
+            border-radius: 10px;
+            position: absolute;
+            bottom: (-138px - 3*38px);
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+            padding: 13px 0;
+            width: 132px;
+
+            .category {
+                text-transform: none;
+                border-radius: 0;
+                margin: 0;
+                @include block(132px, 38px);
+                // @extend %option-text-preset;
+                font-size: 14px;
+                line-height: 17px;
+                font-weight: 400;
+                // @extend %flex-space-between-element;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 14px;
+                cursor: pointer;
+                &.active,  &:hover {
+                    background-color: $main-color-5-percent;
+                }
+                &.active {
+                    color: $main-color;
+                    font-weight: 700;
+                }
+            }
+            display: none;
+            &.active {
+                display: block;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .interactive-bar {
+        // if contain menu
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 10px;
     }
 }
 
@@ -330,6 +457,7 @@ header {
     .sort-menu__text {
         @extend %option-text-preset;
         cursor: default;
+        margin: 0;
         .sort-menu__key {
             cursor: pointer;
             color: $main-color;
@@ -342,7 +470,7 @@ header {
     .sort-menu__popup {
         @extend %smooth-block;
         position: absolute;
-        bottom: -130px;
+        bottom: -138px;
         box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
         padding: 13px 0;
         .sort-menu__popup-item {
@@ -369,6 +497,7 @@ header {
 
 .pizza-galary {
     display: grid;
+    display: none;
     grid-template-columns: repeat(4, 280px);
     justify-content: space-between;
     grid-row-gap: 65px;
