@@ -18,13 +18,18 @@ $light-color: scale-color($dark-color, $lightness: +40%);
 
 body {
     background-color: $bg-color;
-    margin: 0;
+    @extend %no-margin-padding;
+}
+
+#root {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .wrapper {
-    padding-left: 67px;
-    padding-right: 48px;
-    padding-bottom: 96px;
+    display: none;
+    padding: 0 48px 96px 67px;
 }
 
 img {
@@ -39,18 +44,6 @@ ul {
 
 li {
     list-style: none;
-}
-
-.App {
-    max-width: 1340px;
-    
-    margin-top: 43px;
-    margin-bottom: 63px;
-    margin-left: 45px;
-    margin-right: 45px;
-
-    @extend %smooth-block;
-    font-family: sans-serif;
 }
 
 .interactive-bar {
@@ -159,6 +152,32 @@ li {
 
 // components styles
 
+.App {
+    @extend %smooth-block;
+    @extend %bordored-box;
+
+    max-width: 1340px;
+    width: calc(100% - 90px);
+    margin-top: 43px;
+    margin-bottom: 63px;
+    
+    font-family: sans-serif;
+}
+@media screen and (max-width: 1024px) {
+    .App {
+        width: calc(100% - 69px);
+        margin-top: 33px;
+        margin-bottom: 48px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .App {
+        width: 100%;
+        margin: 0;
+        border-radius: 0px;
+    }
+}
+
 header {
     @extend %flex-space-between-element;
     margin-right: 38px;
@@ -169,7 +188,7 @@ header {
         display: flex;
         align-items: center;
         cursor: pointer;
-        .logo-container__image {
+        &__image {
             @include square(38px);
             margin-right: 17px;
         }
@@ -192,21 +211,94 @@ header {
     .cart-button {
         @include round-button(150px, 50px);
         @extend %filled-main-color;
-        .cart-button__image {
+        &__image {
             @include square(16px);
         }
-        .cart-button__separator {
+        &__separator {
             height: 25px;
             width: 1px;
             background-color: white;
             opacity: 0.25;
             margin: 0 13px;
         }
-        .cart-button__inputs {
+        &__inputs {
             margin-left: 8px;
         }
     }
 }
+@media screen and (max-width: 1024px) {
+    header {
+        margin-right: 30px;
+        margin-left: 60px;
+        padding: 40px 0;
+    }
+}
+@media screen and (max-width: 660px) {
+    header {
+        margin-right: 20px;
+        margin-left: 20px;
+        padding: 20px 0;
+    }
+}
+@media screen and (max-width: 540px) {
+    header {
+        .logo-description {
+            display: none;
+        }
+    }
+}
+@media screen and (max-width: 450px) {
+    header {
+        .logo-container {
+            .logo-label {
+                width: 120px;
+                line-height: 25px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 380px) {
+    header {
+        .logo-container {
+            .logo-label {
+                width: 80px;
+                font-size: 18px;
+                line-height: 20px;
+            }
+        }
+        .cart-button {
+            @include round-button(75px, 40px);
+            &__separator {
+                display: none;
+            }
+            &__cost {
+                display: none;
+            }
+        }
+    }
+}
+@media screen and (max-width: 280px) {
+    header {
+        margin-right: 15px;
+        margin-left: 15px;
+        padding: 10px 0;
+        .logo-container {
+            .logo-label {
+                width: 70px;
+                font-size: 14px;
+                line-height: 16px;
+            }
+            &__image {
+                @include square(30px);
+                margin-right: 10px;
+            }
+        }
+        .cart-button {
+            @include round-button(60px, 35px);
+        }
+    }
+}
+
 
 .categories-menu {
     display: flex;
@@ -215,7 +307,7 @@ header {
         &.active {
             @extend %filled-dark;
         }
-        margin-left: 9px;
+        margin-right: 9px;
     }
 }
 
@@ -363,5 +455,30 @@ header {
                 }
             }
         }
+    }
+}
+
+@media screen and (max-width: 1340px) {
+    .pizza-galary {
+        grid-template-columns: repeat(3, 280px);
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    .pizza-galary {
+        grid-template-columns: repeat(2, 280px);
+        justify-content: space-evenly;
+    }
+}
+
+@media screen and (max-width: 840px) {
+    .pizza-galary {
+        grid-template-columns: 280px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .pizza-galary {
+        grid-template-columns: 1fr;
     }
 }
