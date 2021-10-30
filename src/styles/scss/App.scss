@@ -33,10 +33,6 @@ $light-color: scale-color($dark-color, $lightness: +40%);
     align-items: center;
 }
 
-%bordored-box {
-    box-sizing: border-box;
-}
-
 %filled-main-color {
     background-color: $main-color;
     color: white;
@@ -70,12 +66,6 @@ $light-color: scale-color($dark-color, $lightness: +40%);
     font-weight: 700;
 }
 
-%big-text-preset {
-    font-size: 22px;
-    line-height: 27px;
-    font-weight: 700;
-}
-
 
 
 // mixins
@@ -83,20 +73,6 @@ $light-color: scale-color($dark-color, $lightness: +40%);
 @mixin block($width, $height) {
     width: $width;
     height: $height;
-}
-
-// will be refactored
-@mixin round-button($width, $height) {
-    @include block($width, $height);
-    @if (not $width) {
-        width: auto;
-        padding: 0 30px;
-    };
-    @extend %button-text-preset;
-    @extend %flex-centered-element;
-    @extend %bordored-box;
-    border-radius: 30px;
-    cursor: pointer;
 }
 
 @mixin square($size) {
@@ -181,6 +157,12 @@ li {
     @include dark-colored();
 }
 
+.button_theme_main-bordered {
+    background-color: white;
+    border: 1px solid $main-color;
+    color: $main-color;
+}
+
 .button-separator {
     display: block;
     height: 50%;
@@ -195,13 +177,13 @@ li {
 }
 
 .popup-menu {
-    @extend %flex-centered-element;
+    @include flex-centered();
     position: relative;
     &__marker {
         @include square(10px);
         margin-right: 7px;
         .image {
-            @extend %flex-centered-element;
+            @include flex-centered();
         }
     }
     &__marker_closed {
@@ -252,7 +234,7 @@ li {
 
 .App {
     @extend %smooth-block;
-    @extend %bordored-box;
+    box-sizing: border-box;
     max-width: 1340px;
     width: calc(100% - 90px);
     margin-top: 43px;
@@ -365,7 +347,7 @@ li {
             line-height: 20px;
         }
         &__cart-button {
-            @include round-button(75px, 40px);
+            @include block(75px, 40px);
         }
         &__cart-button-separator {
             display: none;
@@ -388,7 +370,7 @@ li {
             margin-right: 10px;
         }
         &__cart-button {
-            @include round-button(60px, 35px);
+            @include block(60px, 35px);
         }
     }
 }
@@ -434,119 +416,101 @@ li {
     }
 }
 
-.pizza-galary {
+.pizza-gallery {
     display: grid;
-    display: none;
     grid-template-columns: repeat(4, 280px);
     justify-content: space-between;
     grid-row-gap: 65px;
-    &__item {
-        @extend %flex-centered-element;
-        flex-direction: column;
-        
-        &__image {
-            @include square(260px);
-            margin-bottom: 11px;
-            background-color: $dark-color;
-        }
-        
-        &__label {
-            @extend %no-margin-padding;
-            font-size: 20px;
-            line-height: 24px;
-            font-weight: 800;
-        }
-        
-        &__price {
-            @extend %big-text-preset;
-        }
-        
-        &__order-button {
-            @include round-button(false, 40px);
-            @extend %bordered-main-color;
-            transition: 0.2s;
-            .order-button-counter {
-                @include square(22px);
-                @extend %filled-main-color;
-                @extend %flex-centered-element;
-                display: none;
-                &.active {
-                    display: flex;
-                }
-                border-radius: 50%;
-                font-size: 13px;
-                margin-left: 7px;
-            }
-            &:hover {
-                @extend %filled-main-color;
-            }
-        }
-        
-        &__options {
-            @extend %smooth-block;
-            @extend %bordored-box;
-            background-color: $lighter-color;
-            width: 100%;
-            
-            display: flex;
-            flex-direction: column;
-            row-gap: 7px;
-            
-            margin-top: 22px;
-            margin-bottom: 17px;
-            padding: 7px 5px;
-            
-            .option-dough, .option-size {
-                display: flex;
-                column-gap: 6px;
-                height: 32px;
-                
-                .options-item {
-                    width: 50px;
-                    flex-grow: 1;
-
-                    @extend %flex-centered-element;
-                    @extend %option-text-preset;
-                    
-                    border-radius: 5px;
-                    color: $dark-color;
-                    cursor: pointer;
-                    
-                    &.active {
-                        background-color: white;
-                    }
-                    
-                    &.unavailable {
-                        color: $light-color;
-                        pointer-events: none;
-                    }
-                }
-            }
-        }
-    }
-}
-
-@media screen and (max-width: 1340px) {
-    .pizza-galary {
+    @media screen and (max-width: 1340px) {
         grid-template-columns: repeat(3, 280px);
     }
-}
-
-@media screen and (max-width: 1080px) {
-    .pizza-galary {
+    @media screen and (max-width: 1080px) {
         grid-template-columns: repeat(2, 280px);
         justify-content: space-evenly;
     }
-}
-
-@media screen and (max-width: 840px) {
-    .pizza-galary {
+    @media screen and (max-width: 840px) {
         grid-template-columns: 280px;
+    }
+    @media screen and (max-width: 420px) {
+        grid-template-columns: 1fr;
     }
 }
 
-@media screen and (max-width: 420px) {
-    .pizza-galary {
-        grid-template-columns: 1fr;
+.pizza {
+    @include flex-centered();
+    flex-direction: column;
+    &__image-container {
+        @include square(260px);
+        margin-bottom: 11px;
+        
+        // image replacer (temporary)
+        background-color: $dark-color;
+    }
+    &__label {
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 800;
+    }
+    &__price {
+        font-size: 22px;
+        line-height: 27px;
+        font-weight: 700;
+    }
+    &__order-button {
+        @include block(auto, 40px);
+        transition: 0.2s;
+    }
+    &__order-button:hover {
+        @include main-colored();
+    }
+    &__order-button-text {
+        margin: 0;
+    }
+    &__order-button-counter {
+        @include square(22px);
+        @include main-colored();
+        @include flex-centered();
+        border-radius: 50%;
+        font-size: 13px;
+        margin-left: 7px;
+        display: none;
+    }
+    &__order-button-counter_active {
+        display: flex;
+    }
+    &__options {
+        display: flex;
+        flex-direction: column;
+        row-gap: 7px;
+        width: 100%;
+        border-radius: 10px;
+        box-sizing: border-box;
+        background-color: $lighter-color;
+        margin-top: 22px;
+        margin-bottom: 17px;
+        padding: 7px;
+    }
+    &__options-row {
+        display: flex;
+        column-gap: 6px;
+        height: 32px;
+    }
+    &__options-item {
+        width: 0;
+        flex-grow: 1;
+        @include flex-centered();
+        @extend %option-text-preset;
+        border-radius: 5px;
+        color: $dark-color;
+        cursor: pointer;
+    }
+    &__options-item_active {
+        background-color: white;
+    }
+    &__options-item_unavailable {
+        color: $light-color;
+        pointer-events: none;
     }
 }

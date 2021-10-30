@@ -16,7 +16,7 @@ function App() {
           </div>
         </div>
 
-        <div className="header__cart-button button_shape_rounded button_theme_main-colored">
+        <div className="header__cart-button button button_shape_rounded button_theme_main-colored">
           <div className="header__cart-button-cost">7.33 $</div>
           <div className="header__cart-button-separator button-separator button-separator_theme_light"></div>
           <div className="header__cart-button-icon-container">
@@ -62,281 +62,256 @@ function App() {
           
         </div>
 
-        <section className="galary-section">
-          <h1 className="section-label">All pizzas</h1>
-          <div className="pizza-galary">
+        <section className="App__gallery-section">
+          <h1 className="App__gallery-section-label section-label">All pizzas</h1>
+          <div className="pizza-gallery">
 
-            <div className="pizza-galary__item">
-              <div className="pizza-galary__item__image">
-                <img src="" alt="pizza"></img>
+            <div className="pizza">
+              <div className="pizza__image-container">
+                <img className="image" src="" alt="pizza"></img>
               </div>
-              <h2 className="pizza-galary__item__label">Awesome pizza</h2>
-              <div className="pizza-galary__item__options">
-                <ul className="option-dough">
-                  <li className="options-item active">thin</li>
-                  <li className="options-item">traditional</li>
+              <h2 className="pizza__label">Awesome pizza</h2>
+              <div className="pizza__options">
+                <ul className="pizza__options-row">
+                  <li className="pizza__options-item pizza__options-item_active">thin</li>
+                  <li className="pizza__options-item">traditional</li>
                 </ul>
-                <div className="option-size">
-                  <li className="options-item active">26 cm.</li>
-                  <li className="options-item unavailable">30 cm.</li>
-                  <li className="options-item">40 cm.</li>
+                <div className="pizza__options-row">
+                  <li className="pizza__options-item pizza__options-item_active">26 cm.</li>
+                  <li className="pizza__options-item pizza__options-item_unavailable">30 cm.</li>
+                  <li className="pizza__options-item">40 cm.</li>
                 </div>
               </div>
-              <div className="interactive-bar">
-                <div className="pizza-galary__item__price">395 ₽</div>
-                <div className="pizza-galary__item__order-button">
-                  <p className="order-button-text">+ Add</p>
-                  <div className="order-button-counter active">2</div>
+              <div className="pizza__order-bar interactive-bar">
+                <div className="pizza__price">5.57 $</div>
+                <div className="pizza__order-button button button_shape_rounded button_theme_main-bordered">
+                  <p className="pizza__order-button-text">+ Add</p>
+                  <div className="pizza__order-button-counter pizza__order-button-counter_active">2</div>
                 </div>
               </div>
             </div>
 
-            <div className="pizza-galary__item">
-              <div className="pizza-galary__item__image">
-                <img src="" alt="pizza"></img>
+            <div className="pizza">
+              <div className="pizza__image-container">
+                <img className="image" src="" alt="pizza"></img>
               </div>
-              <h2 className="pizza-galary__item__label">Awesome pizza</h2>
-              <div className="pizza-galary__item__options">
-                <ul className="option-dough">
-                  <li className="options-item active">thin</li>
-                  <li className="options-item">traditional</li>
+              <h2 className="pizza__label">Awesome pizza</h2>
+              <div className="pizza__options">
+                <ul className="pizza__options-row">
+                  <li className="pizza__options-item pizza__options-item_active">thin</li>
+                  <li className="pizza__options-item">traditional</li>
                 </ul>
-                <div className="option-size">
-                  <li className="options-item active">26 cm.</li>
-                  <li className="options-item unavailable">30 cm.</li>
-                  <li className="options-item">40 cm.</li>
+                <div className="pizza__options-row">
+                  <li className="pizza__options-item pizza__options-item_active">26 cm.</li>
+                  <li className="pizza__options-item pizza__options-item_unavailable">30 cm.</li>
+                  <li className="pizza__options-item">40 cm.</li>
                 </div>
               </div>
-              <div className="interactive-bar">
-                <div className="pizza-galary__item__price">395 ₽</div>
-                <div className="pizza-galary__item__order-button">
-                  <p className="order-button-text">+ Add</p>
-                  <div className="order-button-counter">2</div>
+              <div className="pizza__order-bar interactive-bar">
+                <div className="pizza__price">5.57 $</div>
+                <div className="pizza__order-button button button_shape_rounded button_theme_main-bordered">
+                  <p className="pizza__order-button-text">+ Add</p>
+                  <div className="pizza__order-button-counter pizza__order-button-counter_active">2</div>
                 </div>
               </div>
             </div>
 
-            <div className="pizza-galary__item">
-              <div className="pizza-galary__item__image">
-                <img src="" alt="pizza"></img>
+            <div className="pizza">
+              <div className="pizza__image-container">
+                <img className="image" src="" alt="pizza"></img>
               </div>
-              <h2 className="pizza-galary__item__label">Awesome pizza</h2>
-              <div className="pizza-galary__item__options">
-                <ul className="option-dough">
-                  <li className="options-item active">thin</li>
-                  <li className="options-item">traditional</li>
+              <h2 className="pizza__label">Awesome pizza</h2>
+              <div className="pizza__options">
+                <ul className="pizza__options-row">
+                  <li className="pizza__options-item pizza__options-item_active">thin</li>
+                  <li className="pizza__options-item">traditional</li>
                 </ul>
-                <div className="option-size">
-                  <li className="options-item active">26 cm.</li>
-                  <li className="options-item unavailable">30 cm.</li>
-                  <li className="options-item">40 cm.</li>
+                <div className="pizza__options-row">
+                  <li className="pizza__options-item pizza__options-item_active">26 cm.</li>
+                  <li className="pizza__options-item pizza__options-item_unavailable">30 cm.</li>
+                  <li className="pizza__options-item">40 cm.</li>
                 </div>
               </div>
-              <div className="interactive-bar">
-                <div className="pizza-galary__item__price">395 ₽</div>
-                <div className="pizza-galary__item__order-button">
-                  <p className="order-button-text">+ Add</p>
-                  <div className="order-button-counter">2</div>
+              <div className="pizza__order-bar interactive-bar">
+                <div className="pizza__price">5.57 $</div>
+                <div className="pizza__order-button button button_shape_rounded button_theme_main-bordered">
+                  <p className="pizza__order-button-text">+ Add</p>
+                  <div className="pizza__order-button-counter pizza__order-button-counter_active">2</div>
                 </div>
               </div>
             </div>
 
-            <div className="pizza-galary__item">
-              <div className="pizza-galary__item__image">
-                <img src="" alt="pizza"></img>
+            <div className="pizza">
+              <div className="pizza__image-container">
+                <img className="image" src="" alt="pizza"></img>
               </div>
-              <h2 className="pizza-galary__item__label">Awesome pizza</h2>
-              <div className="pizza-galary__item__options">
-                <ul className="option-dough">
-                  <li className="options-item active">thin</li>
-                  <li className="options-item">traditional</li>
+              <h2 className="pizza__label">Awesome pizza</h2>
+              <div className="pizza__options">
+                <ul className="pizza__options-row">
+                  <li className="pizza__options-item pizza__options-item_active">thin</li>
+                  <li className="pizza__options-item">traditional</li>
                 </ul>
-                <div className="option-size">
-                  <li className="options-item active">26 cm.</li>
-                  <li className="options-item unavailable">30 cm.</li>
-                  <li className="options-item">40 cm.</li>
+                <div className="pizza__options-row">
+                  <li className="pizza__options-item pizza__options-item_active">26 cm.</li>
+                  <li className="pizza__options-item pizza__options-item_unavailable">30 cm.</li>
+                  <li className="pizza__options-item">40 cm.</li>
                 </div>
               </div>
-              <div className="interactive-bar">
-                <div className="pizza-galary__item__price">395 ₽</div>
-                <div className="pizza-galary__item__order-button">
-                  <p className="order-button-text">+ Add</p>
-                  <div className="order-button-counter">2</div>
+              <div className="pizza__order-bar interactive-bar">
+                <div className="pizza__price">5.57 $</div>
+                <div className="pizza__order-button button button_shape_rounded button_theme_main-bordered">
+                  <p className="pizza__order-button-text">+ Add</p>
+                  <div className="pizza__order-button-counter pizza__order-button-counter_active">2</div>
                 </div>
               </div>
             </div>
 
-            <div className="pizza-galary__item">
-              <div className="pizza-galary__item__image">
-                <img src="" alt="pizza"></img>
+            <div className="pizza">
+              <div className="pizza__image-container">
+                <img className="image" src="" alt="pizza"></img>
               </div>
-              <h2 className="pizza-galary__item__label">Awesome pizza</h2>
-              <div className="pizza-galary__item__options">
-                <ul className="option-dough">
-                  <li className="options-item active">thin</li>
-                  <li className="options-item">traditional</li>
+              <h2 className="pizza__label">Awesome pizza</h2>
+              <div className="pizza__options">
+                <ul className="pizza__options-row">
+                  <li className="pizza__options-item pizza__options-item_active">thin</li>
+                  <li className="pizza__options-item">traditional</li>
                 </ul>
-                <div className="option-size">
-                  <li className="options-item active">26 cm.</li>
-                  <li className="options-item unavailable">30 cm.</li>
-                  <li className="options-item">40 cm.</li>
+                <div className="pizza__options-row">
+                  <li className="pizza__options-item pizza__options-item_active">26 cm.</li>
+                  <li className="pizza__options-item pizza__options-item_unavailable">30 cm.</li>
+                  <li className="pizza__options-item">40 cm.</li>
                 </div>
               </div>
-              <div className="interactive-bar">
-                <div className="pizza-galary__item__price">395 ₽</div>
-                <div className="pizza-galary__item__order-button">
-                  <p className="order-button-text">+ Add</p>
-                  <div className="order-button-counter">2</div>
+              <div className="pizza__order-bar interactive-bar">
+                <div className="pizza__price">5.57 $</div>
+                <div className="pizza__order-button button button_shape_rounded button_theme_main-bordered">
+                  <p className="pizza__order-button-text">+ Add</p>
+                  <div className="pizza__order-button-counter pizza__order-button-counter_active">2</div>
                 </div>
               </div>
             </div>
 
-            <div className="pizza-galary__item">
-              <div className="pizza-galary__item__image">
-                <img src="" alt="pizza"></img>
+            <div className="pizza">
+              <div className="pizza__image-container">
+                <img className="image" src="" alt="pizza"></img>
               </div>
-              <h2 className="pizza-galary__item__label">Awesome pizza</h2>
-              <div className="pizza-galary__item__options">
-                <ul className="option-dough">
-                  <li className="options-item active">thin</li>
-                  <li className="options-item">traditional</li>
+              <h2 className="pizza__label">Awesome pizza</h2>
+              <div className="pizza__options">
+                <ul className="pizza__options-row">
+                  <li className="pizza__options-item pizza__options-item_active">thin</li>
+                  <li className="pizza__options-item">traditional</li>
                 </ul>
-                <div className="option-size">
-                  <li className="options-item active">26 cm.</li>
-                  <li className="options-item unavailable">30 cm.</li>
-                  <li className="options-item">40 cm.</li>
+                <div className="pizza__options-row">
+                  <li className="pizza__options-item pizza__options-item_active">26 cm.</li>
+                  <li className="pizza__options-item pizza__options-item_unavailable">30 cm.</li>
+                  <li className="pizza__options-item">40 cm.</li>
                 </div>
               </div>
-              <div className="interactive-bar">
-                <div className="pizza-galary__item__price">395 ₽</div>
-                <div className="pizza-galary__item__order-button">
-                  <p className="order-button-text">+ Add</p>
-                  <div className="order-button-counter">2</div>
+              <div className="pizza__order-bar interactive-bar">
+                <div className="pizza__price">5.57 $</div>
+                <div className="pizza__order-button button button_shape_rounded button_theme_main-bordered">
+                  <p className="pizza__order-button-text">+ Add</p>
+                  <div className="pizza__order-button-counter pizza__order-button-counter_active">2</div>
                 </div>
               </div>
             </div>
 
-            <div className="pizza-galary__item">
-              <div className="pizza-galary__item__image">
-                <img src="" alt="pizza"></img>
+            <div className="pizza">
+              <div className="pizza__image-container">
+                <img className="image" src="" alt="pizza"></img>
               </div>
-              <h2 className="pizza-galary__item__label">Awesome pizza</h2>
-              <div className="pizza-galary__item__options">
-                <ul className="option-dough">
-                  <li className="options-item active">thin</li>
-                  <li className="options-item">traditional</li>
+              <h2 className="pizza__label">Awesome pizza</h2>
+              <div className="pizza__options">
+                <ul className="pizza__options-row">
+                  <li className="pizza__options-item pizza__options-item_active">thin</li>
+                  <li className="pizza__options-item">traditional</li>
                 </ul>
-                <div className="option-size">
-                  <li className="options-item active">26 cm.</li>
-                  <li className="options-item unavailable">30 cm.</li>
-                  <li className="options-item">40 cm.</li>
+                <div className="pizza__options-row">
+                  <li className="pizza__options-item pizza__options-item_active">26 cm.</li>
+                  <li className="pizza__options-item pizza__options-item_unavailable">30 cm.</li>
+                  <li className="pizza__options-item">40 cm.</li>
                 </div>
               </div>
-              <div className="interactive-bar">
-                <div className="pizza-galary__item__price">395 ₽</div>
-                <div className="pizza-galary__item__order-button">
-                  <p className="order-button-text">+ Add</p>
-                  <div className="order-button-counter">2</div>
+              <div className="pizza__order-bar interactive-bar">
+                <div className="pizza__price">5.57 $</div>
+                <div className="pizza__order-button button button_shape_rounded button_theme_main-bordered">
+                  <p className="pizza__order-button-text">+ Add</p>
+                  <div className="pizza__order-button-counter pizza__order-button-counter_active">2</div>
                 </div>
               </div>
             </div>
 
-            <div className="pizza-galary__item">
-              <div className="pizza-galary__item__image">
-                <img src="" alt="pizza"></img>
+            <div className="pizza">
+              <div className="pizza__image-container">
+                <img className="image" src="" alt="pizza"></img>
               </div>
-              <h2 className="pizza-galary__item__label">Awesome pizza</h2>
-              <div className="pizza-galary__item__options">
-                <ul className="option-dough">
-                  <li className="options-item active">thin</li>
-                  <li className="options-item">traditional</li>
+              <h2 className="pizza__label">Awesome pizza</h2>
+              <div className="pizza__options">
+                <ul className="pizza__options-row">
+                  <li className="pizza__options-item pizza__options-item_active">thin</li>
+                  <li className="pizza__options-item">traditional</li>
                 </ul>
-                <div className="option-size">
-                  <li className="options-item active">26 cm.</li>
-                  <li className="options-item unavailable">30 cm.</li>
-                  <li className="options-item">40 cm.</li>
+                <div className="pizza__options-row">
+                  <li className="pizza__options-item pizza__options-item_active">26 cm.</li>
+                  <li className="pizza__options-item pizza__options-item_unavailable">30 cm.</li>
+                  <li className="pizza__options-item">40 cm.</li>
                 </div>
               </div>
-              <div className="interactive-bar">
-                <div className="pizza-galary__item__price">395 ₽</div>
-                <div className="pizza-galary__item__order-button">
-                  <p className="order-button-text">+ Add</p>
-                  <div className="order-button-counter">2</div>
+              <div className="pizza__order-bar interactive-bar">
+                <div className="pizza__price">5.57 $</div>
+                <div className="pizza__order-button button button_shape_rounded button_theme_main-bordered">
+                  <p className="pizza__order-button-text">+ Add</p>
+                  <div className="pizza__order-button-counter pizza__order-button-counter_active">2</div>
                 </div>
               </div>
             </div>
 
-            <div className="pizza-galary__item">
-              <div className="pizza-galary__item__image">
-                <img src="" alt="pizza"></img>
+            <div className="pizza">
+              <div className="pizza__image-container">
+                <img className="image" src="" alt="pizza"></img>
               </div>
-              <h2 className="pizza-galary__item__label">Awesome pizza</h2>
-              <div className="pizza-galary__item__options">
-                <ul className="option-dough">
-                  <li className="options-item active">thin</li>
-                  <li className="options-item">traditional</li>
+              <h2 className="pizza__label">Awesome pizza</h2>
+              <div className="pizza__options">
+                <ul className="pizza__options-row">
+                  <li className="pizza__options-item pizza__options-item_active">thin</li>
+                  <li className="pizza__options-item">traditional</li>
                 </ul>
-                <div className="option-size">
-                  <li className="options-item active">26 cm.</li>
-                  <li className="options-item unavailable">30 cm.</li>
-                  <li className="options-item">40 cm.</li>
+                <div className="pizza__options-row">
+                  <li className="pizza__options-item pizza__options-item_active">26 cm.</li>
+                  <li className="pizza__options-item pizza__options-item_unavailable">30 cm.</li>
+                  <li className="pizza__options-item">40 cm.</li>
                 </div>
               </div>
-              <div className="interactive-bar">
-                <div className="pizza-galary__item__price">395 ₽</div>
-                <div className="pizza-galary__item__order-button">
-                  <p className="order-button-text">+ Add</p>
-                  <div className="order-button-counter">2</div>
+              <div className="pizza__order-bar interactive-bar">
+                <div className="pizza__price">5.57 $</div>
+                <div className="pizza__order-button button button_shape_rounded button_theme_main-bordered">
+                  <p className="pizza__order-button-text">+ Add</p>
+                  <div className="pizza__order-button-counter pizza__order-button-counter_active">2</div>
                 </div>
               </div>
             </div>
 
-            <div className="pizza-galary__item">
-              <div className="pizza-galary__item__image">
-                <img src="" alt="pizza"></img>
+            <div className="pizza">
+              <div className="pizza__image-container">
+                <img className="image" src="" alt="pizza"></img>
               </div>
-              <h2 className="pizza-galary__item__label">Awesome pizza</h2>
-              <div className="pizza-galary__item__options">
-                <ul className="option-dough">
-                  <li className="options-item active">thin</li>
-                  <li className="options-item">traditional</li>
+              <h2 className="pizza__label">Awesome pizza</h2>
+              <div className="pizza__options">
+                <ul className="pizza__options-row">
+                  <li className="pizza__options-item pizza__options-item_active">thin</li>
+                  <li className="pizza__options-item">traditional</li>
                 </ul>
-                <div className="option-size">
-                  <li className="options-item active">26 cm.</li>
-                  <li className="options-item unavailable">30 cm.</li>
-                  <li className="options-item">40 cm.</li>
+                <div className="pizza__options-row">
+                  <li className="pizza__options-item pizza__options-item_active">26 cm.</li>
+                  <li className="pizza__options-item pizza__options-item_unavailable">30 cm.</li>
+                  <li className="pizza__options-item">40 cm.</li>
                 </div>
               </div>
-              <div className="interactive-bar">
-                <div className="pizza-galary__item__price">395 ₽</div>
-                <div className="pizza-galary__item__order-button">
-                  <p className="order-button-text">+ Add</p>
-                  <div className="order-button-counter">2</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="pizza-galary__item">
-              <div className="pizza-galary__item__image">
-                <img src="" alt="pizza"></img>
-              </div>
-              <h2 className="pizza-galary__item__label">Awesome pizza</h2>
-              <div className="pizza-galary__item__options">
-                <ul className="option-dough">
-                  <li className="options-item active">thin</li>
-                  <li className="options-item">traditional</li>
-                </ul>
-                <div className="option-size">
-                  <li className="options-item active">26 cm.</li>
-                  <li className="options-item unavailable">30 cm.</li>
-                  <li className="options-item">40 cm.</li>
-                </div>
-              </div>
-              <div className="interactive-bar">
-                <div className="pizza-galary__item__price">395 ₽</div>
-                <div className="pizza-galary__item__order-button">
-                  <p className="order-button-text">+ Add</p>
-                  <div className="order-button-counter">2</div>
+              <div className="pizza__order-bar interactive-bar">
+                <div className="pizza__price">5.57 $</div>
+                <div className="pizza__order-button button button_shape_rounded button_theme_main-bordered">
+                  <p className="pizza__order-button-text">+ Add</p>
+                  <div className="pizza__order-button-counter pizza__order-button-counter_active">2</div>
                 </div>
               </div>
             </div>
