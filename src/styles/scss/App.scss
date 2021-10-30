@@ -41,7 +41,7 @@ body {
     }
 }
 
-img {
+.image {
     width: 100%;
     height: 100%;
 }
@@ -187,122 +187,115 @@ li {
     }
 }
 
-header {
+
+.header {
     @extend %flex-space-between-element;
     margin-right: 38px;
     margin-left: 77px;
     padding: 52px 0;
-
-    .logo-container {
+    &__logo {
         display: flex;
         align-items: center;
         cursor: pointer;
-        &__image {
-            @include square(38px);
-            margin-right: 17px;
-        }
-        .logo-label {
-            color: $dark-color;
-            font-size: 24px;
-            line-height: 29px;
-            font-weight: 800;
-            @extend %no-margin-padding;
-        }
-        .logo-description {
-            color: $light-color;
-            font-size: 16px;
-            line-height: 19px;
-            font-weight: 400;
-            @extend %no-margin-padding;
-        }
     }
-
-    .cart-button {
+    &__logo-image-container {
+        @include square(38px);
+        margin-right: 17px;
+    }
+    &__logo-label {
+        color: $dark-color;
+        font-size: 24px;
+        line-height: 29px;
+        font-weight: 800;
+        @extend %no-margin-padding;
+    }
+    &__logo-description {
+        color: $light-color;
+        font-size: 16px;
+        line-height: 19px;
+        font-weight: 400;
+        @extend %no-margin-padding;
+    }
+    &__cart-button {
         @include round-button(150px, 50px);
         @extend %filled-main-color;
-        &__image {
-            @include square(16px);
-        }
-        &__separator {
-            height: 25px;
-            width: 1px;
-            background-color: white;
-            opacity: 0.25;
-            margin: 0 13px;
-        }
-        &__inputs {
-            margin-left: 8px;
-        }
+    }
+    &__cart-button-icon-container {
+        @include square(16px);
+    }
+    &__cart-button-separator {
+        height: 25px;
+        width: 1px;
+        background-color: white;
+        opacity: 0.25;
+        margin: 0 13px;
+    }
+    &__cart-button-inputs-counter {
+        margin-left: 8px;
     }
 }
 @media screen and (max-width: 1024px) {
-    header {
+    .header {
         margin-right: 30px;
         margin-left: 60px;
         padding: 40px 0;
     }
 }
 @media screen and (max-width: 660px) {
-    header {
+    .header {
         margin-right: 20px;
         margin-left: 20px;
         padding: 20px 0;
     }
 }
 @media screen and (max-width: 540px) {
-    header {
-        .logo-description {
+    .header {
+        &__logo-description {
             display: none;
         }
     }
 }
 @media screen and (max-width: 450px) {
-    header {
-        .logo-container {
-            .logo-label {
-                width: 120px;
-                line-height: 25px;
-            }
+    .header {
+        &__logo-label {
+            width: 120px;
+            line-height: 25px;
         }
     }
 }
 @media screen and (max-width: 380px) {
-    header {
-        .logo-container {
-            .logo-label {
-                width: 80px;
-                font-size: 18px;
-                line-height: 20px;
-            }
+    .header {
+        &__logo-label {
+            width: 80px;
+            font-size: 18px;
+            line-height: 20px;
         }
-        .cart-button {
+        &__cart-button {
             @include round-button(75px, 40px);
-            &__separator {
-                display: none;
-            }
-            &__cost {
-                display: none;
-            }
+        }
+        &__cart-button-separator {
+            display: none;
+        }
+        &__cart-button-cost {
+            display: none;
         }
     }
 }
 @media screen and (max-width: 280px) {
-    header {
+    .header {
         margin-right: 15px;
         margin-left: 15px;
         padding: 10px 0;
-        .logo-container {
-            .logo-label {
-                width: 70px;
-                font-size: 14px;
-                line-height: 16px;
-            }
-            &__image {
-                @include square(30px);
-                margin-right: 10px;
-            }
+        &__logo-label {
+            width: 70px;
+            font-size: 14px;
+            line-height: 16px;
         }
-        .cart-button {
+        &__logo-image-container {
+            @include square(30px);
+            margin-right: 10px;
+        }
+        &__cart-button {
             @include round-button(60px, 35px);
         }
     }
