@@ -104,6 +104,21 @@ $light-color: scale-color($dark-color, $lightness: +40%);
     height: $size;
 }
 
+@mixin main-colored {
+    background-color: $main-color;
+    color: white;
+}
+
+@mixin dark-colored {
+    background-color: $dark-color;
+    color: white;
+}
+
+@mixin flex-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 // global styles
@@ -145,9 +160,11 @@ li {
 }
 
 .button {
-    @extend %flex-centered-element;
-    @extend %bordored-box;
-    @extend %button-text-preset;
+    @include flex-centered();
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: 700;
     cursor: pointer;
 }
 
@@ -157,7 +174,11 @@ li {
 }
 
 .button_theme_main-colored {
-    @extend %filled-main-color;
+    @include main-colored();
+}
+
+.button_theme_dark-colored {
+    @include dark-colored();
 }
 
 .button-separator {
@@ -270,6 +291,13 @@ li {
             padding: 0 20px 40px 20px;
         }
     }
+    @media screen and (max-width: 400px) {
+        &__interactive-bar {
+            flex-direction: column;
+            align-items: flex-start;
+            row-gap: 10px;
+        }
+    }
 }
 
 
@@ -367,132 +395,42 @@ li {
 
 
 .categories-menu {
-    display: flex;
-    &__marker {
-        display: none;
-    }
-    &__text {
-        display: none;
-        margin: 0;
-    }
-    &__categories {
-        display: flex;
-        .category {
-            @include round-button(false, 46px);
-            text-transform: capitalize;
-            &.active {
-                @extend %filled-dark;
-            }
-            margin-right: 9px;
+    @media screen and (min-width: 1024px) {
+        position: static;
+        &__popup-marker {
+            display: none;
         }
-    }
-}
-
-@media screen and (max-width: 1000px) {
-    .categories-menu {
-        &__categories {
-            .category {
-                @include round-button(false, 40px);
-                margin-right: 5px;
-                padding: 0 20px;
-            }
+        &__popup-invite-text {
+            display: none;
         }
-    }
-}
-@media screen and (max-width: 870px) {
-    .categories-menu {
-        &__categories {
-            width: 300px;
+        &__items {
+            position: static;
+            display: flex;
             flex-wrap: wrap;
             row-gap: 5px;
+            padding: 0;
+            box-shadow: none;
+            background-color: none;
+            border-radius: 0;
         }
-    }
-}
-// this is sooooo bad, will be fixed
-@media screen and (max-width: 768px) {
-    .categories-menu {
-        // @extend %flex-centered-element;
-        // justify-content: center;
-        align-items: center;
-        position: relative;
-
-        &__marker {
-            display: block;
-            @include square(10px);
-            margin-right: 7px;
-            img {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                transform: rotate(180deg);
-                &.active {
-                    transform: rotate(0);
-                }
-            }
+        &__items_active {
+            display: flex;
         }
-        &__text {
-            display: block;
-            // @extend %option-text-preset;
-            font-size: 14px;
-            line-height: 17px;
+        &__item {
+            @include block(auto, 46px);
+            @include flex-centered();
+            box-sizing: border-box;
+            font-size: 16px;
+            line-height: 19px;
             font-weight: 700;
-            cursor: default;
-            .categories-menu__key {
-                cursor: pointer;
-                color: $main-color;
-                font-weight: 400;
-                border-bottom: 1px dashed $main-color;
-                margin-left: 8px;
-            }
+            text-transform: capitalize;
+            border-radius: 30px;
+            padding: 0 30px;
+            margin-right: 9px;
         }
-        &__categories {
-            display: block;
-            // @extend %smooth-block;
-            background-color: white;
-            border-radius: 10px;
-            position: absolute;
-            bottom: (-138px - 3*38px);
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
-            padding: 13px 0;
-            width: 132px;
-
-            .category {
-                text-transform: none;
-                border-radius: 0;
-                margin: 0;
-                @include block(132px, 38px);
-                // @extend %option-text-preset;
-                font-size: 14px;
-                line-height: 17px;
-                font-weight: 400;
-                // @extend %flex-space-between-element;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 0 14px;
-                cursor: pointer;
-                &.active,  &:hover {
-                    background-color: $main-color-5-percent;
-                }
-                &.active {
-                    color: $main-color;
-                    font-weight: 700;
-                }
-            }
-            display: none;
-            &.active {
-                display: block;
-            }
+        &__item_active {
+            @include dark-colored();
         }
-    }
-}
-
-@media screen and (max-width: 400px) {
-    .interactive-bar {
-        // if contain menu
-        flex-direction: column;
-        align-items: flex-start;
-        row-gap: 10px;
     }
 }
 

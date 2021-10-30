@@ -27,7 +27,7 @@ function App() {
       </header>
 
       <div className="App__wrapper">
-        <div className="interactive-bar">
+        <div className="interactive-bar App__interactive-bar">
 
           <div className="categories-menu popup-menu">
             <div className="categories-menu__popup-marker popup-menu__marker popup-menu__marker_closed">
