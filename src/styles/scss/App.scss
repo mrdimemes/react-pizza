@@ -14,60 +14,6 @@ $light-color: scale-color($dark-color, $lightness: +40%);
 
 
 
-// global styles
-
-body {
-    background-color: $bg-color;
-    @extend %no-margin-padding;
-}
-
-#root {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.wrapper {
-    padding: 0 48px 96px 67px;
-}
-@media screen and (max-width: 1024px) {
-    .wrapper {
-        padding: 0 30px 70px 60px;
-    }
-}
-@media screen and (max-width: 660px) {
-    .wrapper {
-        padding: 0 20px 40px 20px;
-    }
-}
-
-.image {
-    width: 100%;
-    height: 100%;
-}
-
-ul {
-    list-style: none;
-    @extend %no-margin-padding;
-}
-
-li {
-    list-style: none;
-}
-
-.interactive-bar {
-    @extend %flex-space-between-element;
-    width: 100%;
-}
-
-.section-label {
-    font-size: 32px;
-    line-height: 39px;
-    font-weight: 700;
-}
-
-
-
 // templates
 
 %no-margin-padding {
@@ -139,6 +85,7 @@ li {
     height: $height;
 }
 
+// will be refactored
 @mixin round-button($width, $height) {
     @include block($width, $height);
     @if (not $width) {
@@ -159,24 +106,120 @@ li {
 
 
 
+// global styles
+
+body {
+    background-color: $bg-color;
+    @extend %no-margin-padding;
+}
+
+#root {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper {
+    padding: 0 48px 96px 67px;
+}
+@media screen and (max-width: 1024px) {
+    .wrapper {
+        padding: 0 30px 70px 60px;
+    }
+}
+@media screen and (max-width: 660px) {
+    .wrapper {
+        padding: 0 20px 40px 20px;
+    }
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+}
+
+ul {
+    list-style: none;
+    @extend %no-margin-padding;
+}
+
+li {
+    list-style: none;
+}
+
+.interactive-bar {
+    @extend %flex-space-between-element;
+    width: 100%;
+}
+
+.section-label {
+    font-size: 32px;
+    line-height: 39px;
+    font-weight: 700;
+}
+
+.button {
+    @extend %flex-centered-element;
+    @extend %bordored-box;
+    @extend %button-text-preset;
+    cursor: pointer;
+}
+
+.button_shape_rounded {
+    border-radius: 30px;
+    padding: 0 30px;
+}
+
+.button_theme_main-colored {
+    @extend %filled-main-color;
+}
+
+.button-separator {
+    display: block;
+    height: 50%;
+    width: 1px;
+    background-color: white;
+    opacity: 0.25;
+}
+
+.button-separator_theme_light {
+    background-color: white;
+    opacity: 0.25;
+}
+
+
 // components styles
 
 .App {
     @extend %smooth-block;
     @extend %bordored-box;
-
     max-width: 1340px;
     width: calc(100% - 90px);
     margin-top: 43px;
     margin-bottom: 63px;
-    
     font-family: sans-serif;
+    &__header {
+        margin-right: 38px;
+        margin-left: 77px;
+    }
 }
 @media screen and (max-width: 1024px) {
     .App {
         width: calc(100% - 69px);
         margin-top: 33px;
         margin-bottom: 48px;
+        &__header {
+            margin-right: 30px;
+            margin-left: 60px;
+        }
+    }
+}
+@media screen and (max-width: 660px) {
+    .App {
+        &__header {
+            margin-right: 20px;
+            margin-left: 20px;
+        }
     }
 }
 @media screen and (max-width: 768px) {
@@ -190,8 +233,6 @@ li {
 
 .header {
     @extend %flex-space-between-element;
-    margin-right: 38px;
-    margin-left: 77px;
     padding: 52px 0;
     &__logo {
         display: flex;
@@ -217,17 +258,13 @@ li {
         @extend %no-margin-padding;
     }
     &__cart-button {
-        @include round-button(150px, 50px);
-        @extend %filled-main-color;
+        @include block(150px, 50px);
+        padding: 0;
     }
     &__cart-button-icon-container {
         @include square(16px);
     }
     &__cart-button-separator {
-        height: 25px;
-        width: 1px;
-        background-color: white;
-        opacity: 0.25;
         margin: 0 13px;
     }
     &__cart-button-inputs-counter {
@@ -236,15 +273,11 @@ li {
 }
 @media screen and (max-width: 1024px) {
     .header {
-        margin-right: 30px;
-        margin-left: 60px;
         padding: 40px 0;
     }
 }
 @media screen and (max-width: 660px) {
     .header {
-        margin-right: 20px;
-        margin-left: 20px;
         padding: 20px 0;
     }
 }

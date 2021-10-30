@@ -4,7 +4,7 @@ function App() {
   return (
     <div className="App">
 
-      <header className="header">
+      <header className="header App__header">
         
         <div className="header__logo">
           <div className="header__logo-image-container">
@@ -16,9 +16,9 @@ function App() {
           </div>
         </div>
 
-        <div className="header__cart-button">
-          <div className="header__cart-button-cost">520 ₽</div>
-          <div className="header__cart-button-separator"></div>
+        <div className="header__cart-button button_shape_rounded button_theme_main-colored">
+          <div className="header__cart-button-cost">7.33 $</div>
+          <div className="header__cart-button-separator button-separator button-separator_theme_light"></div>
           <div className="header__cart-button-icon-container">
             <img className="image" src="./images/cart.svg" alt="cart"></img>
           </div>
