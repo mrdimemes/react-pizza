@@ -14,60 +14,6 @@ $light-color: scale-color($dark-color, $lightness: +40%);
 
 
 
-// templates
-
-%no-margin-padding {
-    margin: 0;
-    padding: 0;
-}
-
-%flex-centered-element {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-%flex-space-between-element {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-%filled-main-color {
-    background-color: $main-color;
-    color: white;
-}
-
-%bordered-main-color {
-    background-color: white;
-    border: 1px solid $main-color;
-    color: $main-color;
-}
-
-%filled-dark {
-    background-color: $dark-color;
-    color: white;
-}
-
-%smooth-block {
-    background-color: white;
-    border-radius: 10px;
-}
-
-%button-text-preset {
-    font-size: 16px;
-    line-height: 19px;
-    font-weight: 700;
-}
-
-%option-text-preset {
-    font-size: 14px;
-    line-height: 17px;
-    font-weight: 700;
-}
-
-
-
 // mixins
 
 @mixin block($width, $height) {
@@ -78,6 +24,11 @@ $light-color: scale-color($dark-color, $lightness: +40%);
 @mixin square($size) {
     width: $size;
     height: $size;
+}
+
+@mixin no-indentation {
+    margin: 0;
+    padding: 0;
 }
 
 @mixin main-colored {
@@ -96,12 +47,18 @@ $light-color: scale-color($dark-color, $lightness: +40%);
     align-items: center;
 }
 
+@mixin flex-space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 
 // global styles
 
 body {
+    @include no-indentation();
     background-color: $bg-color;
-    @extend %no-margin-padding;
 }
 
 #root {
@@ -116,8 +73,8 @@ body {
 }
 
 ul {
+    @include no-indentation();
     list-style: none;
-    @extend %no-margin-padding;
 }
 
 li {
@@ -125,7 +82,7 @@ li {
 }
 
 .interactive-bar {
-    @extend %flex-space-between-element;
+    @include flex-space-between();
     width: 100%;
 }
 
@@ -190,7 +147,9 @@ li {
         transform: rotate(180deg);
     }
     &__invite-text {
-        @extend %option-text-preset;
+        font-size: 14px;
+        line-height: 17px;
+        font-weight: 700;
         cursor: default;
         margin: 0;
     }
@@ -205,7 +164,8 @@ li {
         position: absolute;
         padding: 13px 0;
         display: none;
-        @extend %smooth-block;
+        background-color: white;
+        border-radius: 10px;
         box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
     }
     &__items_active {
@@ -213,8 +173,9 @@ li {
     }
     &__item {
         @include block(132px, 38px);
-        @extend %option-text-preset;
-        @extend %flex-space-between-element;
+        @include flex-space-between();
+        font-size: 14px;
+        line-height: 17px;
         font-weight: 400;
         padding: 0 14px;
         cursor: pointer;
@@ -230,10 +191,12 @@ li {
 }
 
 
+
 // components styles
 
 .App {
-    @extend %smooth-block;
+    background-color: white;
+    border-radius: 10px;
     box-sizing: border-box;
     max-width: 1340px;
     width: calc(100% - 90px);
@@ -284,7 +247,7 @@ li {
 
 
 .header {
-    @extend %flex-space-between-element;
+    @include flex-space-between();
     padding: 52px 0;
     &__logo {
         display: flex;
@@ -296,18 +259,18 @@ li {
         margin-right: 17px;
     }
     &__logo-label {
+        @include no-indentation();
         color: $dark-color;
         font-size: 24px;
         line-height: 29px;
         font-weight: 800;
-        @extend %no-margin-padding;
     }
     &__logo-description {
+        @include no-indentation();
         color: $light-color;
         font-size: 16px;
         line-height: 19px;
         font-weight: 400;
-        @extend %no-margin-padding;
     }
     &__cart-button {
         @include block(150px, 50px);
@@ -453,6 +416,41 @@ li {
         line-height: 24px;
         font-weight: 800;
     }
+    &__options {
+        display: flex;
+        flex-direction: column;
+        row-gap: 7px;
+        width: 100%;
+        border-radius: 10px;
+        box-sizing: border-box;
+        background-color: $lighter-color;
+        margin-top: 22px;
+        margin-bottom: 17px;
+        padding: 7px;
+    }
+    &__options-row {
+        display: flex;
+        column-gap: 6px;
+        height: 32px;
+    }
+    &__options-item {
+        @include flex-centered();
+        width: 0;
+        flex-grow: 1;
+        font-size: 14px;
+        line-height: 17px;
+        font-weight: 700;
+        border-radius: 5px;
+        color: $dark-color;
+        cursor: pointer;
+    }
+    &__options-item_active {
+        background-color: white;
+    }
+    &__options-item_unavailable {
+        color: $light-color;
+        pointer-events: none;
+    }
     &__price {
         font-size: 22px;
         line-height: 27px;
@@ -479,38 +477,5 @@ li {
     }
     &__order-button-counter_active {
         display: flex;
-    }
-    &__options {
-        display: flex;
-        flex-direction: column;
-        row-gap: 7px;
-        width: 100%;
-        border-radius: 10px;
-        box-sizing: border-box;
-        background-color: $lighter-color;
-        margin-top: 22px;
-        margin-bottom: 17px;
-        padding: 7px;
-    }
-    &__options-row {
-        display: flex;
-        column-gap: 6px;
-        height: 32px;
-    }
-    &__options-item {
-        width: 0;
-        flex-grow: 1;
-        @include flex-centered();
-        @extend %option-text-preset;
-        border-radius: 5px;
-        color: $dark-color;
-        cursor: pointer;
-    }
-    &__options-item_active {
-        background-color: white;
-    }
-    &__options-item_unavailable {
-        color: $light-color;
-        pointer-events: none;
     }
 }
