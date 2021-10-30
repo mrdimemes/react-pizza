@@ -26,7 +26,7 @@ function App() {
         </div>
       </header>
 
-      <div className="wrapper">
+      <div className="App__wrapper">
         <div className="interactive-bar">
 
           <div className="categories-menu">
