@@ -29,34 +29,34 @@ function App() {
       <div className="App__wrapper">
         <div className="interactive-bar">
 
-          <div className="categories-menu">
-            <div className="categories-menu__marker">
-              <img src="./images/arrow-top.svg" alt="marker"></img>
+          <div className="categories-menu popup-menu">
+            <div className="categories-menu__popup-marker popup-menu__marker popup-menu__marker_closed">
+              <img className="image" src="./images/arrow-top.svg" alt="marker"></img>
             </div>
-            <p className="categories-menu__text">
-              Category:<span className="categories-menu__key">all</span>
+            <p className="categories-menu__popup-invite-text popup-menu__invite-text">
+              Category:<span className="categories-menu__popup-selected popup-menu__selected">all</span>
             </p>
-            <ul className="categories-menu__categories">
-              <li className="category active">all</li>
-              <li className="category">meat</li>
-              <li className="category">vegetarian</li>
-              <li className="category">grill</li>
-              <li className="category">spicy</li>
-              <li className="category">closed</li>
+            <ul className="categories-menu__items popup-menu__items">
+              <li className="categories-menu__item categories-menu__item_active popup-menu__item popup-menu__item_active">all</li>
+              <li className="categories-menu__item popup-menu__item">meat</li>
+              <li className="categories-menu__item popup-menu__item">vegetarian</li>
+              <li className="categories-menu__item popup-menu__item">grill</li>
+              <li className="categories-menu__item popup-menu__item">spicy</li>
+              <li className="categories-menu__item popup-menu__item">closed</li>
             </ul>
           </div>
 
-          <div className="sort-menu">
-            <div className="sort-menu__marker">
-              <img src="./images/arrow-top.svg" alt="marker"></img>
+          <div className="sort-menu popup-menu">
+            <div className="popup-menu__marker popup-menu__marker_closed">
+              <img className="image" src="./images/arrow-top.svg" alt="marker"></img>
             </div>
-            <p className="sort-menu__text">
-              Sort by:<span className="sort-menu__key">popularity</span>
+            <p className="popup-menu__invite-text">
+              Sort by:<span className="popup-menu__selected">popularity</span>
             </p>
-            <ul className="sort-menu__popup">
-              <li className="sort-menu__popup-item active">popularity</li>
-              <li className="sort-menu__popup-item">price</li>
-              <li className="sort-menu__popup-item">alphabet</li>
+            <ul className="popup-menu__items">
+              <li className="popup-menu__item popup-menu__item_active">popularity</li>
+              <li className="popup-menu__item">price</li>
+              <li className="popup-menu__item">alphabet</li>
             </ul>
           </div>
           

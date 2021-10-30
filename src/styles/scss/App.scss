@@ -173,6 +173,59 @@ li {
     opacity: 0.25;
 }
 
+.popup-menu {
+    @extend %flex-centered-element;
+    position: relative;
+    &__marker {
+        @include square(10px);
+        margin-right: 7px;
+        .image {
+            @extend %flex-centered-element;
+        }
+    }
+    &__marker_closed {
+        transform: rotate(180deg);
+    }
+    &__invite-text {
+        @extend %option-text-preset;
+        cursor: default;
+        margin: 0;
+    }
+    &__selected {
+        cursor: pointer;
+        margin-left: 8px;
+        color: $main-color;
+        border-bottom: 1px dashed $main-color;
+        font-weight: 400;
+    }
+    &__items {
+        position: absolute;
+        padding: 13px 0;
+        display: none;
+        @extend %smooth-block;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+    }
+    &__items_active {
+        display: block;
+    }
+    &__item {
+        @include block(132px, 38px);
+        @extend %option-text-preset;
+        @extend %flex-space-between-element;
+        font-weight: 400;
+        padding: 0 14px;
+        cursor: pointer;
+    }
+    &__item_active {
+        font-weight: 700;
+        background-color: $main-color-5-percent;
+        color: $main-color;
+    }
+    &__item:hover {
+        background-color: $main-color-5-percent;
+    }
+}
+
 
 // components styles
 
@@ -334,6 +387,7 @@ li {
         }
     }
 }
+
 @media screen and (max-width: 1000px) {
     .categories-menu {
         &__categories {
@@ -439,63 +493,6 @@ li {
         flex-direction: column;
         align-items: flex-start;
         row-gap: 10px;
-    }
-}
-
-.sort-menu {
-    @extend %flex-centered-element;
-    position: relative;
-
-    .sort-menu__marker {
-        @include square(10px);
-        margin-right: 7px;
-        img {
-            @extend %flex-centered-element;
-            transform: rotate(180deg);
-            &.active {
-                transform: rotate(0);
-            }
-        }
-    }
-
-    .sort-menu__text {
-        @extend %option-text-preset;
-        cursor: default;
-        margin: 0;
-        .sort-menu__key {
-            cursor: pointer;
-            color: $main-color;
-            font-weight: 400;
-            border-bottom: 1px dashed $main-color;
-            margin-left: 8px;
-        }
-    }
-
-    .sort-menu__popup {
-        @extend %smooth-block;
-        position: absolute;
-        bottom: -138px;
-        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
-        padding: 13px 0;
-        .sort-menu__popup-item {
-            @include block(132px, 38px);
-            @extend %option-text-preset;
-            @extend %flex-space-between-element;
-            font-weight: 400;
-            padding: 0 14px;
-            cursor: pointer;
-            &.active,  &:hover {
-                background-color: $main-color-5-percent;
-            }
-            &.active {
-                color: $main-color;
-                font-weight: 700;
-            }
-        }
-        display: none;
-        &.active {
-            display: block;
-        }
     }
 }
 
