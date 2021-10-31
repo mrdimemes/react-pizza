@@ -90,6 +90,14 @@ li {
     font-size: 32px;
     line-height: 39px;
     font-weight: 700;
+    @media screen and (max-width: 768px) {
+        font-size: 26px;
+        line-height: 32px;
+    }
+    @media screen and (max-width: 480px) {
+        font-size: 20px;
+        line-height: 24px;
+    }
 }
 
 .button {
@@ -410,8 +418,7 @@ li {
         background-color: $dark-color;
     }
     &__label {
-        margin: 0;
-        padding: 0;
+        @include no-indentation();
         font-size: 20px;
         line-height: 24px;
         font-weight: 800;
@@ -485,6 +492,10 @@ li {
         }
         &__label {
             text-align: center;
+        }
+        &__label {
+            font-size: 16px;
+            line-height: 18px;
         }
     }
     @media screen and (max-width: 260px) {
