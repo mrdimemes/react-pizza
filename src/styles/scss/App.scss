@@ -81,6 +81,11 @@ li {
     list-style: none;
 }
 
+button {
+    background: none;
+    border: none;
+}
+
 .interactive-bar {
     @include flex-space-between();
     width: 100%;
