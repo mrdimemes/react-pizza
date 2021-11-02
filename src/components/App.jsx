@@ -1,6 +1,8 @@
 import '../styles/scss/App.scss'
 
 import Header from './Header';
+import PopupMenu from './PopupMenu';
+
 
 function App() {
   return (
@@ -11,22 +13,7 @@ function App() {
       <div className="App__wrapper">
         <div className="interactive-bar App__interactive-bar">
 
-          <div className="categories-menu popup-menu">
-            <div className="categories-menu__popup-marker popup-menu__marker popup-menu__marker_closed">
-              <img className="image" src="./images/arrow-top.svg" alt="marker"></img>
-            </div>
-            <p className="categories-menu__popup-invite-text popup-menu__invite-text">
-              Category:<span className="categories-menu__popup-selected popup-menu__selected">all</span>
-            </p>
-            <ul className="categories-menu__items popup-menu__items">
-              <li className="categories-menu__item categories-menu__item_active popup-menu__item popup-menu__item_active">all</li>
-              <li className="categories-menu__item popup-menu__item">meat</li>
-              <li className="categories-menu__item popup-menu__item">vegetarian</li>
-              <li className="categories-menu__item popup-menu__item">grill</li>
-              <li className="categories-menu__item popup-menu__item">spicy</li>
-              <li className="categories-menu__item popup-menu__item">closed</li>
-            </ul>
-          </div>
+          <PopupMenu className="categories-menu" />
 
           <div className="sort-menu popup-menu">
             <div className="popup-menu__marker popup-menu__marker_closed">
