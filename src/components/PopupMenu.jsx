@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames';
 
-function PopupMenu({className}) {
+function PopupMenu({ className, items }) {
     return (
         <div className={classNames("popup-menu", className)}>
             
@@ -32,45 +32,17 @@ function PopupMenu({className}) {
                     {[`${className}__items`]: className}
                 )
             }>
-                <li className={classNames(
-                        "popup-menu__item",
-                        "popup-menu__item_active",
-                        {
-                            [`${className}__item`]: className,
-                            [`${className}__item_active`]: className
-                        }
-                    )
-                }>all</li>
 
-                <li className={classNames(
-                        "popup-menu__item",
-                        {[`${className}__item`]: className}
-                    )
-                }>meat</li>
-
-                <li className={classNames(
-                        "popup-menu__item",
-                        {[`${className}__item`]: className}
-                    )
-                }>vegetarian</li>
-
-                <li className={classNames(
-                        "popup-menu__item",
-                        {[`${className}__item`]: className}
-                    )
-                }>grill</li>
-
-                <li className={classNames(
-                        "popup-menu__item",
-                        {[`${className}__item`]: className}
-                    )
-                }>spicy</li>
-
-                <li className={classNames(
-                        "popup-menu__item",
-                        {[`${className}__item`]: className}
-                    )
-                }>closed</li>
+                { items.map((item, index) => (
+                    <li key={`${item}_${index}`} className={classNames(
+                            "popup-menu__item",
+                            {[`${className}__item`]: className}
+                        )
+                    }>
+                        { item }
+                    </li>
+                )) }
+            
             </ul>  
         </div>
     )
