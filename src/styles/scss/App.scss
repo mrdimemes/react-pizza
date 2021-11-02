@@ -187,6 +187,7 @@ li {
         font-weight: 400;
         padding: 0 14px;
         cursor: pointer;
+        transition: 0.2s;
     }
     &__item_active {
         font-weight: 700;
@@ -380,7 +381,6 @@ li {
             border-radius: 30px;
             padding: 0 30px;
             margin-right: 9px;
-            transition: 0.2s;
         }
         &__item:hover {
             background-color: $dark-color;
