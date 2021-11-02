@@ -1,11 +1,13 @@
-function Button({className, shape, theme, children}) {
-    let classes = "button";
-    classes += " " + (className ? className: "");
-    classes += shape ? ` button_shape_${shape}`: "";
-    classes += theme ? ` button_theme_${theme}`: "";
+import classNames from 'classnames';
 
+function Button({className, shape, theme, onClick, children}) {
     return (
-        <button className={classes}>
+        <button onClick={onClick} className={
+            classNames("button", 
+                className, 
+                {[`button_shape_${shape}`]: shape,
+                [`button_theme_${theme}`]: theme})
+        }>
             {children}
         </button>
     )
