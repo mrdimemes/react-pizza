@@ -380,6 +380,11 @@ li {
             border-radius: 30px;
             padding: 0 30px;
             margin-right: 9px;
+            transition: 0.2s;
+        }
+        &__item:hover {
+            background-color: $dark-color;
+            color: white;
         }
         &__item_active {
             @include dark-colored();
