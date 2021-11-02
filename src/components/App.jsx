@@ -1,7 +1,6 @@
 import '../styles/scss/App.scss'
 
-import Header from './Header';
-import PopupMenu from './PopupMenu';
+import { Header, PopupMenu } from './';
 
 
 function App() {
