@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import classNames from 'classnames';
 
-function PopupMenu({ className, inviteText="Option", items=["all"]}) {
+function PopupMenu({ className, inviteText="Option", items=["all"] }) {
     const [activeItem, setActiveItem] = useState(0);
     
     return (
