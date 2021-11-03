@@ -18,19 +18,11 @@ function App() {
             items={["all", "meat", "vegetarian", "grill", "spicy", "closed"]}
           />
 
-          <div className="sort-menu popup-menu">
-            <div className="popup-menu__marker popup-menu__marker_closed">
-              <img className="image" src="./images/arrow-top.svg" alt="marker"></img>
-            </div>
-            <p className="popup-menu__invite-text">
-              Sort by:<span className="popup-menu__selected">popularity</span>
-            </p>
-            <ul className="popup-menu__items">
-              <li className="popup-menu__item popup-menu__item_active">popularity</li>
-              <li className="popup-menu__item">price</li>
-              <li className="popup-menu__item">alphabet</li>
-            </ul>
-          </div>
+          <PopupMenu 
+            className="sort-menu"
+            inviteText="Sort by"
+            items={["popularity", "price", "alphabet"]}
+          />
           
         </div>
 
