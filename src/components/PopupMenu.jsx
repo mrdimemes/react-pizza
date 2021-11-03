@@ -1,17 +1,45 @@
-import React, { useState } from 'react'
+import React from 'react'
 import classNames from 'classnames';
 
 function PopupMenu({ className, inviteText="Option", items=["default"] }) {
-    const [activeItem, setActiveItem] = useState(0);
-    
+    const [activeItem, setActiveItem] = React.useState(0);
+    const [isOpen, setIsOpen] = React.useState(false);
+    const elementRef = React.useRef();
+
+    const toggleIsOpen = () => {
+        setIsOpen(!isOpen)
+    }
+
+    const onSelectItem = (index) => {
+        setActiveItem(index);
+        if (isOpen) {
+            toggleIsOpen();
+        }
+    }
+
+    const handleOutsideClick = (event) => {
+        if (!event.path.includes(elementRef.current)) {
+            setIsOpen(false);
+        }
+    }
+
+    React.useEffect(() => {
+        document.body.addEventListener("click", handleOutsideClick)
+    }, []);
+
     return (
-        <div className={classNames("popup-menu", className)}>
+        <div 
+            ref={elementRef}
+            className={classNames("popup-menu", className)
+        }>
             
             <div 
                 className={classNames(
                     "popup-menu__marker", 
-                    {[`${className}__popup-marker`]: className}, 
-                    "popup-menu__marker_closed"
+                    {
+                        [`${className}__popup-marker`]: className,
+                        "popup-menu__marker_closed": !isOpen
+                    } 
                 )
             }>
                 <img className="image" src="./images/arrow-top.svg" alt="marker"></img>
@@ -25,6 +53,7 @@ function PopupMenu({ className, inviteText="Option", items=["default"] }) {
             }>
                 { inviteText }:
                 <span 
+                    onClick={ toggleIsOpen }
                     className={classNames(
                         "popup-menu__selected",
                         {[`${className}__popup-selected`]: className}
@@ -37,14 +66,17 @@ function PopupMenu({ className, inviteText="Option", items=["default"] }) {
             <ul 
                 className={classNames(
                     "popup-menu__items",
-                    {[`${className}__items`]: className}
+                    {
+                        [`${className}__items`]: className,
+                        "popup-menu__items_active": isOpen
+                    }
                 )
             }>
 
                 { items.map((item, index) => (
                     <li 
                         key={`${item}_${index}`} 
-                        onClick={() => setActiveItem(index)}
+                        onClick={() => onSelectItem(index)}
                         className={classNames(
                             "popup-menu__item",
                             {
