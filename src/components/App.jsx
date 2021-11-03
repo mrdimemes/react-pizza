@@ -12,7 +12,12 @@ function App() {
       <div className="App__wrapper">
         <div className="interactive-bar App__interactive-bar">
 
-          <PopupMenu className="categories-menu" items={["all", "meat", "vegetarian", "grill", "spicy", "closed"]} />
+          <PopupMenu 
+            className="categories-menu"
+            inviteText="Category"
+            items={["all", "meat", "vegetarian", "grill", "spicy", "closed"]}
+            activeItem={0} 
+          />
 
           <div className="sort-menu popup-menu">
             <div className="popup-menu__marker popup-menu__marker_closed">
