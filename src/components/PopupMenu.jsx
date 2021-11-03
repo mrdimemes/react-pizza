@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import classNames from 'classnames';
 
-function PopupMenu({ className, inviteText="Option", items=["all"], activeItem=0 }) {
+function PopupMenu({ className, inviteText="Option", items=["all"]}) {
+    const [activeItem, setActiveItem] = useState(0);
+    
     return (
         <div className={classNames("popup-menu", className)}>
             
@@ -42,6 +44,7 @@ function PopupMenu({ className, inviteText="Option", items=["all"], activeItem=0
                 { items.map((item, index) => (
                     <li 
                         key={`${item}_${index}`} 
+                        onClick={() => setActiveItem(index)}
                         className={classNames(
                             "popup-menu__item",
                             {

@@ -16,7 +16,6 @@ function App() {
             className="categories-menu"
             inviteText="Category"
             items={["all", "meat", "vegetarian", "grill", "spicy", "closed"]}
-            activeItem={0} 
           />
 
           <div className="sort-menu popup-menu">
