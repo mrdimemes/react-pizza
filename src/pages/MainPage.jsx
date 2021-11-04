@@ -3,7 +3,7 @@ import React from 'react'
 import { PopupMenu, PizzaGallery } from '../components/';
 
 
-function MainPage( {categories} ) {
+function MainPage( {categories, pizzaSizes, pizzaTypes, pizzas} ) {
     return (
         <div className="App__wrapper">
         <div className="interactive-bar App__interactive-bar">
@@ -25,7 +25,11 @@ function MainPage( {categories} ) {
         <section className="App__gallery-section">
           <h1 className="App__gallery-section-label section-label">All pizzas</h1>
           
-          <PizzaGallery />
+          <PizzaGallery 
+            pizzas={pizzas} 
+            pizzaTypes={pizzaTypes} 
+            pizzaSizes={pizzaSizes}
+          />
           
         </section>
       </div>
