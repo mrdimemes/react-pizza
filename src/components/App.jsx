@@ -31,7 +31,14 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route exact path="/" element={ <MainPage /> } /> 
+        <Route exact path="/" element={ 
+          <MainPage 
+            categories={pizzaCategories} 
+            pizzaSizes={pizzaSizes}
+            pizzaTypes={pizzaTypes}
+            pizzas={pizzasArray}
+          /> 
+        } /> 
       </Routes>
     </div>
   );
