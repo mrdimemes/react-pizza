@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-function Pizza( {pizzaLabel, pizzaImageUrl, types, sizes, availableTypes, availableSizes, prices} ) {
+function Pizza( {pizzaLabel, imageUrl, types, sizes, availableTypes, availableSizes, prices} ) {
     const [activeType, setActiveType] = React.useState(availableTypes[0]);
     const [activeSize, setActiveSize] = React.useState(availableSizes[0]);
     const [orderCounter, setOrderCounter] = React.useState(0);
@@ -21,7 +21,7 @@ function Pizza( {pizzaLabel, pizzaImageUrl, types, sizes, availableTypes, availa
     return (
         <div className="pizza">
             <div className="pizza__image-container">
-                <img className="image" src={pizzaImageUrl} alt="pizza"></img>
+                <img className="image" src={imageUrl} alt="pizza"></img>
             </div>
             
             <h2 className="pizza__label">{ pizzaLabel }</h2>

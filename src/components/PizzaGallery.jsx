@@ -7,13 +7,9 @@ function PizzaGallery( { pizzas, pizzaTypes, pizzaSizes } ) {
             { pizzas.map((pizza) => (
                 <Pizza 
                     key={pizza.id} 
-                    pizzaLabel={pizza.pizzaLabel}
-                    pizzaImageUrl={pizza.imageUrl} 
                     types={pizzaTypes} 
                     sizes={pizzaSizes} 
-                    availableTypes={pizza.availableTypes}
-                    availableSizes={pizza.availableSizes} 
-                    prices={pizza.prices} 
+                    {...pizza} 
                 />
             )) }
         </div>
