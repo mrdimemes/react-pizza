@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import classNames from 'classnames';
 
 function Pizza( {pizzaLabel, imageUrl, types, sizes, availableTypes, availableSizes, prices} ) {
@@ -83,5 +85,19 @@ function Pizza( {pizzaLabel, imageUrl, types, sizes, availableTypes, availableSi
         </div>
     )
 }
+
+Pizza.defaultProps = {
+    imageUrl: "./images/default-pizza-image.svg"
+};
+
+Pizza.propTypes = {
+    pizzaLabel: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string,
+    types: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    sizes: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
+    availableTypes: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
+    availableSizes: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
+    prices: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired
+};
 
 export default Pizza;

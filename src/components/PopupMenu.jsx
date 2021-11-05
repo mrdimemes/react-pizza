@@ -1,7 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types';
+
 import classNames from 'classnames';
 
-function PopupMenu({ className, inviteText="Option", items=["default"] }) {
+function PopupMenu({ className, inviteText, items }) {
     const [activeItem, setActiveItem] = React.useState(0);
     const [isOpen, setIsOpen] = React.useState(false);
     const elementRef = React.useRef();
@@ -94,5 +96,15 @@ function PopupMenu({ className, inviteText="Option", items=["default"] }) {
         </div>
     )
 }
+
+PopupMenu.defaultProps = {
+    inviteText: "Option",
+};
+
+PopupMenu.propTypes = {
+    className: PropTypes.string,
+    inviteText: PropTypes.string,
+    items: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+};
 
 export default PopupMenu;

@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Pizza } from '../components/';
 
 function PizzaGallery( { pizzas, pizzaTypes, pizzaSizes } ) {
@@ -15,5 +17,11 @@ function PizzaGallery( { pizzas, pizzaTypes, pizzaSizes } ) {
         </div>
     )
 }
+
+PizzaGallery.propTypes = {
+    pizzas: PropTypes.arrayOf(PropTypes.object),
+    pizzaTypes: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    pizzaSizes: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired
+};
 
 export default PizzaGallery

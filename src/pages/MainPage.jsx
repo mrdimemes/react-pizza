@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
 import { PopupMenu, PizzaGallery } from '../components/';
 
@@ -35,5 +36,12 @@ function MainPage( {categories, pizzaSizes, pizzaTypes, pizzas} ) {
       </div>
     )
 }
+
+MainPage.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  pizzaTypes: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  pizzaSizes: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
+  pizzas: PropTypes.arrayOf(PropTypes.object)
+};
 
 export default MainPage;
