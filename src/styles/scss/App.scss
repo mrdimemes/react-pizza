@@ -430,9 +430,6 @@ button {
     &__image-container {
         @include square(260px);
         margin-bottom: 11px;
-        
-        // image replacer (temporary)
-        background-color: $dark-color;
     }
     &__label {
         @include no-indentation();
