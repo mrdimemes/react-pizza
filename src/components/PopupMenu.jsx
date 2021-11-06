@@ -20,13 +20,17 @@ function PopupMenu({ className, inviteText, items }) {
     }
 
     const handleOutsideClick = (event) => {
+        console.log(1);
         if (!event.path.includes(elementRef.current)) {
             setIsOpen(false);
         }
     }
 
     React.useEffect(() => {
-        document.body.addEventListener("click", handleOutsideClick)
+        document.body.addEventListener("click", handleOutsideClick);
+        return function cleanup() {
+            document.body.removeEventListener("click", handleOutsideClick);
+        };
     }, []);
 
     return (
