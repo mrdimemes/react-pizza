@@ -1,11 +1,11 @@
-import { createStore } from 'redux';
+import { configureStore } from '@reduxjs/toolkit'
 
-const defaultState = {};
+import pizzasReducer from './slices/pizzas'
 
-function mainReducer(state = defaultState, action) {
-    return state;
+const store = configureStore({
+  reducer: {
+    pizzas: pizzasReducer,
   }
+})
 
-const store = createStore(mainReducer);
-
-export default store;
+export default store

@@ -20,7 +20,6 @@ function PopupMenu({ className, inviteText, items }) {
     }
 
     const handleOutsideClick = (event) => {
-        console.log(1);
         if (!event.path.includes(elementRef.current)) {
             setIsOpen(false);
         }
