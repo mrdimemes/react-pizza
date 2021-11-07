@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 
-function PopupMenu({ className, inviteText, items }) {
+function PopupMenu({ className, inviteText, items, processingFunction}) {
     const [activeItem, setActiveItem] = React.useState(0);
     const [isOpen, setIsOpen] = React.useState(false);
     const elementRef = React.useRef();
@@ -31,6 +31,10 @@ function PopupMenu({ className, inviteText, items }) {
             document.body.removeEventListener("click", handleOutsideClick);
         };
     }, []);
+
+    React.useEffect(() => {
+        processingFunction(activeItem);
+    }, [processingFunction, activeItem]);
 
     return (
         <div 
@@ -102,12 +106,14 @@ function PopupMenu({ className, inviteText, items }) {
 
 PopupMenu.defaultProps = {
     inviteText: "Option",
+    processingFunction: (activeItem) => {;}
 };
 
 PopupMenu.propTypes = {
     className: PropTypes.string,
     inviteText: PropTypes.string,
-    items: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+    items: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    processingFunction: PropTypes.func
 };
 
 export default PopupMenu;

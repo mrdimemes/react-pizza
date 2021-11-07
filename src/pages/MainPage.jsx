@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 
-import { PopupMenu, PizzaGallery } from '../components/';
+import { PopupMenu, SortMenu, PizzaGallery } from '../components/';
 
 
 function MainPage( {categories} ) {
@@ -17,11 +17,7 @@ function MainPage( {categories} ) {
             items={categories}
           />
 
-          <PopupMenu 
-            className="sort-menu"
-            inviteText="Sort by"
-            items={["popularity", "price", "alphabet"]}
-          />
+          <SortMenu />
           
         </div>
 
