@@ -30,11 +30,8 @@ function App( {dispatch} ) {
       <Routes>
         <Route exact path="/" element={ 
           <MainPage 
-            // temporary placeholders
-            categories={["1", "2"]} 
-            pizzaSizes={[1, 2, 3]}
-            pizzaTypes={[1, 2]}
-            pizzas={[]}
+            // teporary placeholder
+            // categories={["1", "2"]} 
           /> 
         } /> 
       </Routes>

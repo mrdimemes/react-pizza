@@ -1,10 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
+import { connect } from 'react-redux';
+
 import { PopupMenu, PizzaGallery } from '../components/';
 
 
-function MainPage( {categories, pizzaSizes, pizzaTypes, pizzas} ) {
+function MainPage( {categories} ) {
     return (
         <div className="App__wrapper">
         <div className="interactive-bar App__interactive-bar">
@@ -27,9 +29,10 @@ function MainPage( {categories, pizzaSizes, pizzaTypes, pizzas} ) {
           <h1 className="App__gallery-section-label section-label">All pizzas</h1>
           
           <PizzaGallery 
-            pizzas={pizzas} 
-            pizzaTypes={pizzaTypes} 
-            pizzaSizes={pizzaSizes}
+            // teporary placeholders
+            pizzas={[]} 
+            pizzaTypes={["1", "2"]} 
+            pizzaSizes={[1, 2, 3]}
           />
           
         </section>
@@ -44,4 +47,10 @@ MainPage.propTypes = {
   pizzas: PropTypes.arrayOf(PropTypes.object)
 };
 
-export default MainPage;
+const mapStateToProps = (state) => {
+  return {
+    categories: state.pizzas.categories
+  }
+}
+
+export default connect(mapStateToProps)(MainPage);

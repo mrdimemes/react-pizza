@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     types: [],
     sizes: [],
-    categories: [],
+    categories: ["all"],
     items: []
 };
 
