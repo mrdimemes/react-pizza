@@ -1,17 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { connect } from 'react-redux';
+
+
 import { Pizza } from '../components/';
 
-function PizzaGallery( { pizzas, pizzaTypes, pizzaSizes } ) {
+function PizzaGallery( { items, types, sizes } ) {
     return (
         <div className="pizza-gallery">
-            { pizzas.map((pizza) => (
+            { items.map((item) => (
                 <Pizza 
-                    key={pizza.id} 
-                    types={pizzaTypes} 
-                    sizes={pizzaSizes} 
-                    {...pizza} 
+                    key={item.id} 
+                    types={types} 
+                    sizes={sizes} 
+                    {...item} 
                 />
             )) }
         </div>
@@ -19,9 +22,17 @@ function PizzaGallery( { pizzas, pizzaTypes, pizzaSizes } ) {
 }
 
 PizzaGallery.propTypes = {
-    pizzas: PropTypes.arrayOf(PropTypes.object),
-    pizzaTypes: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    pizzaSizes: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired
+    items: PropTypes.arrayOf(PropTypes.object),
+    types: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    sizes: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired
 };
 
-export default PizzaGallery
+const mapStateToProps = (state) => {
+    return {
+        items: state.pizzas.items,
+        types: state.pizzas.types,
+        sizes: state.pizzas.sizes
+    }
+}
+
+export default connect(mapStateToProps)(PizzaGallery)

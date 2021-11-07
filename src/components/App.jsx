@@ -28,12 +28,7 @@ function App( {dispatch} ) {
     <div className="App">
       <Header />
       <Routes>
-        <Route exact path="/" element={ 
-          <MainPage 
-            // teporary placeholder
-            // categories={["1", "2"]} 
-          /> 
-        } /> 
+        <Route exact path="/" element={ <MainPage /> } /> 
       </Routes>
     </div>
   );

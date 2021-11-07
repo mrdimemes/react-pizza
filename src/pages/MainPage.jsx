@@ -28,12 +28,7 @@ function MainPage( {categories} ) {
         <section className="App__gallery-section">
           <h1 className="App__gallery-section-label section-label">All pizzas</h1>
           
-          <PizzaGallery 
-            // teporary placeholders
-            pizzas={[]} 
-            pizzaTypes={["1", "2"]} 
-            pizzaSizes={[1, 2, 3]}
-          />
+          <PizzaGallery />
           
         </section>
       </div>
