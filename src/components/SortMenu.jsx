@@ -6,16 +6,16 @@ import { PopupMenu } from './';
 import { sortBy } from '../redux/slices/pizzas';
 
 
-function SortMenu({ sortItems, sort }) {
+function SortMenu({ sortOptions, sort }) {
     const processingFunction = (index) => {
-        sort(sortItems[index]);
+        sort(sortOptions[index]);
     }
 
     return (
         <PopupMenu 
             className="sort-menu"
             inviteText="Sort by"
-            items={sortItems} 
+            items={sortOptions} 
             processingFunction={processingFunction}
         />
     )
@@ -23,13 +23,13 @@ function SortMenu({ sortItems, sort }) {
 
 const mapStateToProps = (state) => {
     return {
-        sortItems: state.pizzas.sortItems
+        sortOptions: state.pizzas.sortOptions
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        sort: (sortItem) => dispatch(sortBy(sortItem))
+        sort: (sortOption) => dispatch(sortBy(sortOption))
     }
 }
 

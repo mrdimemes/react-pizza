@@ -5,7 +5,7 @@ const initialState = {
     sizes: [],
     categories: ["all"],
     items: [],
-    sortItems: ["popularity", "price", "alphabet"]
+    sortOptions: ["popularity", "price", "alphabet"]
 };
 
 const pizzasSlice = createSlice({

@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-
+import { connect } from 'react-redux';
 import classNames from 'classnames';
 
-function PopupMenu({ className, inviteText, items, processingFunction}) {
+function PopupMenu({ className, inviteText, items, processingFunction, dataLength}) {
     const [activeItem, setActiveItem] = React.useState(0);
     const [isOpen, setIsOpen] = React.useState(false);
     const elementRef = React.useRef();
@@ -34,7 +34,7 @@ function PopupMenu({ className, inviteText, items, processingFunction}) {
 
     React.useEffect(() => {
         processingFunction(activeItem);
-    }, [processingFunction, activeItem]);
+    }, [processingFunction, activeItem, dataLength]);
 
     return (
         <div 
@@ -116,4 +116,10 @@ PopupMenu.propTypes = {
     processingFunction: PropTypes.func
 };
 
-export default PopupMenu;
+const mapStateToProps = (state) => {
+    return {
+        dataLength: state.pizzas.items.length
+    }
+}
+
+export default connect(mapStateToProps)(PopupMenu);
