@@ -6,17 +6,22 @@ import { connect } from 'react-redux';
 
 import { Pizza } from '../components/';
 
-function PizzaGallery( { items, types, sizes } ) {
+function PizzaGallery( { items, shown, types, sizes } ) {
     return (
         <div className="pizza-gallery">
-            { items.map((item) => (
-                <Pizza 
-                    key={item.id} 
-                    types={types} 
-                    sizes={sizes} 
-                    {...item} 
-                />
-            )) }
+            {
+                shown.map((id) => {
+                    const item = items.find(item => item.id === id);
+                    return (
+                        <Pizza 
+                            key={id} 
+                            types={types} 
+                            sizes={sizes} 
+                            {...item}
+                        />
+                    )
+                })
+            }
         </div>
     )
 }
@@ -31,7 +36,8 @@ const mapStateToProps = (state) => {
     return {
         items: state.pizzas.items,
         types: state.pizzas.types,
-        sizes: state.pizzas.sizes
+        sizes: state.pizzas.sizes,
+        shown: state.pizzas.shownItems
     }
 }
 

@@ -118,7 +118,7 @@ PopupMenu.propTypes = {
 
 const mapStateToProps = (state) => {
     return {
-        dataLength: state.pizzas.items.length
+        dataLength: state.pizzas.shownItems.length
     }
 }
 

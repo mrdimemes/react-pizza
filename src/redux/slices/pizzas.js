@@ -5,6 +5,7 @@ const initialState = {
     sizes: [],
     categories: ["all"],
     items: [],
+    shownItems: [],
     sortOptions: ["popularity", "price", "alphabet"]
 };
 
@@ -15,6 +16,9 @@ const pizzasSlice = createSlice({
 
     setItems(state, action) {
       state.items = action.payload
+    },
+    setShownItems(state, action) {
+      state.shownItems = action.payload
     },
     setTypes(state, action) {
       state.types = action.payload
@@ -27,8 +31,9 @@ const pizzasSlice = createSlice({
     },
 
     sortBy(state, action) {
-      state.items.sort((a, b) => {
-
+      state.shownItems.sort((firstId, secondId) => {
+        const a = state.items.find(item => item.id === firstId);
+        const b = state.items.find(item => item.id === secondId);
         switch (action.payload) {
           case 'popularity':
             return b.rating - a.rating;
@@ -47,6 +52,6 @@ const pizzasSlice = createSlice({
   }
 })
 
-export const { setItems, setTypes, setSizes, setCategories, sortBy } = pizzasSlice.actions
+export const { setItems, setShownItems, setTypes, setSizes, setCategories, sortBy } = pizzasSlice.actions
 
 export default pizzasSlice.reducer
