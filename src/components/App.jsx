@@ -6,7 +6,7 @@ import '../styles/scss/App.scss';
 
 import { Header } from './';
 import { MainPage } from '../pages';
-import { setItems, setTypes, setSizes, setCategories, setShownItems } from '../redux/slices/pizzas';
+import { setItems, setTypes, setSizes, setCategories } from '../redux/slices/pizzas';
 
 
 function App( {dispatch} ) {
@@ -20,8 +20,6 @@ function App( {dispatch} ) {
         dispatch(setSizes(json.pizzaSizes));
         dispatch(setItems(json.pizzas));
         dispatch(setItems(json.pizzas));
-        // temporary placeholder
-        dispatch(setShownItems([1, 2, 3, 4, 5, 6, 7]));
       });
       // eslint-disable-next-line
   }, []);

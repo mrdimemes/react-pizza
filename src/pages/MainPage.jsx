@@ -1,24 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-import { connect } from 'react-redux';
-
-import { PopupMenu, SortMenu, PizzaGallery } from '../components/';
+import { CategoriesMenu, SortMenu, PizzaGallery } from '../components/';
 
 
-function MainPage( {categories} ) {
+function MainPage() {
     return (
-        <div className="App__wrapper">
+      <div className="App__wrapper">
         <div className="interactive-bar App__interactive-bar">
-
-          <PopupMenu 
-            className="categories-menu"
-            inviteText="Category"
-            items={categories}
-          />
-
+          <CategoriesMenu />
           <SortMenu />
-          
         </div>
 
         <section className="App__gallery-section">
@@ -38,10 +29,4 @@ MainPage.propTypes = {
   pizzas: PropTypes.arrayOf(PropTypes.object)
 };
 
-const mapStateToProps = (state) => {
-  return {
-    categories: state.pizzas.categories
-  }
-}
-
-export default connect(mapStateToProps)(MainPage);
+export default MainPage;
