@@ -4,7 +4,8 @@ const initialState = {
     types: [],
     sizes: [],
     categories: ["all"],
-    items: []
+    items: [],
+    sortItems: ["popularity", "price", "alphabet"]
 };
 
 const pizzasSlice = createSlice({
@@ -27,13 +28,14 @@ const pizzasSlice = createSlice({
 
     sortBy(state, action) {
       state.items.sort((a, b) => {
+
         switch (action.payload) {
           case 'popularity':
-            return a.rating - b.rating;
+            return b.rating - a.rating;
           case 'price':
             return (
-              a.price[a.availableTypes[0]][a.availableSizes[0]] - 
-              b.price[b.availableTypes[0]][b.availableSizes[0]]
+              a.prices[a.availableTypes[0]][a.availableSizes[0]] - 
+              b.prices[b.availableTypes[0]][b.availableSizes[0]]
             );
           case 'alphabet':
             return a.pizzaLabel.localeCompare(b.pizzaLabel);
