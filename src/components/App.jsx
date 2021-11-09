@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import '../styles/scss/App.scss';
 
 import { Header } from './';
-import { MainPage } from '../pages';
+import { MainPage, CartPage } from '../pages';
 import { 
   setItems, 
   setTypes, 
@@ -36,7 +36,8 @@ function App( {dispatch} ) {
     <div className="App">
       <Header />
       <Routes>
-        <Route exact path="/" element={ <MainPage /> } /> 
+        <Route exact path="/" element={ <MainPage /> } />
+        <Route exact path="/cart" element={ <CartPage /> } />
       </Routes>
     </div>
   );
