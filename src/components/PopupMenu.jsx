@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
-function PopupMenu({ className, inviteText, items, processingFunction, dataLength}) {
+function PopupMenu({ className, inviteText, items, processingFunction, cleanupFunction}) {
     const [activeItem, setActiveItem] = React.useState(0);
     const [isOpen, setIsOpen] = React.useState(false);
     const elementRef = React.useRef();
@@ -14,6 +14,7 @@ function PopupMenu({ className, inviteText, items, processingFunction, dataLengt
 
     const onSelectItem = (index) => {
         setActiveItem(index);
+        cleanupFunction();
         if (isOpen) {
             toggleIsOpen();
         }
@@ -27,14 +28,14 @@ function PopupMenu({ className, inviteText, items, processingFunction, dataLengt
 
     React.useEffect(() => {
         document.body.addEventListener("click", handleOutsideClick);
-        return function cleanup() {
-            document.body.removeEventListener("click", handleOutsideClick);
+        return () => {
+            document.body.removeEventListener("click", handleOutsideClick)
         };
     }, []);
 
     React.useEffect(() => {
         processingFunction(activeItem);
-    }, [processingFunction, activeItem, dataLength]);
+    }, [processingFunction, activeItem]);
 
     return (
         <div 
@@ -106,20 +107,16 @@ function PopupMenu({ className, inviteText, items, processingFunction, dataLengt
 
 PopupMenu.defaultProps = {
     inviteText: "Option",
-    processingFunction: (activeItem) => {;}
+    processingFunction: (activeItem) => {;},
+    cleanupFunction: () => {;}
 };
 
 PopupMenu.propTypes = {
     className: PropTypes.string,
     inviteText: PropTypes.string,
     items: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    processingFunction: PropTypes.func
+    processingFunction: PropTypes.func,
+    cleanupFunction: PropTypes.func
 };
 
-const mapStateToProps = (state) => {
-    return {
-        dataLength: state.pizzas.shownItems.length
-    }
-}
-
-export default connect(mapStateToProps)(PopupMenu);
+export default connect()(PopupMenu);

@@ -3,12 +3,14 @@ import React from 'react'
 import { connect } from 'react-redux';
 
 import { PopupMenu } from './';
-import { sortBy } from '../redux/slices/pizzas';
+import { sortBy, itemsNotSorted } from '../redux/slices/pizzas';
 
 
-function SortMenu({ sortOptions, sort }) {
+function SortMenu({ sortOptions, isLoaded, isSorted, sort, cleanup }) {
     const processingFunction = (index) => {
-        sort(sortOptions[index]);
+        if (isLoaded && (!isSorted)) {
+            sort(sortOptions[index])
+        }
     }
 
     return (
@@ -16,20 +18,26 @@ function SortMenu({ sortOptions, sort }) {
             className="sort-menu"
             inviteText="Sort by"
             items={sortOptions} 
-            processingFunction={processingFunction}
+            processingFunction={processingFunction} 
+            cleanupFunction={cleanup}
         />
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        sortOptions: state.pizzas.sortOptions
+        sortOptions: state.pizzas.sortOptions,
+        isLoaded: state.pizzas.isLoaded,
+        isSorted: state.pizzas.isSorted
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        sort: (sortOption) => dispatch(sortBy(sortOption))
+        sort: (sortOption) => {
+            dispatch(sortBy(sortOption));
+        },
+        cleanup: () => dispatch(itemsNotSorted())
     }
 }
 

@@ -3,14 +3,16 @@ import React from 'react'
 import { connect } from 'react-redux';
 
 import { PopupMenu } from './';
-import { setShownItems } from '../redux/slices/pizzas';
+import { setShownItems, itemsNotSorted } from '../redux/slices/pizzas';
 
 
-function CategoriesMenu({ categories, items, display }) {
+function CategoriesMenu({ categories, isLoaded, items, display, cleanup }) {
     const processingFunction = (categoryIndex) => {
-        const filteredItems = items.filter(item => item.categories.includes(categoryIndex));
-        const filteredIds = filteredItems.map((item) => item.id);
-        display(filteredIds);
+        if (isLoaded) {
+            const filteredItems = items.filter(item => item.categories.includes(categoryIndex));
+            const filteredIds = filteredItems.map((item) => item.id);
+            display(filteredIds);
+        }
     }
 
     return (
@@ -18,7 +20,8 @@ function CategoriesMenu({ categories, items, display }) {
             className="categories-menu"
             inviteText="Category"
             items={categories} 
-            processingFunction={processingFunction}
+            processingFunction={processingFunction} 
+            cleanupFunction={cleanup}
         />
     )
 }
@@ -26,13 +29,15 @@ function CategoriesMenu({ categories, items, display }) {
 const mapStateToProps = (state) => {
     return {
       categories: state.pizzas.categories,
-      items: state.pizzas.items
+      items: state.pizzas.items,
+      isLoaded: state.pizzas.isLoaded,
     }
   }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        display: (idArray) => dispatch(setShownItems(idArray))
+        display: (idArray) => dispatch(setShownItems(idArray)),
+        cleanup: () => dispatch(itemsNotSorted())
     }
 }
 

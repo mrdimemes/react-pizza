@@ -6,7 +6,9 @@ const initialState = {
     categories: ["all"],
     items: [],
     shownItems: [],
-    sortOptions: ["popularity", "price", "alphabet"]
+    sortOptions: ["popularity", "price", "alphabet"],
+    isLoaded: false,
+    isSorted: false
 };
 
 const pizzasSlice = createSlice({
@@ -24,10 +26,20 @@ const pizzasSlice = createSlice({
       state.types = action.payload
     },
     setSizes(state, action) {
-        state.sizes = action.payload
+      state.sizes = action.payload
     },
     setCategories(state, action) {
-        state.categories = action.payload
+      state.categories = action.payload
+    },
+    
+    itemsLoaded(state) {
+      state.isLoaded = true
+    },
+    itemsSorted(state) {
+      state.isSorted = true
+    },
+    itemsNotSorted(state) {
+      state.isSorted = false
     },
 
     sortBy(state, action) {
@@ -47,11 +59,22 @@ const pizzasSlice = createSlice({
           default:
             return 0;
         }
-      })
+      });
+      state.isSorted = true
     }
   }
 })
 
-export const { setItems, setShownItems, setTypes, setSizes, setCategories, sortBy } = pizzasSlice.actions
+export const { 
+  setItems, 
+  setShownItems, 
+  setTypes, 
+  setSizes, 
+  setCategories, 
+  sortBy, 
+  itemsLoaded,
+  itemsSorted,
+  itemsNotSorted
+} = pizzasSlice.actions
 
 export default pizzasSlice.reducer
