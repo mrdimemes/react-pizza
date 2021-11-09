@@ -581,6 +581,9 @@ button {
     &__items {
         padding-top: 60px;
         padding-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 60px;
     }
 
     &__footer {
@@ -603,5 +606,72 @@ button {
     }
     &__pay-button {
         @include block(210px, 55px);
+    }
+}
+
+.Cart-item {
+    @include flex-space-between();
+    column-gap: 68px;
+    &__info {
+        display: flex;
+        align-items: center;
+        column-gap: 15px;
+    }
+    &__image-container {
+        @include square(80px);
+    }
+    &__label {
+        font-size: 22px;
+        line-height: 27px;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 3px;
+        width: 280px;
+    }
+    &__description {
+        color: $light-color;
+        @include no-indentation();
+        font-size: 18px;
+        line-height: 22px;
+        font-weight: 400;
+        width: 280px;
+    }
+
+    &__interactive-bar {
+        @include flex-space-between();
+        width: 378px;
+    }
+
+    &__counter {
+        display: flex;
+        align-items: center;
+        column-gap: 12px;
+    }
+    &__counter-state {
+        @include no-indentation();
+        font-size: 22px;
+        line-height: 27px;
+        font-weight: 700;
+    }
+    &__decrease-button {
+        @include no-indentation();
+        @include square(32px);
+        border-radius: 50%;
+    }
+    &__encrease-button {
+        @include no-indentation();
+        @include square(32px);
+        border-radius: 50%;
+    }
+
+    &__price {
+        font-size: 22px;
+        line-height: 27px;
+        font-weight: 700;
+    }
+
+    &__clear-button {
+        @include square(32px);
+        border-radius: 50%;
     }
 }
