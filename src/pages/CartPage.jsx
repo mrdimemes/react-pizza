@@ -4,18 +4,18 @@ function CartPage() {
         <section className="App__cart-section">
           <div className="Cart">
 
-            <div className="Cart__header">
+            <div className="Cart__header interactive-bar">
 
               <div className="Cart__section-label">
                 <div className="Cart__section-label-icon-container">
-                  <img className="image" src="" alt="cart" />
+                  <img className="image" src="./images/cart.svg" alt="cart" />
                 </div>
                 <h1 className="Cart__section-label-text section-label">Cart</h1>
               </div>
               
-              <div className="Cart__clear-button button">
+              <div className="Cart__clear-button button button_theme_weak">
                 <div className="Cart__clear-button-icon-container">
-                  <img className="image" src="" alt="trash" />
+                  <img className="image" src="./images/trash.svg" alt="trash" />
                 </div>
                 <p className="Cart__clear-button-text">Clear cart</p>
               </div>
@@ -81,9 +81,9 @@ function CartPage() {
               </div>
             </div>
 
-            <nav className="Cart__navigation">
-              <div className="Cart__back-button">Back</div>
-              <div className="Cart__pay-button">Pay now</div>
+            <nav className="Cart__navigation interactive-bar">
+              <div className="Cart__back-button button button_shape_rounded button_theme_weak-bordered">Back</div>
+              <div className="Cart__pay-button button button_shape_rounded button_theme_main-colored">Pay now</div>
             </nav>
 
           </div>

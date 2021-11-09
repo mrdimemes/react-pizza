@@ -137,6 +137,17 @@ button {
     color: $main-color;
 }
 
+.button_theme_weak {
+    color: #B6B6B6;
+    font-weight: 400;
+}
+
+.button_theme_weak-bordered {
+    color: #B6B6B6;
+    font-weight: 400;
+    border: 1px solid #B6B6B6;
+}
+
 .button-separator {
     display: block;
     height: 50%;
@@ -228,6 +239,10 @@ button {
     }
     &__wrapper {
         padding: 0 48px 96px 67px;
+    }
+    &__cart-section {
+        padding: 47px 0 35px 58px;
+        @include flex-centered();
     }
     @media screen and (max-width: 1024px) {
         width: calc(100% - 69px);
@@ -530,5 +545,63 @@ button {
             font-size: 16px;
             line-height: 16px;
         }
+    }
+}
+
+.Cart {
+    width: 820px;
+
+    &__section-label {
+        display: flex;
+        align-items: center;
+        column-gap: 18px;
+    }
+    &__section-label-icon-container {
+        @include square(28px);
+        @include flex-centered();
+        path {
+            fill: $dark-color;
+        }
+    }
+    &__section-label-text {
+        @include no-indentation();
+    }
+
+    &__clear-button {
+        column-gap: 10px;
+    }
+    &__clear-button-icon-container {
+        @include square(16px);
+        @include flex-centered();
+    }
+    &__clear-button-text {
+        @include no-indentation();
+    }
+
+    &__items {
+        padding-top: 60px;
+        padding-bottom: 40px;
+    }
+
+    &__footer {
+        @include flex-space-between();
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 27px;
+        margin-bottom: 40px;
+    }
+    &__counter-state {
+        font-weight: 700;
+    }
+    &__price-state {
+        font-weight: 700;
+        color: $main-color;
+    }
+
+    &__back-button {
+        @include block(210px, 55px);
+    }
+    &__pay-button {
+        @include block(210px, 55px);
     }
 }
