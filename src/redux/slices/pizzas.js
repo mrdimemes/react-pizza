@@ -1,14 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    types: [],
-    sizes: [],
-    categories: ["all"],
-    items: [],
-    shownItems: [],
-    sortOptions: ["popularity", "price", "alphabet"],
-    isLoaded: false,
-    isSorted: false
+  types: [],
+  sizes: [],
+  categories: ["all"],
+  items: [],
+  shownItems: [],
+  sortOptions: ["popularity", "price", "alphabet"],
+  isLoaded: false,
+  isSorted: false
 };
 
 const pizzasSlice = createSlice({
