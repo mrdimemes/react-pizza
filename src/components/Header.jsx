@@ -1,6 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
+import { Link } from 'react-router-dom';
 import { Button } from './';
 
 import cartSvg from '../assets/images/cart.svg';
@@ -8,7 +9,7 @@ import logoSvg from '../assets/images/logo.svg';
 
 
 
-function Header() {
+function Header( {cartEntriesPrice, cartEntriesCount} ) {
     return (
         <header className="header App__header">
             <Link to="/">
@@ -25,12 +26,12 @@ function Header() {
 
             <Link to="/cart">
                 <Button className = "header__cart-button button" shape="rounded" theme="main-colored"> 
-                    <div className="header__cart-button-cost">7.33 $</div>
+                    <div className="header__cart-button-cost">{ cartEntriesPrice } $</div>
                     <div className="header__cart-button-separator button-separator button-separator_theme_light" />
                     <div className="header__cart-button-icon-container">
                         <img className="image" src={cartSvg} alt="cart"></img>
                     </div>
-                        <div className="header__cart-button-inputs-counter">3</div>
+                        <div className="header__cart-button-inputs-counter">{ cartEntriesCount }</div>
                 </Button>
             </Link>
 
@@ -38,4 +39,11 @@ function Header() {
     )
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+    return {
+        cartEntriesPrice: state.cart.entriesPrice,
+        cartEntriesCount: state.cart.entriesCount
+    }
+}
+
+export default connect(mapStateToProps)(Header);
