@@ -6,3 +6,5 @@ export { default as CategoriesMenu} from './CategoriesMenu';
 export { default as SortMenu} from './SortMenu';
 export { default as PizzaGallery} from './PizzaGallery';
 export { default as Pizza} from './Pizza';
+export { default as Cart } from './Cart';
+export { default as CartItem } from './CartItem';
