@@ -28,9 +28,9 @@ function Cart() {
       </div>
 
       <div className="Cart__items">
-        <CartItem />
-        <CartItem />
-        <CartItem />
+        <CartItem label="Nice Pizza!" type="traditional" count={1} size={40} price={13.99} />
+        <CartItem label="Nice Pizza!" type="traditional" count={1} size={40} price={13.99} />
+        <CartItem label="Nice Pizza!" type="traditional" count={1} size={40} price={13.99} />
       </div>
 
       <div className="Cart__footer">
