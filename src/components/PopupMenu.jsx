@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
+import markerSvg from '../assets/images/arrow-top.svg';
+
+
 function PopupMenu({ className, inviteText, items, processingFunction, cleanupFunction}) {
     const [activeItem, setActiveItem] = React.useState(0);
     const [isOpen, setIsOpen] = React.useState(false);
@@ -52,7 +55,7 @@ function PopupMenu({ className, inviteText, items, processingFunction, cleanupFu
                     } 
                 )
             }>
-                <img className="image" src="./images/arrow-top.svg" alt="marker"></img>
+                <img className="image" src={markerSvg} alt="marker"></img>
             </div>
 
             <p 

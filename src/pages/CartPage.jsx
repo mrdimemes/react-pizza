@@ -1,3 +1,7 @@
+import cartSvg from '../assets/images/dark-cart.svg';
+import trashSvg from '../assets/images/trash.svg';
+
+
 function CartPage() {
     return (
       <div className="App__wrapper">
@@ -8,14 +12,14 @@ function CartPage() {
 
               <div className="Cart__section-label">
                 <div className="Cart__section-label-icon-container">
-                  <img className="image" src="./images/cart.svg" alt="cart" />
+                  <img className="image" src={cartSvg} alt="cart" />
                 </div>
                 <h1 className="Cart__section-label-text section-label">Cart</h1>
               </div>
               
               <div className="Cart__clear-button button button_theme_weak">
                 <div className="Cart__clear-button-icon-container">
-                  <img className="image" src="./images/trash.svg" alt="trash" />
+                  <img className="image" src={trashSvg} alt="trash" />
                 </div>
                 <p className="Cart__clear-button-text">Clear cart</p>
               </div>
@@ -45,7 +49,7 @@ function CartPage() {
                   </div>
 
                   <div className="Cart-item__price">10 $</div>
-                  <div className="Cart-item__clear-button button button_theme_weak-bordered"></div>
+                  <div className="Cart-item__clear-button button button_theme_weak-bordered">×</div>
                 </div>
               </div>
               
