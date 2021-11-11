@@ -17,7 +17,7 @@ function EmptyCart() {
         <img src="" alt="empty cart" />
       </div>
       <Link to="/">
-        <Button className="empty-cart__back-button" shape="rounded" theme="weak-bordered">
+        <Button className="empty-cart__back-button" shape="rounded" theme="dark-colored">
           Back 
         </Button>
       </Link>

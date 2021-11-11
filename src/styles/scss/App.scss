@@ -244,6 +244,10 @@ button {
         padding: 47px 0 35px 58px;
         @include flex-centered();
     }
+    &__empty-cart-wrapper {
+        padding: 39px 78px 32px 0;
+        @include flex-centered();
+    }
     @media screen and (max-width: 1024px) {
         width: calc(100% - 69px);
         margin-top: 33px;
@@ -606,6 +610,30 @@ button {
     }
     &__pay-button {
         @include block(210px, 55px);
+    }
+}
+
+.empty-cart {
+    width: 550px;
+    text-align: center;
+    &__section-label {
+        @include no-indentation();
+    }
+    &__text {
+        margin-top: 10px;
+        margin-bottom: 47px;
+        font-size: 18px;
+        line-height: 26px;
+        font-weight: 400;
+        color: $light-color;
+    }
+    &__image-container {
+        @include block(280px, 240px);
+        margin-bottom: 90px;
+    }
+    &__back-button {
+        @include block(210px, 46px);
+        display: inline-block;
     }
 }
 
