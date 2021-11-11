@@ -9,7 +9,7 @@ import { addEntry } from '../redux/slices/cart';
 function Pizza( { pizzaItem, types, sizes, cartEntries, addToCart } ) {
     const availableTypes = pizzaItem.availableTypes;
     const availableSizes = pizzaItem.availableSizes;
-    const imageUrl = pizzaItem.imageUrl;
+    const imageUrl = pizzaItem.imageUrl; //no default image bug, need to fix
     const pizzaLabel = pizzaItem.pizzaLabel;
     const prices = pizzaItem.prices;
 
@@ -92,6 +92,8 @@ function Pizza( { pizzaItem, types, sizes, cartEntries, addToCart } ) {
                     className="pizza__order-button button button_shape_rounded button_theme_main-bordered"
                     onClick={() => addToCart(
                         pizzaItem.id, 
+                        imageUrl,
+                        pizzaLabel,
                         availableTypes[activeType], 
                         availableSizes[activeSize], 
                         prices[activeType][activeSize]
@@ -134,9 +136,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addToCart: (id, type, size, price) => {
+        addToCart: (id, imageUrl, label, type, size, price) => {
             dispatch(addEntry({
                 id: id, 
+                imageUrl: imageUrl,
+                label: label,
                 type: type, 
                 size: size, 
                 price: price, 

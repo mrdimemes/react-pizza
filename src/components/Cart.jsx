@@ -11,7 +11,7 @@ import cartSvg from '../assets/images/dark-cart.svg';
 import trashSvg from '../assets/images/trash.svg';
 
 
-function Cart( {entriesPrice, entriesCount, clear} ) {
+function Cart({ entries, entriesPrice, entriesCount, clear }) {
   return (
     <div className="Cart">
 
@@ -35,9 +35,13 @@ function Cart( {entriesPrice, entriesCount, clear} ) {
       </div>
 
       <div className="Cart__items">
-        <CartItem label="Nice Pizza!" type="traditional" count={1} size={40} price={13.99} />
-        <CartItem label="Nice Pizza!" type="traditional" count={1} size={40} price={13.99} />
-        <CartItem label="Nice Pizza!" type="traditional" count={1} size={40} price={13.99} />
+        {
+          entries.map((entry) => {
+            return (
+              <CartItem entry={entry} />
+            );
+          })
+        }
       </div>
 
       <div className="Cart__footer">
@@ -66,6 +70,7 @@ function Cart( {entriesPrice, entriesCount, clear} ) {
 
 const mapStateToProps = (state) => {
   return {
+    entries: state.cart.entries,
     entriesPrice: state.cart.entriesPrice,
     entriesCount: state.cart.entriesCount
   }
@@ -78,4 +83,5 @@ const mapDispatchToProps = (dispatch) => {
       }
   }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)
