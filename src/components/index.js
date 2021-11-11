@@ -7,4 +7,5 @@ export { default as SortMenu} from './SortMenu';
 export { default as PizzaGallery} from './PizzaGallery';
 export { default as Pizza} from './Pizza';
 export { default as Cart } from './Cart';
+export { default as EmptyCart } from './EmptyCart';
 export { default as CartItem } from './CartItem';
