@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 import { Pizza } from '../components/';
 
-function PizzaGallery( { items, shown, types, sizes } ) {
+function PizzaGallery( { items, shown } ) {
     return (
         <div className="pizza-gallery">
             {
@@ -15,9 +15,7 @@ function PizzaGallery( { items, shown, types, sizes } ) {
                     return (
                         <Pizza 
                             key={id} 
-                            types={types} 
-                            sizes={sizes} 
-                            {...item}
+                            pizzaItem={item}
                         />
                     )
                 })
@@ -28,15 +26,12 @@ function PizzaGallery( { items, shown, types, sizes } ) {
 
 PizzaGallery.propTypes = {
     items: PropTypes.arrayOf(PropTypes.object),
-    types: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    sizes: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired
+    shown: PropTypes.arrayOf(PropTypes.number)
 };
 
 const mapStateToProps = (state) => {
     return {
         items: state.pizzas.items,
-        types: state.pizzas.types,
-        sizes: state.pizzas.sizes,
         shown: state.pizzas.shownItems
     }
 }

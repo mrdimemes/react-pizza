@@ -1,9 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { connect } from 'react-redux';
 import classNames from 'classnames';
 
-function Pizza( {pizzaLabel, imageUrl, types, sizes, availableTypes, availableSizes, prices} ) {
+import { addEntry } from '../redux/slices/cart';
+
+function Pizza( { pizzaItem, types, sizes, cartEntries, addToCart } ) {
+    const availableTypes = pizzaItem.availableTypes;
+    const availableSizes = pizzaItem.availableSizes;
+    const imageUrl = pizzaItem.imageUrl;
+    const pizzaLabel = pizzaItem.pizzaLabel;
+    const prices = pizzaItem.prices;
+
     const [activeType, setActiveType] = React.useState(availableTypes[0]);
     const [activeSize, setActiveSize] = React.useState(availableSizes[0]);
     const [orderCounter, setOrderCounter] = React.useState(0);
@@ -16,9 +25,21 @@ function Pizza( {pizzaLabel, imageUrl, types, sizes, availableTypes, availableSi
         setActiveSize(index);
     }
 
-    const increaseOrderCounter = () => {
-        setOrderCounter(orderCounter + 1)
-    }
+    React.useEffect(() => {
+        const getOrderCount = () => {
+            for (const entry of cartEntries) {
+                if (
+                    (entry.id === pizzaItem.id) && 
+                    (entry.type === availableTypes[activeType]) && 
+                    (entry.size === availableSizes[activeSize])
+                ) {
+                    return entry.count;
+                }
+            };
+            return 0;
+        }
+        setOrderCounter(getOrderCount());
+    }, [cartEntries, activeType, activeSize, availableTypes, availableSizes, pizzaItem.id]);
 
     return (
         <div className="pizza">
@@ -69,7 +90,12 @@ function Pizza( {pizzaLabel, imageUrl, types, sizes, availableTypes, availableSi
                 <div className="pizza__price">{ prices[activeType][activeSize] } $</div>
                 <div 
                     className="pizza__order-button button button_shape_rounded button_theme_main-bordered"
-                    onClick={increaseOrderCounter}
+                    onClick={() => addToCart(
+                        pizzaItem.id, 
+                        availableTypes[activeType], 
+                        availableSizes[activeSize], 
+                        prices[activeType][activeSize]
+                    )}
                 >
                     <p className="pizza__order-button-text">+ Add</p>
                     <div 
@@ -91,13 +117,33 @@ Pizza.defaultProps = {
 };
 
 Pizza.propTypes = {
-    pizzaLabel: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string,
+    pizzaItem: PropTypes.object.isRequired,
     types: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     sizes: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
-    availableTypes: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
-    availableSizes: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
-    prices: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired
+    cartEntries: PropTypes.arrayOf(PropTypes.object).isRequired,
+    addToCart: PropTypes.func
 };
 
-export default Pizza;
+const mapStateToProps = (state) => {
+    return {
+        types: state.pizzas.types,
+        sizes: state.pizzas.sizes,
+        cartEntries: state.cart.entries,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addToCart: (id, type, size, price) => {
+            dispatch(addEntry({
+                id: id, 
+                type: type, 
+                size: size, 
+                price: price, 
+                count: 1
+            }));
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Pizza);
