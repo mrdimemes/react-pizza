@@ -1,10 +1,17 @@
 import React from 'react'
+
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+
+import { Button, CartItem } from '../components';
+import { clearCart } from '../redux/slices/cart'
+
 import cartSvg from '../assets/images/dark-cart.svg';
 import trashSvg from '../assets/images/trash.svg';
 
-import { Button, CartItem } from '../components'
 
-function Cart() {
+function Cart( {entriesPrice, entriesCount, clear} ) {
   return (
     <div className="Cart">
 
@@ -17,7 +24,7 @@ function Cart() {
           <h1 className="Cart__section-label-text section-label">Cart</h1>
         </div>
 
-        <Button className="Cart__clear-button" theme="weak">
+        <Button className="Cart__clear-button" theme="weak" onClick={clear}>
           <div className="Cart__clear-button-icon-container">
             <img className="image" src={trashSvg} alt="trash" />
           </div>
@@ -35,17 +42,19 @@ function Cart() {
 
       <div className="Cart__footer">
         <div className="Cart__counter">
-          Total entries: <span className="Cart__counter-state">3 pcs.</span>
+          Total entries: <span className="Cart__counter-state">{ entriesCount } pcs.</span>
         </div>
         <div className="Cart__price">
-          Order price: <span className="Cart__price-state">30 $</span>
+          Order price: <span className="Cart__price-state">{ entriesPrice } $</span>
         </div>
       </div>
 
       <nav className="Cart__navigation interactive-bar">
-        <Button className="Cart__back-button" shape="rounded" theme="weak-bordered">
-          Back 
-        </Button>
+        <Link to="/">
+          <Button className="Cart__back-button" shape="rounded" theme="weak-bordered">
+            Back 
+          </Button>
+        </Link>
         <Button className="Cart__pay-button" shape="rounded" theme="main-colored">
           Pay now
         </Button>
@@ -55,4 +64,18 @@ function Cart() {
     )
 }
 
-export default Cart
+const mapStateToProps = (state) => {
+  return {
+    entriesPrice: state.cart.entriesPrice,
+    entriesCount: state.cart.entriesCount
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      clear: () => {
+        dispatch(clearCart());
+      }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)
