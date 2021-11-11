@@ -45,7 +45,7 @@ function Cart( {entriesPrice, entriesCount, clear} ) {
           Total entries: <span className="Cart__counter-state">{ entriesCount } pcs.</span>
         </div>
         <div className="Cart__price">
-          Order price: <span className="Cart__price-state">{ entriesPrice } $</span>
+          Order price: <span className="Cart__price-state">{ entriesPrice.toFixed(2) } $</span>
         </div>
       </div>
 

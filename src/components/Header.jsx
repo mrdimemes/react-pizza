@@ -28,7 +28,7 @@ function Header( {cartEntriesPrice, cartEntriesCount} ) {
         <Route exact path="/" element={
           <Link to="/cart">
             <Button className = "header__cart-button button" shape="rounded" theme="main-colored"> 
-              <div className="header__cart-button-cost">{ cartEntriesPrice } $</div>
+              <div className="header__cart-button-cost">{ cartEntriesPrice.toFixed(2) } $</div>
               <div className="header__cart-button-separator button-separator button-separator_theme_light" />
               <div className="header__cart-button-icon-container">
                 <img className="image" src={cartSvg} alt="cart"></img>
