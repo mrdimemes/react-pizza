@@ -2,6 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { Button } from '../components/';
 
+import imagePng from '../assets/images/empty-cart.png';
+
+
 
 function EmptyCart() {
   return (
@@ -14,7 +17,7 @@ function EmptyCart() {
         To order pizza, go to the main page.
       </p>
       <div className="empty-cart__image-container">
-        <img src="" alt="empty cart" />
+        <img className="image"  src={imagePng} alt="empty cart" />
       </div>
       <Link to="/">
         <Button className="empty-cart__back-button" shape="rounded" theme="dark-colored">

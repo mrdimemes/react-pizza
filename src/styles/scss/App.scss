@@ -630,6 +630,8 @@ button {
     &__image-container {
         @include block(280px, 240px);
         margin-bottom: 90px;
+        margin-left: auto;
+        margin-right: auto;
     }
     &__back-button {
         @include block(210px, 46px);
