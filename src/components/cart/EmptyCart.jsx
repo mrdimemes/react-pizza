@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { Button } from '../components/';
+import { Button } from '../';
 
-import imagePng from '../assets/images/empty-cart.png';
+import imagePng from '../../assets/images/png/empty-cart.png';
 
 
 

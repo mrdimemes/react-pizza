@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { Routes, Route, Link } from 'react-router-dom';
 import { Button } from './';
 
-import cartSvg from '../assets/images/cart.svg';
-import logoSvg from '../assets/images/logo.svg';
+import cartSvg from '../assets/images/svg/cart.svg';
+import logoSvg from '../assets/images/svg/logo.svg';
 
 
 

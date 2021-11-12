@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
-import { addEntry } from '../redux/slices/cart';
+import { addEntry } from '../../redux/slices/cart';
 
 function Pizza( { pizzaItem, types, sizes, cartEntries, addToCart } ) {
     const availableTypes = pizzaItem.availableTypes;

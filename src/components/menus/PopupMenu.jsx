@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
-import markerSvg from '../assets/images/arrow-top.svg';
+import markerSvg from '../../assets/images/svg/arrow-top.svg';
 
 
 function PopupMenu({ className, inviteText, items, processingFunction, cleanupFunction}) {

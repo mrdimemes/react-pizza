@@ -2,8 +2,8 @@ import React from 'react'
 
 import { connect } from 'react-redux';
 
-import { PopupMenu } from './';
-import { sortBy, itemsNotSorted } from '../redux/slices/pizzas';
+import { PopupMenu } from '../';
+import { sortBy, itemsNotSorted } from '../../redux/slices/pizzas';
 
 
 function SortMenu({ sortOptions, isLoaded, isSorted, sort, cleanup }) {

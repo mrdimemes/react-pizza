@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 
-import { Pizza } from '../components/';
+import { Pizza } from '../';
 
 function PizzaGallery( { items, shown } ) {
     return (

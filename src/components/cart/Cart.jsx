@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
-import { Button, CartItem } from '../components';
-import { clearCart } from '../redux/slices/cart'
+import { Button, CartItem } from '../';
+import { clearCart } from '../../redux/slices/cart'
 
-import cartSvg from '../assets/images/dark-cart.svg';
-import trashSvg from '../assets/images/trash.svg';
+import cartSvg from '../../assets/images/svg/dark-cart.svg';
+import trashSvg from '../../assets/images/svg/trash.svg';
 
 
 function Cart({ entries, entriesPrice, entriesCount, clear }) {

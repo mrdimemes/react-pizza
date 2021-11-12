@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { Button } from '../components'
-import { addEntry, removeEntry, removeAllEntries } from '../redux/slices/cart';
+import { Button } from '../'
+import { addEntry, removeEntry, removeAllEntries } from '../../redux/slices/cart';
 
 
 function CartItem({ entry, availableTypes, availableSizes, add, remove, removeAll }) {
