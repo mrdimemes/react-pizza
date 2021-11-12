@@ -51,7 +51,7 @@ const cartSlice = createSlice({
 
       if (entryIndex !== -1) {
         if (state.entries[entryIndex].count === 1) {
-          state.entries[entryIndex].splice(entryIndex, 1);
+          state.entries.splice(entryIndex, 1);
         } else {
           state.entries[entryIndex].count -= 1;
         }
