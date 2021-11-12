@@ -1,22 +1,25 @@
 import React from 'react';
+
 import { Routes, Route } from "react-router-dom";
 import { connect } from 'react-redux';
 
-import '../styles/scss/App.scss';
-
 import { Header } from './';
 import { MainPage, CartPage } from '../pages';
-import { 
-  setItems, 
-  setTypes, 
-  setSizes, 
-  setCategories, 
-  itemsLoaded 
+
+import {
+  setItems,
+  setTypes,
+  setSizes,
+  setCategories,
+  itemsLoaded
 } from '../redux/slices/pizzas';
 
+import '../styles/scss/App.scss';
 
-function App( {dispatch} ) {
 
+function App({ dispatch }) {
+
+  /* Data loading on mount */
   React.useEffect(() => {
     fetch("http://localhost:3000/db.json")
       .then((response) => response.json())
@@ -25,12 +28,10 @@ function App( {dispatch} ) {
         dispatch(setTypes(json.pizzaTypes));
         dispatch(setSizes(json.pizzaSizes));
         dispatch(setItems(json.pizzas));
-        
         dispatch(itemsLoaded());
       });
       // eslint-disable-next-line
   }, []);
-
 
   return (
     <div className="App">
