@@ -30,8 +30,8 @@ function Pizza( { pizzaItem, types, sizes, cartEntries, addToCart } ) {
             for (const entry of cartEntries) {
                 if (
                     (entry.id === pizzaItem.id) && 
-                    (entry.type === availableTypes[activeType]) && 
-                    (entry.size === availableSizes[activeSize])
+                    (entry.type === activeType) && 
+                    (entry.size === activeSize)
                 ) {
                     return entry.count;
                 }
@@ -94,8 +94,8 @@ function Pizza( { pizzaItem, types, sizes, cartEntries, addToCart } ) {
                         pizzaItem.id, 
                         imageUrl,
                         pizzaLabel,
-                        availableTypes[activeType], 
-                        availableSizes[activeSize], 
+                        activeType, 
+                        activeSize, 
                         prices[activeType][activeSize]
                     )}
                 >
