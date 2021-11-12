@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { Header } from './';
@@ -21,7 +21,7 @@ function App({ dispatch }) {
 
   /* Data loading on mount */
   React.useEffect(() => {
-    fetch("http://localhost:3000/db.json")
+    fetch('http://localhost:3000/db.json')
       .then((response) => response.json())
       .then((json) => {
         dispatch(setCategories(json.pizzaCategories));
@@ -34,11 +34,11 @@ function App({ dispatch }) {
   }, []);
 
   return (
-    <div className="App">
+    <div className='App'>
       <Header />
       <Routes>
-        <Route exact path="/" element={ <MainPage /> } />
-        <Route exact path="/cart" element={ <CartPage /> } />
+        <Route exact path='/' element={ <MainPage /> } />
+        <Route exact path='/cart' element={ <CartPage /> } />
       </Routes>
     </div>
   );
