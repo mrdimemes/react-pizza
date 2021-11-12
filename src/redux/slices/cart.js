@@ -60,6 +60,30 @@ const cartSlice = createSlice({
       }
     },
 
+    removeAllEntries(state, action) {
+      const entryIndex = state.entries.findIndex((entry) => {
+        if (
+          (entry.id === action.payload.id) && 
+          (entry.type === action.payload.type) && 
+          (entry.size === action.payload.size)
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+      
+      if (entryIndex !== -1) {
+        const entryCount = state.entries[entryIndex].count;
+        const entryPrice = state.entries[entryIndex].price;
+        
+        state.entries.splice(entryIndex, 1);
+        
+        state.entriesCount -= entryCount;
+        state.entriesPrice -= (entryCount * entryPrice);
+      }
+    },
+
     clearCart(state) {
       state.entries = [];
       state.entriesCount = 0;
@@ -68,6 +92,6 @@ const cartSlice = createSlice({
   }
 })
   
-export const {addEntry, removeEntry, clearCart} = cartSlice.actions
+export const {addEntry, removeEntry, removeAllEntries, clearCart} = cartSlice.actions
   
 export default cartSlice.reducer

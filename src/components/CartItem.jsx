@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { Button } from '../components'
-import { addEntry, removeEntry } from '../redux/slices/cart';
+import { addEntry, removeEntry, removeAllEntries } from '../redux/slices/cart';
 
 
-function CartItem({ entry, availableTypes, availableSizes, add, remove }) {
+function CartItem({ entry, availableTypes, availableSizes, add, remove, removeAll }) {
   return (
     <div className="Cart__item Cart-item">
       <div className="Cart-item__info">
@@ -39,7 +39,12 @@ function CartItem({ entry, availableTypes, availableSizes, add, remove }) {
         </div>
 
         <div className="Cart-item__price">{ (entry.price * entry.count).toFixed(2) } $</div>
-        <Button className="Cart-item__clear-button" theme="weak-bordered" children="×" />
+        <Button 
+          className="Cart-item__clear-button" 
+          theme="weak-bordered" 
+          onClick={() => removeAll(entry)} 
+          children="×" 
+        />
       </div>
     </div>
   )
@@ -69,6 +74,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     remove: (entry) => {
       dispatch(removeEntry({...entry}));
+    },
+    removeAll: (entry) => {
+      dispatch(removeAllEntries({...entry}));
     },
   }
 }
