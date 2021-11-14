@@ -1,0 +1,57 @@
+@use "../foundation/colors";
+@use "../foundation/mixins";
+
+
+.Button {
+    @include mixins.flex-centered();
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+// modifiers
+
+.Button_shape_rounded {
+    border-radius: 30px;
+    padding: 0 30px;
+}
+
+
+.Button_theme_main-colored {
+    @include mixins.main-colored();
+}
+
+.Button_theme_dark-colored {
+    @include mixins.dark-colored();
+}
+
+.Button_theme_main-bordered {
+    background-color: white;
+    border: 1px solid colors.$main-color;
+    color: colors.$main-color;
+}
+
+.Button_theme_weak {
+    color: #B6B6B6;
+    font-weight: 400;
+}
+
+.Button_theme_weak-bordered {
+    color: #B6B6B6;
+    font-weight: 400;
+    border: 1px solid #B6B6B6;
+}
+
+
+// other styles
+
+.button-separator {
+    display: block;
+    height: 50%;
+    width: 1px;
+    background-color: white;
+    opacity: 0.25;
+}

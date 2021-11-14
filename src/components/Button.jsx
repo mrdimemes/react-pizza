@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 
+import '../styles/scss/components/Button.scss';
+
 
 // Component for rendering html buttons.
 // Button can be styled with className, shape and theme props.
@@ -22,10 +24,10 @@ function Button({ className, shape, theme, onClick, children }) {
     <button
       onClick={onClick}
       className={classNames(
-        'button',
+        'Button',
         className,
-        {[`button_shape_${shape}`]: shape,
-        [`button_theme_${theme}`]: theme}
+        {[`Button_shape_${shape}`]: shape,
+        [`Button_theme_${theme}`]: theme}
       )}
     >
       { children }
