@@ -10,7 +10,21 @@ import cartSvg from '../assets/images/svg/cart.svg';
 import logoSvg from '../assets/images/svg/logo.svg';
 
 
-function Header( {cartEntriesPrice, cartEntriesCount} ) {
+// Component for page header representation.
+// Contain a logo and a Link to the shopping cart in the form of a Button.
+// The shopping cart link only appears on the home page.
+//
+// All props comes from Redux storage (cart slice).
+// Direct determination of component's props isn't necessary.
+//
+// Component props:
+//
+// cartEntriesPrice: number > 0 - total price of the shopping cart entries
+//   (for the shopping cart Button).
+// cartEntriesCount: integer >= 0 - total count the of shopping cart entries
+//   (for the shopping cart Button).
+
+function Header({ cartEntriesPrice, cartEntriesCount }) {
   return (
     <header className='header App__header'>
 
