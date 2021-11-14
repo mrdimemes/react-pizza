@@ -1,6 +1,11 @@
 # App description
 
-This application is an online store for a pizzeria wrote via React JS.
+This application is an online store for a pizzeria wrote via React JS. 
+There is no back end code there.
+
+The app includes:
+- Pizza gallery
+- Сart
 
 ## Template source
 
@@ -17,4 +22,4 @@ https://www.figma.com/file/wWUnQwvRDWBfPx1v1pCAfO/React-Pizza
 - React Router
 - Redux
 - classnames
-- SASS
+- Sass/SCSS
