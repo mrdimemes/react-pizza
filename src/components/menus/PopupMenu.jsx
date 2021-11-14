@@ -1,125 +1,141 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import classNames from 'classnames';
 
 import markerSvg from '../../assets/images/svg/arrow-top.svg';
 
 
-function PopupMenu({ className, inviteText, items, processingFunction, cleanupFunction}) {
-    const [activeItem, setActiveItem] = React.useState(0);
-    const [isOpen, setIsOpen] = React.useState(false);
-    const elementRef = React.useRef();
+// Basic component for popup menus representation.
+// Can be clarified by specifying different props.
+// General way to clarify a PopupMenu is using a top level components
+// like SortMenu or CategoriesMenu.
+//
+// Component has no connection to Redux storage and 
+// need direct determination of all his props.
+//
+// Component props:
+//
+// className: string or undefined - name of optional css class 
+//   for rendered PopupMenu.
+// inviteText: string or undefined - text that will be shown near
+//   an active menu option. Default value is "Option".
+// items: array of strings - options of the menu.
+// processingFunction: function(activeItem), where activeItem is 
+//   PopupMenu's state representing the index of 
+//   an active option in the "items" array. 
+//   processingFunction is an instrument to make changes outside the component. 
+//   PopupMenu will run processingFunction on self rendering, on any
+//   activeItem changes and on any changes of processingFunction itself.
+//   By default is an empty function.
+// cleanupFunction: function(). It's also an instrument to make changes 
+//   outside the component. PopupMenu will run cleanupFunction every time then 
+//   an user selects new active option. By default is an empty function.
 
-    const toggleIsOpen = () => {
-        setIsOpen(!isOpen)
-    }
+function PopupMenu(
+    { className, inviteText, items, processingFunction, cleanupFunction}
+) {
+  const [activeItem, setActiveItem] = React.useState(0);
+  const [isOpen, setIsOpen] = React.useState(false);
+  const elementRef = React.useRef();
 
-    const onSelectItem = (index) => {
-        setActiveItem(index);
-        cleanupFunction();
-        if (isOpen) {
-            toggleIsOpen();
-        }
-    }
+  const toggleIsOpen = () => setIsOpen(!isOpen);
 
-    const handleOutsideClick = (event) => {
-        if (!event.path.includes(elementRef.current)) {
-            setIsOpen(false);
-        }
-    }
+  const onSelectItem = (index) => {
+    setActiveItem(index);
+    cleanupFunction();
+    if (isOpen) toggleIsOpen();
+  }
 
-    React.useEffect(() => {
-        document.body.addEventListener("click", handleOutsideClick);
-        return () => {
-            document.body.removeEventListener("click", handleOutsideClick)
-        };
-    }, []);
+  const handleOutsideClick = (event) => {
+    if (!event.path.includes(elementRef.current)) setIsOpen(false);
+  }
 
-    React.useEffect(() => {
-        processingFunction(activeItem);
-    }, [processingFunction, activeItem]);
+  // The menu will close itself because of click outside his area
+  React.useEffect(() => {
+    document.body.addEventListener('click', handleOutsideClick);
+    return () => {
+      document.body.removeEventListener('click', handleOutsideClick)
+    };
+  }, []);
 
-    return (
-        <div 
-            ref={elementRef}
-            className={classNames("popup-menu", className)
-        }>
-            
-            <div 
-                className={classNames(
-                    "popup-menu__marker", 
-                    {
-                        [`${className}__popup-marker`]: className,
-                        "popup-menu__marker_closed": !isOpen
-                    } 
-                )
-            }>
-                <img className="image" src={markerSvg} alt="marker"></img>
-            </div>
+  React.useEffect(() => {
+    processingFunction(activeItem);
+  }, [processingFunction, activeItem]);
 
-            <p 
-                className={classNames(
-                    "popup-menu__invite-text", 
-                    {[`${className}__popup-invite-text`]: className}
-                )
-            }>
-                { inviteText }:
-                <span 
-                    onClick={ toggleIsOpen }
-                    className={classNames(
-                        "popup-menu__selected",
-                        {[`${className}__popup-selected`]: className}
-                    )
-                }>
-                    { items[activeItem] }
-                </span>
-            </p>
-            
-            <ul 
-                className={classNames(
-                    "popup-menu__items",
-                    {
-                        [`${className}__items`]: className,
-                        "popup-menu__items_active": isOpen
-                    }
-                )
-            }>
+  return (
+    <div 
+      ref={elementRef}
+      className={classNames('popup-menu', className)}
+    >
 
-                { items.map((item, index) => (
-                    <li 
-                        key={`${item}_${index}`} 
-                        onClick={() => onSelectItem(index)}
-                        className={classNames(
-                            "popup-menu__item",
-                            {
-                                [`${className}__item`]: className,
-                                "popup-menu__item_active":  index === activeItem,
-                                [`${className}__item_active`]: index === activeItem
-                            }
-                        )
-                    }>
-                        { item }
-                    </li>
-                )) }
-            
-            </ul>  
-        </div>
-    )
+      <div
+        className={classNames(
+          'popup-menu__marker',
+          {[`${className}__popup-marker`]: className,
+          'popup-menu__marker_closed': !isOpen}
+        )}
+      >
+        <img className='image' src={markerSvg} alt='marker' />
+      </div>
+
+      <p
+        className={classNames(
+          'popup-menu__invite-text',
+          {[`${className}__popup-invite-text`]: className}
+        )}
+      >
+        { inviteText }:
+        <span
+          onClick={toggleIsOpen}
+          className={classNames(
+            'popup-menu__selected',
+            {[`${className}__popup-selected`]: className}
+          )}
+        >
+          { items[activeItem] }
+        </span>
+      </p>
+
+      <ul
+        className={classNames(
+          'popup-menu__items',
+          {[`${className}__items`]: className,
+          'popup-menu__items_active': isOpen}
+        )}
+      >
+
+        { items.map((item, index) => (
+          <li
+            key={`${item}_${index}`}
+            onClick={ () => onSelectItem(index) }
+            className={classNames(
+              'popup-menu__item',
+              {[`${className}__item`]: className,
+              'popup-menu__item_active': index === activeItem,
+              [`${className}__item_active`]: index === activeItem}
+            )}
+          >
+            { item }
+          </li>
+        )) }
+
+      </ul>
+    </div>
+  );
 }
 
 PopupMenu.defaultProps = {
-    inviteText: "Option",
-    processingFunction: (activeItem) => {;},
-    cleanupFunction: () => {;}
+  inviteText: 'Option',
+  processingFunction: (activeItem) => {;},
+  cleanupFunction: () => {;}
 };
 
 PopupMenu.propTypes = {
-    className: PropTypes.string,
-    inviteText: PropTypes.string,
-    items: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    processingFunction: PropTypes.func,
-    cleanupFunction: PropTypes.func
+  className: PropTypes.string,
+  inviteText: PropTypes.string,
+  items: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  processingFunction: PropTypes.func,
+  cleanupFunction: PropTypes.func
 };
 
-export default connect()(PopupMenu);
+export default PopupMenu;
