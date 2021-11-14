@@ -9,6 +9,8 @@ import { Button } from './';
 import cartSvg from '../assets/images/svg/cart.svg';
 import logoSvg from '../assets/images/svg/logo.svg';
 
+import '../styles/scss/components/Header.scss';
+
 
 // Component for page header representation.
 // Contain a logo and a Link to the shopping cart in the form of a Button.
@@ -26,18 +28,18 @@ import logoSvg from '../assets/images/svg/logo.svg';
 
 function Header({ cartEntriesPrice, cartEntriesCount }) {
   return (
-    <header className='header App__header'>
+    <header className='Header App__header'>
 
       <Link to='/'>
-        <div className='header__logo'>
+        <div className='Header__logo'>
 
-          <div className='header__logo-image-container'>
+          <div className='Header__logo-image-container'>
             <img className='image' src={logoSvg} alt='pizza' />
           </div>
 
-          <div className='header__logo-text'>
-            <h1 className='header__logo-label'>REACT PIZZA</h1>
-            <p className='header__logo-description'>
+          <div className='Header__logo-text'>
+            <h1 className='Header__logo-label'>REACT PIZZA</h1>
+            <p className='Header__logo-description'>
               most delicious pizza in the universe
             </p>
           </div>
@@ -51,27 +53,24 @@ function Header({ cartEntriesPrice, cartEntriesCount }) {
           <Link to='/cart'>
 
             <Button
-              className='header__cart-button'
+              className='Header__cart-button'
               shape='rounded'
               theme='main-colored'
             >
 
-              <div className='header__cart-button-cost'>
-                { cartEntriesPrice.toFixed(2) } $
+              <div className='Header__cart-button-cost'>
+                { cartEntriesPrice.toFixed(2) + ' $' }
               </div>
 
-              <div 
-                className={
-                  `header__cart-button-separator 
-                  button-separator 
-                  button-separator_theme_light`}
+              <div
+                className={'Header__cart-button-separator button-separator'}
               />
 
-              <div className='header__cart-button-icon-container'>
+              <div className='Header__cart-button-icon-container'>
                 <img className='image' src={cartSvg} alt='cart' />
               </div>
 
-              <div className='header__cart-button-inputs-counter'>
+              <div className='Header__cart-button-inputs-counter'>
                 { cartEntriesCount }
               </div>
 

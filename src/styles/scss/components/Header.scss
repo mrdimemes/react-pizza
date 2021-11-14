@@ -1,0 +1,95 @@
+@use "../foundation/colors";
+@use "../foundation/mixins";
+
+
+.Header {
+    @include mixins.flex-space-between();
+    padding: 52px 0;
+    &__logo {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    &__logo-image-container {
+        @include mixins.square(38px);
+        margin-right: 17px;
+    }
+    &__logo-label {
+        @include mixins.no-indentation();
+        color: colors.$dark-color;
+        font-size: 24px;
+        line-height: 29px;
+        font-weight: 800;
+    }
+    &__logo-description {
+        @include mixins.no-indentation();
+        color: colors.$light-color;
+        font-size: 16px;
+        line-height: 19px;
+        font-weight: 400;
+    }
+    &__cart-button {
+        @include mixins.block(150px, 50px);
+        padding: 0;
+    }
+    &__cart-button-icon-container {
+        @include mixins.square(16px);
+    }
+    &__cart-button-separator {
+        margin: 0 13px;
+    }
+    &__cart-button-inputs-counter {
+        margin-left: 8px;
+    }
+    
+    @media screen and (max-width: 1024px) {
+        padding: 40px 0;
+    }
+    @media screen and (max-width: 660px) {
+        padding: 20px 0;
+    }
+    @media screen and (max-width: 540px) {
+        &__logo-description {
+            display: none;
+        }
+    }
+    @media screen and (max-width: 450px) {
+        &__logo-label {
+            width: 120px;
+            line-height: 25px;
+        }
+    }
+    @media screen and (max-width: 380px) {
+        &__logo-label {
+            width: 80px;
+            font-size: 18px;
+            line-height: 20px;
+        }
+        &__cart-button {
+            @include mixins.block(75px, 40px);
+        }
+        &__cart-button-separator {
+            display: none;
+        }
+        &__cart-button-cost {
+            display: none;
+        }
+    }
+    @media screen and (max-width: 280px) {
+        margin-right: 15px;
+        margin-left: 15px;
+        padding: 10px 0;
+        &__logo-label {
+            width: 70px;
+            font-size: 14px;
+            line-height: 16px;
+        }
+        &__logo-image-container {
+            @include mixins.square(30px);
+            margin-right: 10px;
+        }
+        &__cart-button {
+            @include mixins.block(60px, 35px);
+        }
+    }
+}
