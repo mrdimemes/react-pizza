@@ -1,0 +1,39 @@
+@use "colors";
+
+
+@mixin block($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin square($size) {
+    width: $size;
+    height: $size;
+}
+
+@mixin no-indentation {
+    margin: 0;
+    padding: 0;
+}
+
+@mixin main-colored {
+    background-color: colors.$main-color;
+    color: white;
+}
+
+@mixin dark-colored {
+    background-color: colors.$dark-color;
+    color: white;
+}
+
+@mixin flex-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

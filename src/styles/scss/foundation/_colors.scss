@@ -1,0 +1,12 @@
+// color constants
+
+$main-color: #FE5F1E;
+$bg-color: #FFDF8C;
+$dark-color: #282828;
+
+
+// derived colors
+
+$main-color-5-percent: scale-color($main-color, $alpha: -95%);
+$lighter-color: scale-color($dark-color, $lightness: +95%);
+$light-color: scale-color($dark-color, $lightness: +40%);

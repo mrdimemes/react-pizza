@@ -1,116 +1,10 @@
-// color constants
+@use "foundation/colors";
+@use "foundation/mixins";
+@use "foundation/general";
 
-$main-color: #FE5F1E;
-$bg-color: #FFDF8C;
-$dark-color: #282828;
-
-
-
-// derived colors
-
-$main-color-5-percent: scale-color($main-color, $alpha: -95%);
-$lighter-color: scale-color($dark-color, $lightness: +95%);
-$light-color: scale-color($dark-color, $lightness: +40%);
-
-
-
-// mixins
-
-@mixin block($width, $height) {
-    width: $width;
-    height: $height;
-}
-
-@mixin square($size) {
-    width: $size;
-    height: $size;
-}
-
-@mixin no-indentation {
-    margin: 0;
-    padding: 0;
-}
-
-@mixin main-colored {
-    background-color: $main-color;
-    color: white;
-}
-
-@mixin dark-colored {
-    background-color: $dark-color;
-    color: white;
-}
-
-@mixin flex-centered {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-@mixin flex-space-between {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-
-// global styles
-
-body {
-    @include no-indentation();
-    background-color: $bg-color;
-}
-
-#root {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.image {
-    width: 100%;
-    height: 100%;
-}
-
-ul {
-    @include no-indentation();
-    list-style: none;
-}
-
-li {
-    list-style: none;
-}
-
-a {
-    text-decoration: none;
-}
-
-button {
-    background: none;
-    border: none;
-}
-
-.interactive-bar {
-    @include flex-space-between();
-    width: 100%;
-}
-
-.section-label {
-    font-size: 32px;
-    line-height: 39px;
-    font-weight: 700;
-    @media screen and (max-width: 768px) {
-        font-size: 26px;
-        line-height: 32px;
-    }
-    @media screen and (max-width: 480px) {
-        font-size: 20px;
-        line-height: 24px;
-    }
-}
 
 .button {
-    @include flex-centered();
+    @include mixins.flex-centered();
     box-sizing: border-box;
     font-size: 16px;
     line-height: 19px;
@@ -124,17 +18,17 @@ button {
 }
 
 .button_theme_main-colored {
-    @include main-colored();
+    @include mixins.main-colored();
 }
 
 .button_theme_dark-colored {
-    @include dark-colored();
+    @include mixins.dark-colored();
 }
 
 .button_theme_main-bordered {
     background-color: white;
-    border: 1px solid $main-color;
-    color: $main-color;
+    border: 1px solid colors.$main-color;
+    color: colors.$main-color;
 }
 
 .button_theme_weak {
@@ -162,13 +56,13 @@ button {
 }
 
 .popup-menu {
-    @include flex-centered();
+    @include mixins.flex-centered();
     position: relative;
     &__marker {
-        @include square(10px);
+        @include mixins.square(10px);
         margin-right: 7px;
         .image {
-            @include flex-centered();
+            @include mixins.flex-centered();
         }
     }
     &__marker_closed {
@@ -184,8 +78,8 @@ button {
     &__selected {
         cursor: pointer;
         margin-left: 8px;
-        color: $main-color;
-        border-bottom: 1px dashed $main-color;
+        color: colors.$main-color;
+        border-bottom: 1px dashed colors.$main-color;
         font-weight: 400;
     }
     &__items {
@@ -201,8 +95,8 @@ button {
         display: block;
     }
     &__item {
-        @include block(132px, 38px);
-        @include flex-space-between();
+        @include mixins.block(132px, 38px);
+        @include mixins.flex-space-between();
         font-size: 14px;
         line-height: 17px;
         font-weight: 400;
@@ -212,11 +106,11 @@ button {
     }
     &__item_active {
         font-weight: 700;
-        background-color: $main-color-5-percent;
-        color: $main-color;
+        background-color: colors.$main-color-5-percent;
+        color: colors.$main-color;
     }
     &__item:hover {
-        background-color: $main-color-5-percent;
+        background-color: colors.$main-color-5-percent;
     }
 }
 
@@ -242,11 +136,11 @@ button {
     }
     &__cart-section {
         padding: 47px 0 35px 58px;
-        @include flex-centered();
+        @include mixins.flex-centered();
     }
     &__empty-cart-wrapper {
         padding: 39px 78px 32px 0;
-        @include flex-centered();
+        @include mixins.flex-centered();
     }
     @media screen and (max-width: 1024px) {
         width: calc(100% - 69px);
@@ -285,7 +179,7 @@ button {
 
 
 .header {
-    @include flex-space-between();
+    @include mixins.flex-space-between();
     padding: 52px 0;
     &__logo {
         display: flex;
@@ -293,29 +187,29 @@ button {
         cursor: pointer;
     }
     &__logo-image-container {
-        @include square(38px);
+        @include mixins.square(38px);
         margin-right: 17px;
     }
     &__logo-label {
-        @include no-indentation();
-        color: $dark-color;
+        @include mixins.no-indentation();
+        color: colors.$dark-color;
         font-size: 24px;
         line-height: 29px;
         font-weight: 800;
     }
     &__logo-description {
-        @include no-indentation();
-        color: $light-color;
+        @include mixins.no-indentation();
+        color: colors.$light-color;
         font-size: 16px;
         line-height: 19px;
         font-weight: 400;
     }
     &__cart-button {
-        @include block(150px, 50px);
+        @include mixins.block(150px, 50px);
         padding: 0;
     }
     &__cart-button-icon-container {
-        @include square(16px);
+        @include mixins.square(16px);
     }
     &__cart-button-separator {
         margin: 0 13px;
@@ -348,7 +242,7 @@ button {
             line-height: 20px;
         }
         &__cart-button {
-            @include block(75px, 40px);
+            @include mixins.block(75px, 40px);
         }
         &__cart-button-separator {
             display: none;
@@ -367,11 +261,11 @@ button {
             line-height: 16px;
         }
         &__logo-image-container {
-            @include square(30px);
+            @include mixins.square(30px);
             margin-right: 10px;
         }
         &__cart-button {
-            @include block(60px, 35px);
+            @include mixins.block(60px, 35px);
         }
     }
 }
@@ -400,8 +294,8 @@ button {
             display: flex;
         }
         &__item {
-            @include block(auto, 46px);
-            @include flex-centered();
+            @include mixins.block(auto, 46px);
+            @include mixins.flex-centered();
             box-sizing: border-box;
             font-size: 16px;
             line-height: 19px;
@@ -412,11 +306,11 @@ button {
             margin-right: 9px;
         }
         &__item:hover {
-            background-color: $dark-color;
+            background-color: colors.$dark-color;
             color: white;
         }
         &__item_active {
-            @include dark-colored();
+            @include mixins.dark-colored();
         }
     }
 }
@@ -444,14 +338,14 @@ button {
 }
 
 .pizza {
-    @include flex-centered();
+    @include mixins.flex-centered();
     flex-direction: column;
     &__image-container {
-        @include square(260px);
+        @include mixins.square(260px);
         margin-bottom: 11px;
     }
     &__label {
-        @include no-indentation();
+        @include mixins.no-indentation();
         font-size: 20px;
         line-height: 24px;
         font-weight: 800;
@@ -464,7 +358,7 @@ button {
         width: 100%;
         border-radius: 10px;
         box-sizing: border-box;
-        background-color: $lighter-color;
+        background-color: colors.$lighter-color;
         margin-top: 22px;
         margin-bottom: 17px;
         padding: 7px;
@@ -475,21 +369,21 @@ button {
         height: 32px;
     }
     &__options-item {
-        @include flex-centered();
+        @include mixins.flex-centered();
         width: 0;
         flex-grow: 1;
         font-size: 14px;
         line-height: 17px;
         font-weight: 700;
         border-radius: 5px;
-        color: $dark-color;
+        color: colors.$dark-color;
         cursor: pointer;
     }
     &__options-item_active {
         background-color: white;
     }
     &__options-item_unavailable {
-        color: $light-color;
+        color: colors.$light-color;
         pointer-events: none;
     }
     &__price {
@@ -498,19 +392,19 @@ button {
         font-weight: 700;
     }
     &__order-button {
-        @include block(auto, 40px);
+        @include mixins.block(auto, 40px);
         transition: 0.2s;
     }
     &__order-button:hover {
-        @include main-colored();
+        @include mixins.main-colored();
     }
     &__order-button-text {
         margin: 0;
     }
     &__order-button-counter {
-        @include square(22px);
-        @include main-colored();
-        @include flex-centered();
+        @include mixins.square(22px);
+        @include mixins.main-colored();
+        @include mixins.flex-centered();
         border-radius: 50%;
         font-size: 13px;
         margin-left: 7px;
@@ -521,7 +415,7 @@ button {
     }
     @media screen and (max-width: 380px) {
         &__image-container {
-            @include square(200px);
+            @include mixins.square(200px);
         }
         &__label {
             text-align: center;
@@ -533,10 +427,10 @@ button {
     }
     @media screen and (max-width: 260px) {
         &__image-container {
-            @include square(160px);
+            @include mixins.square(160px);
         }
         &__order-button {
-            @include block(auto, 32px);
+            @include mixins.block(auto, 32px);
         }
         &__order-button-text {
             font-size: 14px;
@@ -561,25 +455,25 @@ button {
         column-gap: 18px;
     }
     &__section-label-icon-container {
-        @include square(28px);
-        @include flex-centered();
+        @include mixins.square(28px);
+        @include mixins.flex-centered();
         path {
-            fill: $dark-color;
+            fill: colors.$dark-color;
         }
     }
     &__section-label-text {
-        @include no-indentation();
+        @include mixins.no-indentation();
     }
 
     &__clear-button {
         column-gap: 10px;
     }
     &__clear-button-icon-container {
-        @include square(16px);
-        @include flex-centered();
+        @include mixins.square(16px);
+        @include mixins.flex-centered();
     }
     &__clear-button-text {
-        @include no-indentation();
+        @include mixins.no-indentation();
     }
 
     &__items {
@@ -591,7 +485,7 @@ button {
     }
 
     &__footer {
-        @include flex-space-between();
+        @include mixins.flex-space-between();
         font-weight: 400;
         font-size: 22px;
         line-height: 27px;
@@ -602,14 +496,14 @@ button {
     }
     &__price-state {
         font-weight: 700;
-        color: $main-color;
+        color: colors.$main-color;
     }
 
     &__back-button {
-        @include block(210px, 55px);
+        @include mixins.block(210px, 55px);
     }
     &__pay-button {
-        @include block(210px, 55px);
+        @include mixins.block(210px, 55px);
     }
 }
 
@@ -617,7 +511,7 @@ button {
     width: 550px;
     text-align: center;
     &__section-label {
-        @include no-indentation();
+        @include mixins.no-indentation();
     }
     &__text {
         margin-top: 10px;
@@ -625,22 +519,22 @@ button {
         font-size: 18px;
         line-height: 26px;
         font-weight: 400;
-        color: $light-color;
+        color: colors.$light-color;
     }
     &__image-container {
-        @include block(280px, 240px);
+        @include mixins.block(280px, 240px);
         margin-bottom: 90px;
         margin-left: auto;
         margin-right: auto;
     }
     &__back-button {
-        @include block(210px, 46px);
+        @include mixins.block(210px, 46px);
         display: inline-block;
     }
 }
 
 .Cart-item {
-    @include flex-space-between();
+    @include mixins.flex-space-between();
     column-gap: 68px;
     &__info {
         display: flex;
@@ -648,7 +542,7 @@ button {
         column-gap: 15px;
     }
     &__image-container {
-        @include square(80px);
+        @include mixins.square(80px);
     }
     &__label {
         font-size: 22px;
@@ -659,8 +553,8 @@ button {
         width: 280px;
     }
     &__description {
-        color: $light-color;
-        @include no-indentation();
+        color: colors.$light-color;
+        @include mixins.no-indentation();
         font-size: 18px;
         line-height: 22px;
         font-weight: 400;
@@ -668,7 +562,7 @@ button {
     }
 
     &__interactive-bar {
-        @include flex-space-between();
+        @include mixins.flex-space-between();
         width: 378px;
     }
 
@@ -678,19 +572,19 @@ button {
         column-gap: 12px;
     }
     &__counter-state {
-        @include no-indentation();
+        @include mixins.no-indentation();
         font-size: 22px;
         line-height: 27px;
         font-weight: 700;
     }
     &__decrease-button {
-        @include no-indentation();
-        @include square(32px);
+        @include mixins.no-indentation();
+        @include mixins.square(32px);
         border-radius: 50%;
     }
     &__encrease-button {
-        @include no-indentation();
-        @include square(32px);
+        @include mixins.no-indentation();
+        @include mixins.square(32px);
         border-radius: 50%;
     }
 
@@ -701,7 +595,7 @@ button {
     }
 
     &__clear-button {
-        @include square(32px);
+        @include mixins.square(32px);
         border-radius: 50%;
     }
 }
