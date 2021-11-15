@@ -78,6 +78,7 @@ function Header({ cartEntriesPrice, cartEntriesCount }) {
 
           </Link>
         } />
+        <Route exact path='/cart' element={ null } />
       </Routes>
 
     </header>
