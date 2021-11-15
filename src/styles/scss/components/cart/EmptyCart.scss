@@ -1,0 +1,28 @@
+@use "../../foundation/colors";
+@use "../../foundation/mixins";
+
+.Empty-cart {
+    width: 550px;
+    text-align: center;
+    &__section-label {
+        @include mixins.no-indentation();
+    }
+    &__text {
+        margin-top: 10px;
+        margin-bottom: 47px;
+        font-size: 18px;
+        line-height: 26px;
+        font-weight: 400;
+        color: colors.$light-color;
+    }
+    &__image-container {
+        @include mixins.block(280px, 240px);
+        margin-bottom: 90px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    &__back-button {
+        @include mixins.block(210px, 46px);
+        display: inline-block;
+    }
+}

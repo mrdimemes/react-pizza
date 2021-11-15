@@ -14,7 +14,7 @@ import {
   itemsLoaded
 } from '../redux/slices/pizzas';
 
-import '../styles/scss/App.scss';
+import '../styles/scss/components/App.scss';
 
 
 function App({ dispatch }) {

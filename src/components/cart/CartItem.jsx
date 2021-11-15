@@ -10,6 +10,9 @@ import {
   removeAllEntries
 } from '../../redux/slices/cart';
 
+import '../../styles/scss/components/cart/CartItem.scss';
+
+
 // Component for cart entry representation.
 //
 // Need direct determination of "entry" prop.

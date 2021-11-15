@@ -10,6 +10,8 @@ import { clearCart } from '../../redux/slices/cart';
 import cartSvg from '../../assets/images/svg/dark-cart.svg';
 import trashSvg from '../../assets/images/svg/trash.svg';
 
+import '../../styles/scss/components/cart/Cart.scss';
+
 
 // Component for cart entries representation.
 // Should be used if cart is not empty.

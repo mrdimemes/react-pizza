@@ -1,0 +1,64 @@
+@use "../../foundation/colors";
+@use "../../foundation/mixins";
+
+
+.Cart {
+    width: 820px;
+
+    &__section-label {
+        display: flex;
+        align-items: center;
+        column-gap: 18px;
+    }
+    &__section-label-icon-container {
+        @include mixins.square(28px);
+        @include mixins.flex-centered();
+        path {
+            fill: colors.$dark-color;
+        }
+    }
+    &__section-label-text {
+        @include mixins.no-indentation();
+    }
+
+    &__clear-button {
+        column-gap: 10px;
+    }
+    &__clear-button-icon-container {
+        @include mixins.square(16px);
+        @include mixins.flex-centered();
+    }
+    &__clear-button-text {
+        @include mixins.no-indentation();
+    }
+
+    &__items {
+        padding-top: 60px;
+        padding-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 60px;
+    }
+
+    &__footer {
+        @include mixins.flex-space-between();
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 27px;
+        margin-bottom: 40px;
+    }
+    &__counter-state {
+        font-weight: 700;
+    }
+    &__price-state {
+        font-weight: 700;
+        color: colors.$main-color;
+    }
+
+    &__back-button {
+        @include mixins.block(210px, 55px);
+    }
+    &__pay-button {
+        @include mixins.block(210px, 55px);
+    }
+}
