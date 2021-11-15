@@ -1,0 +1,47 @@
+@use "../foundation/colors";
+@use "../foundation/mixins";
+
+
+.Categories-menu {
+    @media screen and (min-width: 1024px) {
+        position: static;
+        &__popup-marker {
+            display: none;
+        }
+        &__popup-invite-text {
+            display: none;
+        }
+        &__items {
+            position: static;
+            display: flex;
+            flex-wrap: wrap;
+            row-gap: 5px;
+            padding: 0;
+            box-shadow: none;
+            background-color: none;
+            border-radius: 0;
+        }
+        &__items_active {
+            display: flex;
+        }
+        &__item {
+            @include mixins.block(auto, 46px);
+            @include mixins.flex-centered();
+            box-sizing: border-box;
+            font-size: 16px;
+            line-height: 19px;
+            font-weight: 700;
+            text-transform: capitalize;
+            border-radius: 30px;
+            padding: 0 30px;
+            margin-right: 9px;
+        }
+        &__item:hover {
+            background-color: colors.$dark-color;
+            color: white;
+        }
+        &__item_active {
+            @include mixins.dark-colored();
+        }
+    }
+}
