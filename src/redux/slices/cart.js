@@ -42,7 +42,7 @@ const cartSlice = createSlice({
     addEntry(state, action) {
       if (state.entriesCount === state.maxEntriesCount) {
         alert(
-          'Sorry, you cannot order more than ' + 
+          'Sorry, you cannot order more than ' +
           state.maxEntriesCount +
           ' pizzas at a time.'
         );
@@ -102,7 +102,11 @@ const cartSlice = createSlice({
           state.entries[entryIndex].count -= 1;
         }
         state.entriesCount -= 1;
-        state.entriesPrice -= action.payload.price;
+        if (state.entriesCount) {
+          state.entriesPrice -= action.payload.price;
+        } else {
+          state.entriesPrice = 0;
+        };
       }
     },
 
@@ -133,7 +137,11 @@ const cartSlice = createSlice({
         state.entries.splice(entryIndex, 1);
         
         state.entriesCount -= entryCount;
-        state.entriesPrice -= (entryCount * entryPrice);
+        if (state.entriesCount) {
+          state.entriesPrice -= (entryCount * entryPrice);
+        } else {
+          state.entriesPrice = 0;
+        };
       }
     },
 
