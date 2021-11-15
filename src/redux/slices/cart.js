@@ -14,13 +14,18 @@ import { createSlice } from '@reduxjs/toolkit';
 //     count: integer > 0 - number of products the with same configuration
 //       in the cart.
 //   }
-// entriesCount: integer >= 0 - total count the of shopping cart entries.
+// entriesCount: integer >= 0 - total count of the shopping cart entries.
+// maxEntriesCount: integer > 1 - maximum count of the shopping cart entries.
+//   If entriesCount === maxEntriesCount, new incoming add actions
+//   will be ignored. The user will see a pop-up window with information
+//   about the restriction.
 // entriesPrice: number > 0 - total price of the shopping cart entries.
 
 const initialState = {
   entries: [],
   entriesCount: 0,
-  entriesPrice: 0,
+  maxEntriesCount: 50,
+  entriesPrice: 0
 };
 
 const cartSlice = createSlice({
@@ -35,6 +40,14 @@ const cartSlice = createSlice({
     // It is optional to specify it in the object.
 
     addEntry(state, action) {
+      if (state.entriesCount === state.maxEntriesCount) {
+        alert(
+          'Sorry, you cannot order more than ' + 
+          state.maxEntriesCount +
+          ' pizzas at a time.'
+        );
+        return ;
+      };
       let enrtyInState = false;
 
       for (const entry of state.entries) {
