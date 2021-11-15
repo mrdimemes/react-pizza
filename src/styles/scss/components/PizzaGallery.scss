@@ -1,0 +1,25 @@
+@use "../foundation/colors";
+@use "../foundation/mixins";
+
+
+.Pizza-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 280px);
+    justify-content: space-between;
+    grid-row-gap: 65px;
+    @media screen and (max-width: 1400px) {
+        grid-template-columns: repeat(3, 280px);
+    }
+    @media screen and (max-width: 1080px) {
+        grid-template-columns: repeat(2, 280px);
+        justify-content: space-evenly;
+    }
+    @media screen and (max-width: 840px) {
+        grid-template-columns: 280px;
+        grid-row-gap: 45px;
+    }
+    @media screen and (max-width: 420px) {
+        grid-template-columns: 1fr;
+        grid-row-gap: 30px;
+    }
+}

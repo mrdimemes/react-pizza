@@ -1,0 +1,112 @@
+@use "../foundation/colors";
+@use "../foundation/mixins";
+
+
+.Pizza {
+    @include mixins.flex-centered();
+    flex-direction: column;
+    &__image-container {
+        @include mixins.square(260px);
+        margin-bottom: 11px;
+    }
+    &__label {
+        @include mixins.no-indentation();
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 800;
+        text-align: center;
+    }
+    &__options {
+        display: flex;
+        flex-direction: column;
+        row-gap: 7px;
+        width: 100%;
+        border-radius: 10px;
+        box-sizing: border-box;
+        background-color: colors.$lighter-color;
+        margin-top: 22px;
+        margin-bottom: 17px;
+        padding: 7px;
+    }
+    &__options-row {
+        display: flex;
+        column-gap: 6px;
+        height: 32px;
+    }
+    &__options-item {
+        @include mixins.flex-centered();
+        width: 0;
+        flex-grow: 1;
+        font-size: 14px;
+        line-height: 17px;
+        font-weight: 700;
+        border-radius: 5px;
+        color: colors.$dark-color;
+        cursor: pointer;
+    }
+    &__options-item_active {
+        background-color: white;
+    }
+    &__options-item_unavailable {
+        color: colors.$light-color;
+        pointer-events: none;
+    }
+    &__price {
+        font-size: 22px;
+        line-height: 27px;
+        font-weight: 700;
+    }
+    &__order-button {
+        @include mixins.block(auto, 40px);
+        transition: 0.2s;
+    }
+    &__order-button:hover {
+        @include mixins.main-colored();
+    }
+    &__order-button-text {
+        margin: 0;
+    }
+    &__order-button-counter {
+        @include mixins.square(22px);
+        @include mixins.main-colored();
+        @include mixins.flex-centered();
+        border-radius: 50%;
+        font-size: 13px;
+        margin-left: 7px;
+        display: none;
+    }
+    &__order-button-counter_active {
+        display: flex;
+    }
+    @media screen and (max-width: 380px) {
+        &__image-container {
+            @include mixins.square(200px);
+        }
+        &__label {
+            text-align: center;
+        }
+        &__label {
+            font-size: 16px;
+            line-height: 18px;
+        }
+    }
+    @media screen and (max-width: 260px) {
+        &__image-container {
+            @include mixins.square(160px);
+        }
+        &__order-button {
+            @include mixins.block(auto, 32px);
+        }
+        &__order-button-text {
+            font-size: 14px;
+            line-height: 14px;
+        }
+        &__order-button-counter_active {
+            display: none;
+        }
+        &__price {
+            font-size: 16px;
+            line-height: 16px;
+        }
+    }
+}

@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 
 import { Pizza } from '../';
 
+import '../../styles/scss/components/PizzaGallery.scss';
+
 
 // Component for pizzas representation.
 // Only shown items will be rendered. Shown items stores in Redax
@@ -27,7 +29,7 @@ import { Pizza } from '../';
 
 function PizzaGallery( { items, shown } ) {
   return (
-    <div className='pizza-gallery'>
+    <div className='Pizza-gallery'>
       {
         shown.map((id) => {
           const item = items.find(item => item.id === id);

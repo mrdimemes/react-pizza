@@ -7,6 +7,8 @@ import classNames from 'classnames';
 import { Button } from '../';
 import { addEntry } from '../../redux/slices/cart';
 
+import '../../styles/scss/components/Pizza.scss';
+
 
 // Component for single product representation.
 // Will be mounted into PizzaGallery component.
@@ -92,23 +94,23 @@ function Pizza({ pizzaItem, types, sizes, cartEntries, addToCart }) {
   ]);
 
   return (
-    <div className='pizza'>
-      <div className='pizza__image-container'>
+    <div className='Pizza'>
+      <div className='Pizza__image-container'>
         <img className='image' src={imageUrl} alt='pizza' />
       </div>
 
-      <h2 className='pizza__label'> {pizzaLabel} </h2>
+      <h2 className='Pizza__label'> {pizzaLabel} </h2>
         
-      <div className='pizza__options'>
-        <ul className='pizza__options-row'>
+      <div className='Pizza__options'>
+        <ul className='Pizza__options-row'>
           { types.map((item, index) => (
             <li
               key={ `${item}_${index}` }
               onClick={ () => onSelectType(index) }
               className={classNames(
-                'pizza__options-item',
-                {'pizza__options-item_active': (index === activeType),
-                'pizza__options-item_unavailable': (
+                'Pizza__options-item',
+                {'Pizza__options-item_active': (index === activeType),
+                'Pizza__options-item_unavailable': (
                   !availableTypes.includes(index))}
               )}
             >
@@ -117,15 +119,15 @@ function Pizza({ pizzaItem, types, sizes, cartEntries, addToCart }) {
           )) }
         </ul>
 
-        <ul className='pizza__options-row'>
+        <ul className='Pizza__options-row'>
           { sizes.map((item, index) => (
             <li
               key={ `${item}_${index}` }
               onClick={ () => onSelectSize(index) }
               className={classNames(
-                'pizza__options-item',
-                {'pizza__options-item_active': (index === activeSize),
-                'pizza__options-item_unavailable': (
+                'Pizza__options-item',
+                {'Pizza__options-item_active': (index === activeSize),
+                'Pizza__options-item_unavailable': (
                   !availableSizes.includes(index))}
               )}
             >
@@ -135,13 +137,13 @@ function Pizza({ pizzaItem, types, sizes, cartEntries, addToCart }) {
         </ul>
       </div>
 
-      <div className='pizza__order-bar interactive-bar'>
-        <div className='pizza__price'>
+      <div className='Pizza__order-bar interactive-bar'>
+        <div className='Pizza__price'>
           { prices[activeType][activeSize] } $
         </div>
 
         <Button
-          className='pizza__order-button'
+          className='Pizza__order-button'
           shape='rounded'
           theme='main-bordered'
           onClick={ () => addToCart(
@@ -153,11 +155,11 @@ function Pizza({ pizzaItem, types, sizes, cartEntries, addToCart }) {
             prices[activeType][activeSize]
           )}
         >
-          <p className="pizza__order-button-text">+ Add</p>
+          <p className="Pizza__order-button-text">+ Add</p>
           <div
             className={classNames(
-              'pizza__order-button-counter',
-              {'pizza__order-button-counter_active': orderCounter}
+              'Pizza__order-button-counter',
+              {'Pizza__order-button-counter_active': orderCounter}
             )}
           >
             { orderCounter }
