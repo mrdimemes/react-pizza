@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { PopupMenu } from '../';
 import { setShownItems, itemsNotSorted } from '../../redux/slices/pizzas';
 
-import '../../styles/scss/components/CategoriesMenu.scss';
+import '../../styles/scss/components/menus/CategoriesMenu.scss';
 
 
 // The CategoriesMenu component is a refinement of the PopupMenu component

@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import { Button } from '../';
 import { addEntry } from '../../redux/slices/cart';
 
-import '../../styles/scss/components/Pizza.scss';
+import '../../styles/scss/components/pizzas/Pizza.scss';
 
 
 // Component for single product representation.

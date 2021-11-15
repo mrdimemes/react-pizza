@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import markerSvg from '../../assets/images/svg/arrow-top.svg';
 
-import '../../styles/scss/components/PopupMenu.scss';
+import '../../styles/scss/components/menus/PopupMenu.scss';
 
 
 // Basic component for popup menus representation.

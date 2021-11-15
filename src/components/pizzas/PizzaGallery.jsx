@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import { Pizza } from '../';
 
-import '../../styles/scss/components/PizzaGallery.scss';
+import '../../styles/scss/components/pizzas/PizzaGallery.scss';
 
 
 // Component for pizzas representation.
