@@ -4,6 +4,8 @@ import classNames from 'classnames';
 
 import markerSvg from '../../assets/images/svg/arrow-top.svg';
 
+import '../../styles/scss/components/PopupMenu.scss';
+
 
 // Basic component for popup menus representation.
 // Can be clarified by specifying different props.
@@ -65,14 +67,14 @@ function PopupMenu(
   return (
     <div 
       ref={elementRef}
-      className={classNames('popup-menu', className)}
+      className={classNames('Popup-menu', className)}
     >
 
       <div
         className={classNames(
-          'popup-menu__marker',
+          'Popup-menu__marker',
           {[`${className}__popup-marker`]: className,
-          'popup-menu__marker_closed': !isOpen}
+          'Popup-menu__marker_closed': !isOpen}
         )}
       >
         <img className='image' src={markerSvg} alt='marker' />
@@ -80,7 +82,7 @@ function PopupMenu(
 
       <p
         className={classNames(
-          'popup-menu__invite-text',
+          'Popup-menu__invite-text',
           {[`${className}__popup-invite-text`]: className}
         )}
       >
@@ -88,7 +90,7 @@ function PopupMenu(
         <span
           onClick={toggleIsOpen}
           className={classNames(
-            'popup-menu__selected',
+            'Popup-menu__selected',
             {[`${className}__popup-selected`]: className}
           )}
         >
@@ -98,9 +100,9 @@ function PopupMenu(
 
       <ul
         className={classNames(
-          'popup-menu__items',
+          'Popup-menu__items',
           {[`${className}__items`]: className,
-          'popup-menu__items_active': isOpen}
+          'Popup-menu__items_active': isOpen}
         )}
       >
 
@@ -109,9 +111,9 @@ function PopupMenu(
             key={`${item}_${index}`}
             onClick={ () => onSelectItem(index) }
             className={classNames(
-              'popup-menu__item',
+              'Popup-menu__item',
               {[`${className}__item`]: className,
-              'popup-menu__item_active': index === activeItem,
+              'Popup-menu__item_active': index === activeItem,
               [`${className}__item_active`]: index === activeItem}
             )}
           >
