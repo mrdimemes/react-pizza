@@ -27,6 +27,14 @@
         padding: 39px 78px 32px 0;
         @include mixins.flex-centered();
     }
+    @media screen and (max-width: 1200px) {
+        &__cart-section {
+            padding: 0;
+        }
+        &__empty-cart-wrapper {
+            padding: 0;
+        }
+    }
     @media screen and (max-width: 1024px) {
         width: calc(100% - 69px);
         margin-top: 33px;

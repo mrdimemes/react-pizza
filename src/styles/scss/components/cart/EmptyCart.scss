@@ -25,4 +25,46 @@
         @include mixins.block(210px, 46px);
         display: inline-block;
     }
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        &__text {
+            margin-top: 10px;
+            margin-bottom: 35px;
+            font-size: 16px;
+            line-height: 24px;
+        }
+        &__image-container {
+            @include mixins.block(200px, 170px);
+            margin-bottom: 40px;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        &__text {
+            margin-top: 10px;
+            margin-bottom: 35px;
+            font-size: 14px;
+            line-height: 20px;
+        }
+        &__image-container {
+            @include mixins.block(160px, 137px);
+            margin-bottom: 40px;
+        }
+    }
+
+    @media screen and (max-width: 280px) {
+        &__text {
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+        &__image-container {
+            @include mixins.block(130px, 110px);
+            margin-bottom: 30px;
+        }
+        &__back-button {
+            @include mixins.block(180px, 40px);
+            display: inline-block;
+        }
+    }
 }

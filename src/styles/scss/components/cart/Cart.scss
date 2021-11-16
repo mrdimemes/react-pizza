@@ -13,9 +13,6 @@
     &__section-label-icon-container {
         @include mixins.square(28px);
         @include mixins.flex-centered();
-        path {
-            fill: colors.$dark-color;
-        }
     }
     &__section-label-text {
         @include mixins.no-indentation();
@@ -23,6 +20,7 @@
 
     &__clear-button {
         column-gap: 10px;
+        @include mixins.no-indentation();
     }
     &__clear-button-icon-container {
         @include mixins.square(16px);
@@ -60,5 +58,88 @@
     }
     &__pay-button {
         @include mixins.block(210px, 55px);
+    }
+
+
+    @media screen and (max-width: 1024px) {
+        width: 100%;
+    }
+    
+    @media screen and (max-width: 768px) {
+        &__items {
+            padding-top: 50px;
+            padding-bottom: 35px;
+            row-gap: 50px;
+        }
+    }
+
+    @media screen and (max-width: 620px) {
+        &__items {
+            padding-top: 30px;
+            padding-bottom: 30px;
+            row-gap: 35px;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        &__section-label {
+            column-gap: 10px;
+        }
+        &__section-label-icon-container {
+            @include mixins.square(20px);
+        }
+        &__footer {
+            font-size: 18px;
+            line-height: 24px;
+            margin-bottom: 30px;
+        }
+        &__back-button {
+            @include mixins.block(180px, 45px);
+        }
+        &__pay-button {
+            @include mixins.block(180px, 45px);
+        }
+    }
+
+    @media screen and (max-width: 420px) {
+        &__navigation {
+            flex-direction: column-reverse;
+            row-gap: 10px;
+        }
+        &__back-button {
+            @include mixins.block(180px, 45px);
+        }
+        &__pay-button {
+            @include mixins.block(180px, 45px);
+        }
+    }
+
+    @media screen and (max-width: 380px) {
+        &__footer {
+            flex-direction: column;
+            align-items: flex-end;
+            row-gap: 7px;
+        }
+    }
+
+    @media screen and (max-width: 280px) {
+        &__items {
+            padding-top: 16px;
+            padding-bottom: 20px;
+            row-gap: 20px;
+        }
+        &__clear-button-text {
+            display: none !important;
+        }
+        &__footer {
+            font-size: 16px;
+            line-height: 20px;
+        }
+        &__back-button {
+            @include mixins.block(180px, 40px);
+        }
+        &__pay-button {
+            @include mixins.block(180px, 40px);
+        }
     }
 }

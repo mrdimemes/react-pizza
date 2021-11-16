@@ -57,8 +57,8 @@ function CartItem(
         <div className='Cart-item__text'>
           <h3 className='Cart-item__label'>{ entry.label }</h3>
           <p className='Cart-item__description'>
-            { availableTypes[entry.type] } dough, 
-            { availableSizes[entry.size] } cm.
+            <span>{ availableTypes[entry.type] } dough, </span>
+            <span>{ availableSizes[entry.size] } cm.</span>
           </p>
         </div>
       </div>
@@ -66,14 +66,14 @@ function CartItem(
       <div className='Cart-item__interactive-bar'>
         <div className='Cart-item__counter'>
           <Button 
-            className='Cart-item__decrease-button'
+            className='Cart-item__counter-button'
             theme='main-bordered'
             onClick={() => remove(entry)}
             children='-'
           />
           <p className='Cart-item__counter-state'>{ entry.count }</p>
           <Button
-            className='Cart-item__encrease-button'
+            className='Cart-item__counter-button'
             theme='main-bordered'
             onClick={() => add(entry)}
             children='+'

@@ -13,13 +13,16 @@
     &__image-container {
         @include mixins.square(80px);
     }
+    &__text {
+        width: 280px;
+    }
     &__label {
         font-size: 22px;
         line-height: 27px;
         font-weight: 700;
         margin-top: 0;
         margin-bottom: 3px;
-        width: 280px;
+        width: 100%;
     }
     &__description {
         color: colors.$light-color;
@@ -27,7 +30,7 @@
         font-size: 18px;
         line-height: 22px;
         font-weight: 400;
-        width: 280px;
+        width: 100%;
     }
 
     &__interactive-bar {
@@ -46,12 +49,7 @@
         line-height: 27px;
         font-weight: 700;
     }
-    &__decrease-button {
-        @include mixins.no-indentation();
-        @include mixins.square(32px);
-        border-radius: 50%;
-    }
-    &__encrease-button {
+    &__counter-button {
         @include mixins.no-indentation();
         @include mixins.square(32px);
         border-radius: 50%;
@@ -66,5 +64,123 @@
     &__clear-button {
         @include mixins.square(32px);
         border-radius: 50%;
+    }
+
+    
+    @media screen and (max-width: 1024px) {
+        column-gap: 50px;
+        &__text {
+            width: 200px;
+        }
+    }
+
+    @media screen and (max-width: 880px) {
+        column-gap: 35px;
+    }
+
+    @media screen and (max-width: 768px) {
+        &__info {
+            column-gap: 10px;
+        }
+        &__image-container {
+            @include mixins.square(65px);
+        }
+        &__text {
+            width: 180px;
+        }
+        &__label {
+            font-size: 20px;
+            line-height: 24px;
+        }
+        &__description {
+            font-size: 16px;
+            line-height: 20px;
+        }
+        &__interactive-bar {
+            width: 280px;
+        }
+        &__counter {
+            width: 100px;
+            justify-content: space-between;
+            column-gap: initial;
+        }
+        &__counter-state {
+            font-size: 20px;
+            line-height: 24px;
+        }    
+        &__price {
+            font-size: 20px;
+            line-height: 24px;
+        }
+    }
+
+    @media screen and (max-width: 580px) {
+        flex-direction: column;
+        row-gap: 10px;
+        align-items: flex-start;
+        &__image-container {
+            @include mixins.square(50px);
+        }
+        &__text {
+            width: auto;
+        }
+        &__interactive-bar {
+            width: 280px;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        &__label {
+            font-size: 18px;
+            line-height: 22px;
+        }
+        &__description {
+            font-size: 14px;
+            line-height: 16px;
+        }
+        &__counter {
+            width: 100px;
+        }
+        &__counter-state {
+            font-size: 18px;
+            line-height: 22px;
+        }    
+        &__price {
+            font-size: 18px;
+            line-height: 22px;
+        }
+    }
+
+    @media screen and (max-width: 380px) {
+        &__interactive-bar {
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 280px) {
+        &__image-container {
+            display: none;
+        }
+        &__label {
+            font-size: 16px;
+            line-height: 20px;
+        }
+        &__counter {
+            width: 80px;
+        }
+        &__counter-button {
+            @include mixins.square(27px);
+        }
+        &__counter-state {
+            font-size: 14px;
+            line-height: 16px;
+        }    
+        &__price {
+            font-size: 14px;
+            line-height: 16px;
+        }
+        &__clear-button {
+            @include mixins.square(27px);
+        }
     }
 }

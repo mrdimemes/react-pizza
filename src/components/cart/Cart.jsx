@@ -70,11 +70,11 @@ function Cart({ entries, entriesPrice, entriesCount, clear }) {
 
       <div className='Cart__footer'>
         <div className='Cart__counter'>
-          Total entries: 
+          <span className='Cart__counter-text'>Total entries: </span>
           <span className='Cart__counter-state'>{ entriesCount } pcs.</span>
         </div>
         <div className='Cart__price'>
-          Order price: 
+          <span className='Cart__price-text'>Order price: </span>
           <span className='Cart__price-state'>
             { entriesPrice.toFixed(2) } $
           </span>
