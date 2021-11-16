@@ -5,6 +5,9 @@
 body {
     @include mixins.no-indentation();
     background-color: colors.$bg-color;
+    @media screen and (max-width: 768px) {
+        background-color: white;
+    }
 }
 
 #root {
