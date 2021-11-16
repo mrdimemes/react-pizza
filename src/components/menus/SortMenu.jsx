@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { PopupMenu } from '../';
-import { sortBy, itemsNotSorted } from '../../redux/slices/filters';
+import { sortBy, shownProductsNotSorted } from '../../redux/slices/filters';
 
 
 // The SortMenu component is a refinement of the PopupMenu component
@@ -54,7 +54,7 @@ SortMenu.propTypes = {
 const mapStateToProps = (state) => {
   return {
     sortOptions: state.filters.sortOptions,
-    isLoaded: state.filters.isLoaded,
+    isLoaded: state.filters.isProductsLoaded,
     isSorted: state.filters.isSorted
   }
 }
@@ -64,7 +64,7 @@ const mapDispatchToProps = (dispatch) => {
     sort: (sortOption) => {
       dispatch(sortBy(sortOption));
     },
-    cleanup: () => dispatch(itemsNotSorted())
+    cleanup: () => dispatch(shownProductsNotSorted())
   }
 }
 

@@ -39,14 +39,14 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   products: [],
+  isProductsLoaded: false,
   productTypes: [],
   productSizes: [],
   productCategories: ['all'],
   shownProducts: [],
 
   sortOptions: ['popularity', 'price', 'alphabet'],
-  isLoaded: false,
-  isSorted: false
+  isShownProductsSorted: false,
 };
 
 const filtersSlice = createSlice({
@@ -56,6 +56,10 @@ const filtersSlice = createSlice({
 
     setProducts(state, action) {
       state.products = action.payload;
+    },
+
+    productsLoaded(state) {
+      state.isProductsLoaded = true;
     },
 
     setProductTypes(state, action) {
@@ -74,14 +78,12 @@ const filtersSlice = createSlice({
       state.shownProducts = action.payload;
     },
 
-    itemsLoaded(state) {
-      state.isLoaded = true
+    shownProductsSorted(state) {
+      state.isShownProductsSorted = true;
     },
-    itemsSorted(state) {
-      state.isSorted = true
-    },
-    itemsNotSorted(state) {
-      state.isSorted = false
+
+    shownProductsNotSorted(state) {
+      state.isShownProductsSorted = false;
     },
 
     sortBy(state, action) {
@@ -102,7 +104,7 @@ const filtersSlice = createSlice({
             return 0;
         }
       });
-      state.isSorted = true
+      state.isShownProductsSorted = true
     }
   }
 })
@@ -113,10 +115,11 @@ export const {
   setProductSizes,
   setProductCategories,
   setShownProducts,
+  productsLoaded,
+
   sortBy,
-  itemsLoaded,
-  itemsSorted,
-  itemsNotSorted
+  shownProductsSorted,
+  shownProductsNotSorted
 } = filtersSlice.actions;
 
 export default filtersSlice.reducer;

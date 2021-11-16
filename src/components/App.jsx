@@ -11,7 +11,7 @@ import {
   setProductTypes,
   setProductSizes,
   setProductCategories,
-  itemsLoaded
+  productsLoaded
 } from '../redux/slices/filters';
 
 import '../styles/scss/components/App.scss';
@@ -28,7 +28,7 @@ function App({ dispatch }) {
         dispatch(setProductTypes(json.pizzaTypes));
         dispatch(setProductSizes(json.pizzaSizes));
         dispatch(setProducts(json.pizzas));
-        dispatch(itemsLoaded());
+        dispatch(productsLoaded());
       });
       // eslint-disable-next-line
   }, []);
