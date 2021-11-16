@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { PopupMenu } from '../';
-import { setShownItems, itemsNotSorted } from '../../redux/slices/filters';
+import { setShownProducts, itemsNotSorted } from '../../redux/slices/filters';
 
 import '../../styles/scss/components/menus/CategoriesMenu.scss';
 
@@ -57,8 +57,8 @@ CategoriesMenu.propTypes = {
 
 const mapStateToProps = (state) => {
     return {
-      categories: state.filters.categories,
-      items: state.filters.items,
+      categories: state.filters.productCategories,
+      items: state.filters.products,
       isLoaded: state.filters.isLoaded,
       display: PropTypes.func,
       cleanup: PropTypes.func
@@ -66,10 +66,10 @@ const mapStateToProps = (state) => {
   }
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        display: (idArray) => dispatch(setShownItems(idArray)),
-        cleanup: () => dispatch(itemsNotSorted())
-    }
+  return {
+    display: (idArray) => dispatch(setShownProducts(idArray)),
+    cleanup: () => dispatch(itemsNotSorted())
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoriesMenu);

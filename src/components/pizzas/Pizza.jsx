@@ -180,8 +180,8 @@ Pizza.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    types: state.filters.types,
-    sizes: state.filters.sizes,
+    types: state.filters.productTypes,
+    sizes: state.filters.productSizes,
     cartEntries: state.cart.entries,
   }
 }

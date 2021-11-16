@@ -52,8 +52,8 @@ PizzaGallery.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    items: state.filters.items,
-    shown: state.filters.shownItems
+    items: state.filters.products,
+    shown: state.filters.shownProducts
   }
 }
 

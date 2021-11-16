@@ -3,10 +3,13 @@ import { createSlice } from '@reduxjs/toolkit';
 
 // State signature:
 //
-// types: array of strings, each string represents an available pizza type.
-// sizes: array of numbers, each number represents an available pizza size.
-// categories: array of strings, each string represents a pizza category.
-// items: array of pizza objects.
+// productTypes: array of strings, each string represents an available
+//   product type.
+// productSizes: array of numbers, each number represents an available
+//   product size.
+// productCategories: array of strings, each string represents
+//   a product category.
+// products: array of pizza objects.
 //   Pizza object signature: {
 //     id: integer >= 0 - product identificator.
 //     imageUrl: string or undefined - path to the product image.
@@ -24,8 +27,8 @@ import { createSlice } from '@reduxjs/toolkit';
 //       for a specific product.
 //     rating: number.
 //   }
-// shownItems: array of integers >= 0 - list of products identificators.
-//   Only pizzas whose id's are stored in the shownItems state
+// shownProducts: array of integers >= 0 - list of products identificators.
+//   Only products whose id's are stored in the shownProducts state
 //   will be rendered in the gallery.
 // sortOptions: array of strings, each string represents
 //   an available sort option for products.
@@ -35,11 +38,12 @@ import { createSlice } from '@reduxjs/toolkit';
 //   sorted or not.
 
 const initialState = {
-  types: [],
-  sizes: [],
-  categories: ['all'],
-  items: [],
-  shownItems: [],
+  products: [],
+  productTypes: [],
+  productSizes: [],
+  productCategories: ['all'],
+  shownProducts: [],
+
   sortOptions: ['popularity', 'price', 'alphabet'],
   isLoaded: false,
   isSorted: false
@@ -50,20 +54,24 @@ const filtersSlice = createSlice({
   initialState,
   reducers: {
 
-    setItems(state, action) {
-      state.items = action.payload
+    setProducts(state, action) {
+      state.products = action.payload;
     },
-    setShownItems(state, action) {
-      state.shownItems = action.payload
+
+    setProductTypes(state, action) {
+      state.productTypes = action.payload;
     },
-    setTypes(state, action) {
-      state.types = action.payload
+
+    setProductSizes(state, action) {
+      state.productSizes = action.payload;
     },
-    setSizes(state, action) {
-      state.sizes = action.payload
+
+    setProductCategories(state, action) {
+      state.productCategories = action.payload;
     },
-    setCategories(state, action) {
-      state.categories = action.payload
+
+    setShownProducts(state, action) {
+      state.shownProducts = action.payload;
     },
 
     itemsLoaded(state) {
@@ -77,9 +85,9 @@ const filtersSlice = createSlice({
     },
 
     sortBy(state, action) {
-      state.shownItems.sort((firstId, secondId) => {
-        const a = state.items.find(item => item.id === firstId);
-        const b = state.items.find(item => item.id === secondId);
+      state.shownProducts.sort((firstId, secondId) => {
+        const a = state.products.find(product => product.id === firstId);
+        const b = state.products.find(product => product.id === secondId);
         switch (action.payload) {
           case 'popularity':
             return b.rating - a.rating;
@@ -100,11 +108,11 @@ const filtersSlice = createSlice({
 })
 
 export const {
-  setItems,
-  setShownItems,
-  setTypes,
-  setSizes,
-  setCategories,
+  setProducts,
+  setProductTypes,
+  setProductSizes,
+  setProductCategories,
+  setShownProducts,
   sortBy,
   itemsLoaded,
   itemsSorted,

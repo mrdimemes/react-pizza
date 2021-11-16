@@ -109,8 +109,8 @@ CartItem.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    availableTypes: state.filters.types,
-    availableSizes: state.filters.sizes,
+    availableTypes: state.filters.productTypes,
+    availableSizes: state.filters.productSizes,
   }
 }
 

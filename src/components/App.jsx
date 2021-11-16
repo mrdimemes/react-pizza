@@ -7,10 +7,10 @@ import { Header } from './';
 import { MainPage, CartPage } from '../pages';
 
 import {
-  setItems,
-  setTypes,
-  setSizes,
-  setCategories,
+  setProducts,
+  setProductTypes,
+  setProductSizes,
+  setProductCategories,
   itemsLoaded
 } from '../redux/slices/filters';
 
@@ -24,10 +24,10 @@ function App({ dispatch }) {
     fetch('http://localhost:3000/db.json')
       .then((response) => response.json())
       .then((json) => {
-        dispatch(setCategories(json.pizzaCategories));
-        dispatch(setTypes(json.pizzaTypes));
-        dispatch(setSizes(json.pizzaSizes));
-        dispatch(setItems(json.pizzas));
+        dispatch(setProductCategories(json.pizzaCategories));
+        dispatch(setProductTypes(json.pizzaTypes));
+        dispatch(setProductSizes(json.pizzaSizes));
+        dispatch(setProducts(json.pizzas));
         dispatch(itemsLoaded());
       });
       // eslint-disable-next-line
