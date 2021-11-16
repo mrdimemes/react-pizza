@@ -45,8 +45,8 @@ const initialState = {
   isSorted: false
 };
 
-const pizzasSlice = createSlice({
-  name: 'pizzas',
+const filtersSlice = createSlice({
+  name: 'filters',
   initialState,
   reducers: {
 
@@ -109,6 +109,6 @@ export const {
   itemsLoaded,
   itemsSorted,
   itemsNotSorted
-} = pizzasSlice.actions;
+} = filtersSlice.actions;
 
-export default pizzasSlice.reducer;
+export default filtersSlice.reducer;

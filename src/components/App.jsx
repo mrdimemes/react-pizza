@@ -12,7 +12,7 @@ import {
   setSizes,
   setCategories,
   itemsLoaded
-} from '../redux/slices/pizzas';
+} from '../redux/slices/filters';
 
 import '../styles/scss/components/App.scss';
 

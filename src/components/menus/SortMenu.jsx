@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { PopupMenu } from '../';
-import { sortBy, itemsNotSorted } from '../../redux/slices/pizzas';
+import { sortBy, itemsNotSorted } from '../../redux/slices/filters';
 
 
 // The SortMenu component is a refinement of the PopupMenu component
@@ -43,11 +43,19 @@ function SortMenu({ sortOptions, isLoaded, isSorted, sort, cleanup }) {
   )
 }
 
+SortMenu.propTypes = {
+  sortOptions: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  isLoaded: PropTypes.bool.isRequired,
+  isSorted: PropTypes.bool.isRequired,
+  sort: PropTypes.func.isRequired,
+  cleanup: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = (state) => {
   return {
-    sortOptions: state.pizzas.sortOptions,
-    isLoaded: state.pizzas.isLoaded,
-    isSorted: state.pizzas.isSorted
+    sortOptions: state.filters.sortOptions,
+    isLoaded: state.filters.isLoaded,
+    isSorted: state.filters.isSorted
   }
 }
 
@@ -59,13 +67,5 @@ const mapDispatchToProps = (dispatch) => {
     cleanup: () => dispatch(itemsNotSorted())
   }
 }
-
-SortMenu.propTypes = {
-  sortOptions: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  isLoaded: PropTypes.bool.isRequired,
-  isSorted: PropTypes.bool.isRequired,
-  sort: PropTypes.func.isRequired,
-  cleanup: PropTypes.func.isRequired,
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SortMenu);
