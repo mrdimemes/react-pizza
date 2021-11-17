@@ -35,6 +35,7 @@ import { createSlice } from '@reduxjs/toolkit';
 //   will be rendered in the gallery.
 // sortOptions: array of strings, each string represents
 //   an available sort option for products.
+// activeSortOption: integer >= 0. Index of sortOptions state.
 // isShownProductsSorted: boolean - logical flag indicating whether
 //   data has been already sorted or not.
 
@@ -49,6 +50,7 @@ const initialState = {
   shownProducts: [],
 
   sortOptions: ['popularity', 'price', 'alphabet'],
+  activeSortOption: 0,
   isShownProductsSorted: false,
 };
 
@@ -86,20 +88,32 @@ const filtersSlice = createSlice({
       state.isShownProductsSorted = false;
     },
 
-    sortBy(state, action) {
+    setActiveSortOption(state, action) {
+      state.activeSortOption = action.payload;
+      state.isShownProductsSorted = false;
+    },
+
+    sortShownProducts(state) {
       state.shownProducts.sort((firstId, secondId) => {
-        const a = state.products.find(product => product.id === firstId);
-        const b = state.products.find(product => product.id === secondId);
-        switch (action.payload) {
+        const firstProduct = state.products.find(product => {
+          return product.id === firstId;
+        });
+        const secondProduct = state.products.find(product => {
+          return product.id === secondId;
+        });
+
+        switch ( state.sortOptions[state.activeSortOption] ) {
           case 'popularity':
-            return b.rating - a.rating;
+            return secondProduct.rating - firstProduct.rating;
           case 'price':
             return (
-              a.prices[a.availableTypes[0]][a.availableSizes[0]] -
-              b.prices[b.availableTypes[0]][b.availableSizes[0]]
+              firstProduct.prices[firstProduct.availableTypes[0]][firstProduct.availableSizes[0]] -
+              secondProduct.prices[secondProduct.availableTypes[0]][secondProduct.availableSizes[0]]
             );
           case 'alphabet':
-            return a.pizzaLabel.localeCompare(b.pizzaLabel);
+            return firstProduct.pizzaLabel.localeCompare(
+              secondProduct.pizzaLabel
+            );
           default:
             return 0;
         }
@@ -119,7 +133,8 @@ export const {
   setActiveCategory,
   setShownProducts,
 
-  sortBy
+  setActiveSortOption,
+  sortShownProducts,
 } = filtersSlice.actions;
 
 export default filtersSlice.reducer;

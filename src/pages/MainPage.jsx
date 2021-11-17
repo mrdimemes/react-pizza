@@ -8,7 +8,7 @@ function MainPage() {
     <div className='App__wrapper'>
       <div className='interactive-bar App__interactive-bar'>
         <CategoriesMenu />
-        {/* <SortMenu /> */}
+        <SortMenu />
       </div>
 
       <section className='App__gallery-section'>

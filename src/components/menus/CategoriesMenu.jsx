@@ -23,6 +23,7 @@ import '../../styles/scss/components/menus/CategoriesMenu.scss';
 // options: array of strings. Options prop for PopupMenu component.
 //   In case of CotegoriesMenu, options are product categories.
 // activeOption: integer >= 0. Index of the options.
+// setActiveOption: function(optionIndex).
 // products: array of product objects (see filters Redux slice).
 // isProductsLoaded: boolean. Logical flag indicating whether data
 //   has been loaded from the server or not.
