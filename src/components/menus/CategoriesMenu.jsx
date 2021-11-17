@@ -4,71 +4,84 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { PopupMenu } from '../';
-import { setShownProducts, shownProductsNotSorted } from '../../redux/slices/filters';
+import {
+  setShownProducts,
+  setActiveCategory
+} from '../../redux/slices/filters';
 
 import '../../styles/scss/components/menus/CategoriesMenu.scss';
 
 
 // The CategoriesMenu component is a refinement of the PopupMenu component
-// for showing gallery items by them category.
+// for setting shownProducts (in Redux) by them category.
 //
 // All props comes from Redux storage.
 // Direct determination of component's props isn't necessary.
 //
 // Component props:
 //
-// categories: array of strings. The categories of products and also 
-//   the items for PopupMenu component.
-// isLoaded: boolean. Logical flag indicating whether data has been loaded 
-//   from the server or not.
-// display: function(idArray) where idArray is an array of products
-//   identificators. It's the function to tell Redux what products
-//   should appear in the gallery.
-// cleanup: function(). Cleanup for PopupMenu component. By default it only
-//   says to Redux to change isSorted flag to false.
+// options: array of strings. Options prop for PopupMenu component.
+//   In case of CotegoriesMenu, options are product categories.
+// activeOption: integer >= 0. Index of the options.
+// products: array of product objects (see filters Redux slice).
+// isProductsLoaded: boolean. Logical flag indicating whether data
+//   has been loaded from the server or not.
+// display: function(idArray). Function to set shownProducts state of
+//   Redux filters store. The idArray is an array of products
+//   identificators.
 
-function CategoriesMenu({ categories, items, isLoaded, display, cleanup }) {
-  const processingFunction = (categoryIndex) => {
-    if (isLoaded) {
-      const filteredItems = items.filter((item) => {
-        return item.categories.includes(categoryIndex);
-      });
-      const filteredIds = filteredItems.map((item) => item.id);
-      display(filteredIds);
-    }
+function CategoriesMenu({
+  options,
+  activeOption,
+  products,
+  isProductsLoaded,
+  setActiveOption,
+  display
+}) {
+
+  const processingFunction = () => {
+    if (!isProductsLoaded) return;
+    const filteredProsucts = products.filter((product) => {
+      return product.categories.includes(activeOption);
+    });
+    const idArray = filteredProsucts.map((product) => product.id);
+    display(idArray);
   }
 
-    return (
-        <PopupMenu
-            className='Categories-menu'
-            inviteText='Category'
-            items={categories}
-            processingFunction={processingFunction}
-            cleanupFunction={cleanup}
-        />
-    )
+  return (
+    <PopupMenu
+      className='Categories-menu'
+      inviteText='Category'
+      options={options}
+      activeOption={activeOption}
+      setActiveOption={setActiveOption}
+      processingFunction={processingFunction}
+    />
+  )
 }
 
 CategoriesMenu.propTypes = {
-  categories: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  items: PropTypes.arrayOf(PropTypes.object).isRequired,
-  isLoaded: PropTypes.bool.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  activeOption: PropTypes.number.isRequired,
+  products: PropTypes.arrayOf(PropTypes.object).isRequired,
+  isProductsLoaded: PropTypes.bool.isRequired,
+  setActiveOption: PropTypes.func.isRequired,
+  display: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => {
-    return {
-      categories: state.filters.productCategories,
-      items: state.filters.products,
-      isLoaded: state.filters.isProductsLoaded,
-      display: PropTypes.func,
-      cleanup: PropTypes.func
-    }
+  return {
+    options: state.filters.productCategories,
+    activeOption: state.filters.activeCategory,
+    products: state.filters.products,
+    isProductsLoaded: state.filters.isProductsLoaded,
   }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    display: (idArray) => dispatch(setShownProducts(idArray)),
-    cleanup: () => dispatch(shownProductsNotSorted())
+    setActiveOption: (optionIndex) => dispatch(setActiveCategory(optionIndex)),
+    display: (idArray) => dispatch(setShownProducts(idArray))
   }
 }
 

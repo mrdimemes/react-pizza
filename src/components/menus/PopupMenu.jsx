@@ -21,30 +21,29 @@ import '../../styles/scss/components/menus/PopupMenu.scss';
 //   for rendered PopupMenu.
 // inviteText: string or undefined - text that will be shown near
 //   an active menu option. Default value is "Option".
-// items: array of strings - options of the menu.
-// processingFunction: function(activeItem), where activeItem is 
-//   PopupMenu's state representing the index of 
-//   an active option in the "items" array. 
-//   processingFunction is an instrument to make changes outside the component. 
-//   PopupMenu will run processingFunction on self rendering, on any
-//   activeItem changes and on any changes of processingFunction itself.
-//   By default is an empty function.
-// cleanupFunction: function(). It's also an instrument to make changes 
-//   outside the component. PopupMenu will run cleanupFunction every time then 
-//   an user selects new active option. By default is an empty function.
+// options: array of strings - options to display in the menu.
+// activeOption: integer >=0 - index of options array.
+// setActiveOption: function(optionIndex) - changes the activeOption
+//   stored outside.
+// processingFunction: function(), which will run every time it changes.
+//   processingFunction is an instrument to make changes outside the component.
 
-function PopupMenu(
-    { className, inviteText, items, processingFunction, cleanupFunction}
-) {
-  const [activeItem, setActiveItem] = React.useState(0);
+function PopupMenu({
+  className,
+  inviteText,
+  options,
+  activeOption,
+  setActiveOption,
+  processingFunction
+}) {
+
   const [isOpen, setIsOpen] = React.useState(false);
   const elementRef = React.useRef();
 
   const toggleIsOpen = () => setIsOpen(!isOpen);
 
-  const onSelectItem = (index) => {
-    setActiveItem(index);
-    cleanupFunction();
+  const onSelectOption = (optionIndex) => {
+    if (optionIndex !== activeOption) setActiveOption(optionIndex);
     if (isOpen) toggleIsOpen();
   }
 
@@ -61,11 +60,12 @@ function PopupMenu(
   }, []);
 
   React.useEffect(() => {
-    processingFunction(activeItem);
-  }, [processingFunction, activeItem]);
+    processingFunction();
+  }, [processingFunction]);
+
 
   return (
-    <div 
+    <div
       ref={elementRef}
       className={classNames('Popup-menu', className)}
     >
@@ -94,7 +94,7 @@ function PopupMenu(
             {[`${className}__popup-selected`]: className}
           )}
         >
-          { items[activeItem] }
+          { options[activeOption] }
         </span>
       </p>
 
@@ -106,18 +106,18 @@ function PopupMenu(
         )}
       >
 
-        { items.map((item, index) => (
+        { options.map((option, index) => (
           <li
-            key={`${item}_${index}`}
-            onClick={ () => onSelectItem(index) }
+            key={`${option}_${index}`}
+            onClick={ () => onSelectOption(index) }
             className={classNames(
               'Popup-menu__item',
               {[`${className}__item`]: className,
-              'Popup-menu__item_active': index === activeItem,
-              [`${className}__item_active`]: index === activeItem}
+              'Popup-menu__item_active': index === activeOption,
+              [`${className}__item_active`]: index === activeOption}
             )}
           >
-            { item }
+            { option }
           </li>
         )) }
 
@@ -128,16 +128,12 @@ function PopupMenu(
 
 PopupMenu.defaultProps = {
   inviteText: 'Option',
-  processingFunction: (activeItem) => {;},
-  cleanupFunction: () => {;}
 };
 
 PopupMenu.propTypes = {
   className: PropTypes.string,
   inviteText: PropTypes.string,
-  items: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  processingFunction: PropTypes.func,
-  cleanupFunction: PropTypes.func
+  options: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 };
 
 export default PopupMenu;
