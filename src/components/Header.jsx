@@ -49,8 +49,8 @@ function Header({ cartEntriesPrice, cartEntriesCount }) {
 
 
       <Routes>
-        <Route exact path='/' element={
-          <Link to='/cart'>
+        <Route exact path='/react-pizza/' element={
+          <Link to='/react-pizza/cart'>
 
             <Button
               className='Header__cart-button'

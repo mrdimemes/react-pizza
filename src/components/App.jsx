@@ -37,8 +37,8 @@ function App({ dispatch }) {
     <div className='App'>
       <Header />
       <Routes>
-        <Route exact path='/' element={ <MainPage /> } />
-        <Route exact path='/cart' element={ <CartPage /> } />
+        <Route exact path='/react-pizza/' element={ <MainPage /> } />
+        <Route exact path='/react-pizza/cart' element={ <CartPage /> } />
       </Routes>
     </div>
   );
