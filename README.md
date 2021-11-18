@@ -23,3 +23,7 @@ https://www.figma.com/file/wWUnQwvRDWBfPx1v1pCAfO/React-Pizza
 - Redux
 - classnames
 - Sass/SCSS
+
+## Check it live!
+
+https://mrdimemes.github.io/react-pizza/
