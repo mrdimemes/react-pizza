@@ -30,7 +30,7 @@ function Header({ cartEntriesPrice, cartEntriesCount }) {
   return (
     <header className='Header App__header'>
 
-      <Link to='/'>
+      <Link to='/react-pizza/'>
         <div className='Header__logo'>
 
           <div className='Header__logo-image-container'>
