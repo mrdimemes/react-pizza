@@ -21,7 +21,7 @@ function App({ dispatch }) {
 
   /* Data loading on mount */
   React.useEffect(() => {
-    fetch('http://localhost:3000/db.json')
+    fetch('https://mrdimemes.github.io/react-pizza/db.json')
       .then((response) => response.json())
       .then((json) => {
         dispatch(setProductCategories(json.pizzaCategories));
