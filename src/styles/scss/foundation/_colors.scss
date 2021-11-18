@@ -8,5 +8,5 @@ $dark-color: #282828;
 // derived colors
 
 $main-color-5-percent: scale-color($main-color, $alpha: -95%);
-$lighter-color: scale-color($dark-color, $lightness: +95%);
+$lighter-color: scale-color($dark-color, $lightness: +90%);
 $light-color: scale-color($dark-color, $lightness: +40%);

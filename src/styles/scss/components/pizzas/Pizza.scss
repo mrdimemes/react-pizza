@@ -58,10 +58,6 @@
     }
     &__order-button {
         @include mixins.block(auto, 40px);
-        transition: 0.2s;
-    }
-    &__order-button:hover {
-        @include mixins.main-colored();
     }
     &__order-button-text {
         margin: 0;

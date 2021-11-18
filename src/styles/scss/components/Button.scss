@@ -9,6 +9,7 @@
     line-height: 19px;
     font-weight: 700;
     cursor: pointer;
+    transition: 0.2s;
 }
 
 
@@ -22,6 +23,9 @@
 
 .Button_theme_main-colored {
     @include mixins.main-colored();
+    &:hover {
+        opacity: 0.85;
+    }
 }
 
 .Button_theme_dark-colored {
@@ -32,6 +36,9 @@
     background-color: white;
     border: 1px solid colors.$main-color;
     color: colors.$main-color;
+    &:hover {
+        @include mixins.main-colored();
+    }
 }
 
 .Button_theme_weak {

@@ -35,13 +35,16 @@
             border-radius: 30px;
             padding: 0 30px;
             margin-right: 9px;
+            &:hover {
+                background-color: colors.$lighter-color;
+            }
         }
-        &__item:hover {
-            background-color: colors.$dark-color;
-            color: white;
-        }
+
         &__item_active {
             @include mixins.dark-colored();
+            &:hover {
+                background-color: colors.$dark-color;
+            }
         }
     }
 }
