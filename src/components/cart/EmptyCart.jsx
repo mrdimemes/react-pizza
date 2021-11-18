@@ -26,7 +26,7 @@ function EmptyCart() {
       <div className='Empty-cart__image-container'>
         <img className='image' src={imagePng} alt='empty cart' />
       </div>
-      <Link to='/'>
+      <Link to='/react-pizza/'>
         <Button
           className='Empty-cart__back-button' 
           shape='rounded'

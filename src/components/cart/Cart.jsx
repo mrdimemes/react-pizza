@@ -82,7 +82,7 @@ function Cart({ entries, entriesPrice, entriesCount, clear }) {
       </div>
 
       <nav className='Cart__navigation interactive-bar'>
-        <Link to='/'>
+        <Link to='/react-pizza/'>
           <Button
             className='Cart__back-button'
             shape='rounded'
