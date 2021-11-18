@@ -19,6 +19,9 @@
     &__wrapper {
         padding: 0 48px 96px 67px;
     }
+    &__gallery-section-label-category {
+        text-transform: capitalize;
+    }
     &__cart-section {
         padding: 47px 0 35px 58px;
         @include mixins.flex-centered();
