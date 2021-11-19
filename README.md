@@ -1,7 +1,7 @@
 # App description
 
 This application is an online store for a pizzeria wrote via React JS. 
-There is no back end code there.
+There is no back end code.
 
 The app includes:
 - Pizza gallery
